@@ -1,0 +1,220 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.15
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=47GDY-IF9MR-0ZMWZ-JQXD6-Z6PJS-RLQYQ
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.15.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 2 (build 169)
+Assembler:       Armasm.exe V5.05 update 2 (build 169)
+Linker/Locator:  ArmLink.exe V5.05 update 2 (build 169)
+Library Manager: ArmAr.exe V5.05 update 2 (build 169)
+Hex Converter:   FromElf.exe V5.05 update 2 (build 169)
+CPU DLL:         SARMCM3.DLL V5.15.0
+Dialog DLL:      DCM.DLL V1.13.2.0
+Target DLL:      Segger\JL2CM3.dll V2.99.15.0
+Dialog DLL:      TCM.DLL V1.14.5.0
+ 
+<h2>Project:</h2>
+C:\Users\unistrong\OneDrive\work\Project\E9631_stm32\Project\E9631A_stm32Prj.uvproj
+Project File Date:  09/05/2018
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'E9631A'
+compiling main.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\Can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\App\src\main.c(83): warning:  #177-D: variable "bandrate" was declared but never referenced
+      u16 bandrate;
+..\App\src\main.c: 4 warnings, 0 errors
+compiling Shell.c...
+compiling SysTick.c...
+compiling CipherFunc.c...
+compiling Public.c...
+..\App\src\Public.c(354): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(data == 
+ULL && cha == 
+ULL && chb == 
+ULL && length < 0)
+..\App\src\Public.c: 1 warning, 0 errors
+compiling stm32f4xx_it.c...
+compiling Adc.c...
+compiling Can.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\Can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\App\src\Can.c(132): warning:  #177-D: variable "IDE" was declared but never referenced
+      u8 i, IDE, buf[20];
+..\App\src\Can.c(329): warning:  #177-D: variable "num" was declared but never referenced
+          u8 i,num;
+..\App\src\Can.c(330): warning:  #177-D: variable "MaskIdHigh" was declared but never referenced
+          u16 MaskIdHigh = 0xFFFF;
+..\App\src\Can.c(331): warning:  #177-D: variable "MaskIdLow" was declared but never referenced
+          u16 MaskIdLow = 0xFFFF;
+..\App\src\Can.c(412): warning:  #188-D: enumerated type mixed with another type
+                Is_Filtered = PrequestHandle->Request.BitField&0x01;
+..\App\src\Can.c(389): warning:  #177-D: variable "i" was declared but never referenced
+                u8 i = 0;
+..\App\src\Can.c(391): warning:  #177-D: variable "sendcount" was declared but never referenced
+          static u8 sendcount = 0;
+..\App\src\Can.c(512): warning:  #177-D: variable "response" was declared but never referenced
+      DiagnosticResponse response;
+..\App\src\Can.c(643): warning:  #177-D: variable "num" was declared but never referenced
+          u8 i,num;
+..\App\src\Can.c(696): warning:  #177-D: variable "i" was declared but never referenced
+          u32 i,j;
+..\App\src\Can.c(696): warning:  #177-D: variable "j" was declared but never referenced
+          u32 i,j;
+..\App\src\Can.c(697): warning:  #177-D: variable "SendStatus" was declared but never referenced
+          u8 SendStatus;
+..\App\src\Can.c(282): warning:  #177-D: variable "count1" was declared but never referenced
+  static u32 count1 = 0;
+..\App\src\Can.c(325): warning:  #177-D: variable "Maskidtemp" was declared but never referenced
+  static u32 Maskidtemp;
+..\App\src\Can.c: 17 warnings, 0 errors
+compiling Exti.c...
+compiling Timer.c...
+..\App\src\Timer.c(54): warning:  #1295-D: Deprecated declaration mcusleep - give arg types
+  extern void mcusleep();
+..\App\src\Timer.c(237): warning:  #223-D: function "IWDG_Feed" declared implicitly
+                  IWDG_Feed();
+..\App\src\Timer.c(396): warning:  #223-D: function "IWDG_Feed" declared implicitly
+          IWDG_Feed();
+..\App\src\Timer.c: 3 warnings, 0 errors
+compiling GPIODrv.c...
+compiling UartProcess.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\Can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\App\src\UartProcess.c(207): warning:  #177-D: variable "index" was declared but never referenced
+          u16 index = 0;
+..\App\src\UartProcess.c(451): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(453): warning:  #223-D: function "IWDG_Feed" declared implicitly
+                                                                          IWDG_Feed();
+..\App\src\UartProcess.c(468): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(470): warning:  #223-D: function "IWDG_Feed" declared implicitly
+                                                                          IWDG_Feed();
+..\App\src\UartProcess.c(489): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                          if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(491): warning:  #223-D: function "IWDG_Feed" declared implicitly
+                                                                         IWDG_Feed();
+..\App\src\UartProcess.c(511): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(399): warning:  #177-D: variable "temp" was declared but never referenced
+          u8 i,temp,Accstatus = 0;
+..\App\src\UartProcess.c(406): warning:  #177-D: variable "n" was declared but never referenced
+          u32 n=0;
+..\App\src\UartProcess.c: 13 warnings, 0 errors
+compiling sleep.c...
+compiling J1939.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\Can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\App\inc\J1939_Config.h(42): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME7" (declared at line 93 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME7  (CA_NAME_ARBITRARY <<7) | (CA_NAME_INDUSTRY_GROUP << 4) | (CA_NAME_VEHICLE_INSTANCE)
+..\App\inc\J1939_Config.h(46): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME6" (declared at line 95 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME6  (CA_NAME_VEHICLE_SYSTEM << 1) | CA_NAME_RETENTION
+..\App\inc\J1939_Config.h(49): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME5" (declared at line 97 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME5  CA_NAME_FUNCTION
+..\App\inc\J1939_Config.h(53): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME4" (declared at line 100 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME4  ((CA_NAME_FUNCTION_INSTANCE << 3) | CA_NAME_ECU_INSTANCE)
+..\App\inc\J1939_Config.h(57): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME3" (declared at line 103 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME3  (CA_NAME_MANUFACTURER_CODE >> 3)
+..\App\inc\J1939_Config.h(58): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME2" (declared at line 104 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME2 ((CA_NAME_MANUFACTURER_CODE << 8) | (CA_NAME_IDENTITY_NUMBER >> 16))
+..\App\inc\J1939_Config.h(59): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME1" (declared at line 105 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME1 ((CA_NAME_IDENTITY_NUMBER >> 8) & 0xFF)
+..\App\inc\J1939_Config.h(60): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME0" (declared at line 106 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME0 (CA_NAME_IDENTITY_NUMBER & 0xFF)
+..\App\src\J1939.c(189): warning:  #550-D: variable "msg" was set but never used
+          J1939_MESSAGE_T msg;
+..\App\src\J1939.c(237): warning:  #177-D: variable "i" was declared but never referenced
+           u8 i;
+..\App\src\J1939.c(240): warning:  #550-D: variable "PGN" was set but never used
+           u32 PGN = 0;
+..\App\src\J1939.c: 14 warnings, 0 errors
+compiling Obd.c...
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 72 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h")
+  #define  NULL   ((void *)0)
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\Can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\App\src\Obd.c(86): warning:  #68-D: integer conversion resulted in a change of sign
+                        return -1;
+..\App\src\Obd.c(87): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid_bitfield"
+  }
+..\App\src\Obd.c(240): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid"
+  }
+..\App\src\Obd.c(92): warning:  #177-D: variable "value" was declared but never referenced
+           int value;
+..\App\src\Obd.c(93): warning:  #177-D: variable "fvalue" was declared but never referenced
+           float fvalue;
+..\App\src\Obd.c(246): warning:  #550-D: variable "diagnosticdata" was set but never used
+           float diagnosticdata;
+..\App\src\Obd.c(289): warning:  #177-D: variable "i" was declared but never referenced
+           u8  Mode,i;
+..\App\src\Obd.c(290): warning:  #550-D: variable "FF_DL" was set but never used
+                 u16 FF_DL;
+..\App\src\Obd.c(291): warning:  #177-D: variable "RemainLength" was declared but never referenced
+       static u16 RemainLength; 
+..\App\src\Obd.c(292): warning:  #177-D: variable "Vin" was declared but never referenced
+           u8 Vin[17];
+..\App\src\Obd.c: 14 warnings, 0 errors
+compiling Obd_Network.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\can.h(68): warning:  #1295-D: Deprecated declaration cannelfittle - give arg types
+  void cannelfittle();
+..\App\inc\can.h(69): warning:  #1295-D: Deprecated declaration OBD_SetFilterStd_MUTI - give arg types
+  void OBD_SetFilterStd_MUTI();
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 56 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h")
+  #define  NULL   ((void *)0)
+..\App\src\Obd_Network.c(37): warning:  #188-D: enumerated type mixed with another type
+        return pci_type & 0xF0;
+..\App\src\Obd_Network.c(71): warning:  #223-D: function "OBD_Send_singleframe" declared implicitly
+            OBD_Send_singleframe(PrequestHandle);
+..\App\src\Obd_Network.c: 6 warnings, 0 errors
+compiling CanDrv.c...
+..\Driver\CanDrv.c(572): warning:  #223-D: function "memcpy" declared implicitly
+                memcpy(pTxMsg->Data, pCAN->Data, pCAN->Dlc);
+..\Driver\CanDrv.c(633): warning:  #188-D: enumerated type mixed with another type
+      CAN_ITConfig(pcan->pCanx, 
+AN_IT_TME, ier & 
+AN_IT_TME);
+..\Driver\CanDrv.c: 2 warnings, 0 errors
+compiling GPIO.c...
+compiling Uart.c...
+compiling bsp.c...
+compiling stm32f10x_can.c...
+linking...
+Program Size: Code=35516 RO-data=1040 RW-data=232 ZI-data=64624  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin -o ..\bin\E9631A.bin ..\bin\E9631A.axf
+".\obj\..\..\bin\E9631A.axf" - 0 Error(s), 74 Warning(s).
+</pre>
+</body>
+</html>

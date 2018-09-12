@@ -1,0 +1,668 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 
+*
+*  项目名称：xxxx
+*  
+*  文件名称: xxxx.c
+*
+*  文件描述：xxxx
+*             
+*             
+*  创 建 者:
+*
+*  创建日期：2017-12-11 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "Timer.h"
+#include "Uart.h"
+#include "Exti.h"
+#include "shell.h"
+#include "UartProcess.h"
+#include "Delay.h"
+
+extern void ADC1_SAMPLING(void);
+/*
+********************************************************************************                                                                  
+*  外部变量声明                                                                                                       
+********************************************************************************
+*/
+
+extern bool is_accon_ack;
+extern bool is_accoff_ack;
+extern bool is_Cancel_shutdown;
+extern float ADC_ConvertedValueLocal;
+bool is_reboot = FALSE;
+
+bool is_open_timer6 = FALSE;
+bool is_open_timer4 = FALSE;
+u16 Timer4Count = 0;
+u16 Timer6Count = 0;
+//点火
+u8 turnoncmd[6] = {0x30, 0x00, 0x01,0x01};
+//熄火
+u8 turnoffcmd[6] = {0x30, 0x00, 0x01, 0x00};
+extern void mcusleep();
+/*
+********************************************************************************
+*  函数名称: TIMER3_Configuration
+*
+*  功能描述: 定时器初始化
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+
+void TIMER3_Configuration(void)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3 , ENABLE); /* 时钟使能*/
+	
+    TIM_DeInit(TIM3); /*重新将Timer设置为缺省值*/
+	
+    TIM_TimeBaseStructure.TIM_Period=20000-1; /*自动重装载寄存器周期的值(计数  值) 1s*/
+    TIM_TimeBaseStructure.TIM_Prescaler= (uint16_t) (SystemCoreClock / 20000) - 1;  /* 时钟预分频数 72M/20000 -1 */  
+ 
+    TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;  /* 采样分频 */  
+    TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up; /* 向上计数模式 */  
+    TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);  
+	
+    TIM_ClearFlag(TIM3, TIM_FLAG_Update);  /* 清除溢出中断标志 */    
+	
+    TIM_ITConfig(TIM3,TIM_IT_Update,ENABLE);  
+  
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);  
+    NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;            
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 4; //优先级最高
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;          
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
+    NVIC_Init(&NVIC_InitStructure);  
+}
+/*
+********************************************************************************
+*  函数名称: TIMER4_Configuration
+*
+*  功能描述: 定时器初始化
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+
+void TIMER4_Configuration(void)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4 , ENABLE); /* 时钟使能*/
+	
+    TIM_DeInit(TIM4); /*重新将Timer设置为缺省值*/
+	
+    TIM_TimeBaseStructure.TIM_Period=20000-1; /*自动重装载寄存器周期的值(计数  值) 1s*/
+    TIM_TimeBaseStructure.TIM_Prescaler= (uint16_t) (SystemCoreClock / 20000) - 1;  /* 时钟预分频数 72M/20000 -1 */  
+ 
+    TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;  /* 采样分频 */  
+    TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up; /* 向上计数模式 */  
+    TIM_TimeBaseInit(TIM4, &TIM_TimeBaseStructure);  
+	
+    TIM_ClearFlag(TIM4, TIM_FLAG_Update);  /* 清除溢出中断标志 */    
+	
+    TIM_ITConfig(TIM4,TIM_IT_Update,ENABLE);  
+  
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);  
+    NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;            
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 4; //优先级最高
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;          
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
+    NVIC_Init(&NVIC_InitStructure);  
+}
+/*
+********************************************************************************
+*  函数名称: TIMER5_Configuration
+*
+*  功能描述: 定时器初始化
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void TIMER5_Configuration(void)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5 , ENABLE); /* 时钟使能*/
+	
+    TIM_DeInit(TIM5); /*重新将Timer设置为缺省值*/
+	
+    TIM_TimeBaseStructure.TIM_Period=20000-1; /*自动重装载寄存器周期的值(计数  值) 1s*/
+    TIM_TimeBaseStructure.TIM_Prescaler= (uint16_t) (SystemCoreClock / 20000) - 1;  /* 时钟预分频数 72M/20000 -1 */  
+ 
+    TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;  /* 采样分频 */  
+    TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up; /* 向上计数模式 */  
+    TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);  
+	
+    TIM_ClearFlag(TIM5, TIM_FLAG_Update);  /* 清除溢出中断标志 */    
+	
+    TIM_ITConfig(TIM5,TIM_IT_Update,ENABLE);  
+  
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);  
+    NVIC_InitStructure.NVIC_IRQChannel = TIM5_IRQn;            
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0; //优先级最低 
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;          
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
+    NVIC_Init(&NVIC_InitStructure);  
+}
+/*
+********************************************************************************
+*  函数名称: TIMER6_Configuration
+*
+*  功能描述: 定时器初始化
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void TIMER6_Configuration(void)
+{
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
+    NVIC_InitTypeDef NVIC_InitStructure;
+
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM6 , ENABLE); /* 时钟使能*/
+	
+    TIM_DeInit(TIM6); /*重新将Timer设置为缺省值*/
+	
+    TIM_TimeBaseStructure.TIM_Period=20000-1; /*自动重装载寄存器周期的值(计数  值) 1s*/
+    TIM_TimeBaseStructure.TIM_Prescaler= (uint16_t) (SystemCoreClock / 20000) - 1;  /* 时钟预分频数 72M/20000 -1 */  
+ 
+    TIM_TimeBaseStructure.TIM_ClockDivision=TIM_CKD_DIV1;  /* 采样分频 */  
+    TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up; /* 向上计数模式 */  
+    TIM_TimeBaseInit(TIM6, &TIM_TimeBaseStructure);  
+	
+    TIM_ClearFlag(TIM6, TIM_FLAG_Update);  /* 清除溢出中断标志 */    
+	
+    TIM_ITConfig(TIM6,TIM_IT_Update,ENABLE);  
+  
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);  
+    NVIC_InitStructure.NVIC_IRQChannel = TIM6_IRQn;            
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 3;          
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
+    NVIC_Init(&NVIC_InitStructure);  
+}
+
+/*
+定时器3中断处理
+*/
+void TIM3_IRQHandler(void)   
+{
+	 u8 rdata;
+	 static u8 count,count1 = 0;
+	
+	 if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)  
+	 {
+			count++;
+			if(count == 3)
+			{
+				 rdata = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+				 if(0 == rdata){
+					  is_Cancel_shutdown = FALSE;
+					  if(is_open_timer6 == TRUE)
+					  {
+							 //RTU_DEBUG("TIM3_IRQHandler: Close Timer6!\r\n");
+							 is_open_timer6 = FALSE;
+							 TIM_Cmd(TIM6, DISABLE);
+							 Timer6Count = 0;
+				    }
+					  if(is_open_timer4 == TRUE)
+					  {
+							 //RTU_DEBUG("TIM3_IRQHandler: Close Timer4!\r\n");
+							 is_open_timer4 = FALSE;
+							 TIM_Cmd(TIM4, DISABLE);
+							 Timer4Count = 0;	
+					  }
+						if(is_accon_ack == FALSE)
+						{
+								rdata = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_11);
+								if(rdata == Bit_RESET)
+								{
+										GPIO_SetBits(GPIOA, GPIO_Pin_11);
+									  //RTU_DEBUG("TIM3_IRQHandler: Boot E9631!\r\n");
+								}
+                else if(rdata == Bit_SET)
+                {
+									  if(is_reboot == TRUE)
+										{
+												rdata = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11);
+												if(rdata == Bit_RESET)
+												{
+														TIM_Cmd(TIM3, DISABLE);
+														rdata = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_8);
+														if(rdata == Bit_RESET)
+														{
+																GPIO_SetBits(GPIOA, GPIO_Pin_8);
+														}
+														DelayMS(2000);
+														IWDG_Feed();
+														DelayMS(2000);
+														IWDG_Feed();
+														DelayMS(3000);
+														IWDG_Feed();
+														DelayMS(3000);
+														IWDG_Feed();
+														//RTU_DEBUG("TIM3_IRQHandler: ReBoot E9631!\r\n");
+														GPIO_ResetBits(GPIOA, GPIO_Pin_8);	
+														is_reboot = FALSE;
+														TIM_Cmd(TIM3, ENABLE);
+													}
+										}
+								}	
+                rdata = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11);
+								if(rdata == Bit_SET)
+								{
+									count1++;
+									if(count1==20)
+									{
+									  count1 = 0;
+									  //RTU_DEBUG("TIM3_IRQHandler: Acc ON ack faiure!\r\n");	
+									  GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+									  DelayMS(10);
+										GPIO_SetBits(GPIOA, GPIO_Pin_11);
+									
+									  GPIO_SetBits(GPIOA, GPIO_Pin_8);
+										DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+									  DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+										DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+									  DelayMS(2000);
+										IWDG_Feed();
+										DelayMS(3000);
+										IWDG_Feed();
+									  GPIO_ResetBits(GPIOA, GPIO_Pin_8);
+									  DelayMS(10);
+									}
+									//RTU_DEBUG("TIM3_IRQHandler: Send Acc On->count1=%d!\r\n",count);									
+								}
+									senddatapacket(&COM3,turnoncmd,FIXED_LENGTH+1+CHECKSUM);
+							
+						}
+						else if(is_accon_ack == TRUE)
+						{
+								count1 = 0;
+						}
+				 }
+				 else if(0 != rdata){
+					 	if(is_open_timer6 == FALSE)
+						{
+								  //RTU_DEBUG("TIM3_IRQHandler: Open Timer6!\r\n");
+									is_open_timer6 = TRUE;
+									TIM_Cmd(TIM6, ENABLE);
+						}
+						if(is_accoff_ack == FALSE)
+						{
+									//RTU_DEBUG("TIM3_IRQHandler: Send Acc Off!\r\n");
+									senddatapacket(&COM3,turnoffcmd,FIXED_LENGTH+1+CHECKSUM);
+						}
+					  
+				 }
+				 count =0;
+			}
+			TIM_ClearITPendingBit(TIM3, TIM_IT_Update);  
+	 }
+}
+
+void TIM4_IRQHandler(void)   
+{
+	  u8 status;
+	
+		if(TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)  
+		{	
+			  status = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_11);
+			  //RTU_DEBUG("TIM4_IRQHandler:status=%d\r\n",status);
+        if(status == Bit_RESET)
+			  {			
+					  Timer4Count++;
+					  //RTU_DEBUG("TIM4_IRQHandler:%d\r\n",Timer4Count);
+						if(Timer4Count == 3)
+						{
+							 Timer4Count = 0;		
+							 GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+							 TIM_Cmd(TIM4, DISABLE);		
+							 //RTU_DEBUG("TIM4_IRQHandler: Shut down immediately E9631!\r\n");	
+						}
+				}
+				TIM_ClearITPendingBit(TIM4, TIM_IT_Update);   
+		}
+}
+
+/*
+定时器5中断处理
+跳转到bootloader进行远程升级
+*/
+void TIM5_IRQHandler(void)   
+{
+		if(TIM_GetITStatus(TIM5, TIM_IT_Update) != RESET)  
+		{	
+				TIM_Cmd(TIM5, DISABLE);
+				__set_FAULTMASK(1);
+				NVIC_SystemReset();
+				TIM_ClearITPendingBit(TIM5, TIM_IT_Update);   
+		}
+}
+
+void abnormal_hardreset(void)
+{
+	u8 rdata;
+	static u8 abnormal_count = 0;//òì3￡?′DDò?′?
+
+	if(abnormal_count > 0){
+		abnormal_count = 0;
+		rdata = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+		 if(0 != rdata){
+			//RTU_DEBUG("TIM6_IRQHandler:Shut down after 60 seconds\r\n");
+			GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+		}
+		Timer6Count = 0;
+	}
+		               
+	GPIO_SetBits(GPIOA, GPIO_Pin_8);//>6s			   
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(3000);
+	IWDG_Feed();
+	DelayMS(2000);
+	IWDG_Feed();
+	//RTU_DEBUG("TIM6_IRQHandler: ReBoot E9631!\r\n");
+	GPIO_ResetBits(GPIOA, GPIO_Pin_8);	
+				
+	TIM_Cmd(TIM4, DISABLE);				
+	abnormal_count++;	
+}
+
+/*
+定时器6中断处理
+*/
+void TIM6_IRQHandler(void)   
+{
+	  u8 rdata;
+	  
+		if(TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  
+		{
+			 is_reboot = TRUE;
+       is_accon_ack = FALSE;
+			 Timer6Count++;
+			 // RTU_DEBUG("TIM6_IRQHandler:Timer6Count=%d\r\n",Timer6Count);
+       if(Timer6Count == 60)
+       {
+		   if(Bit_SET==GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11) && is_Cancel_shutdown == FALSE)
+		   {	   
+		   	 abnormal_hardreset();		   						
+		   }
+		   else{
+		
+					 rdata = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+					 if(0 != rdata){
+							GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+					 }
+
+		   }
+			 Timer6Count = 0;			 
+			}
+       else if(Timer6Count > 60)
+       {
+          Timer6Count = 0;
+			 }				 
+			 TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
+		}
+} 
+void Alarm_Init()
+{
+    EXTI_InitTypeDef EXTI_InitStructure;
+    NVIC_InitTypeDef NVIC_InitStructure;
+    /* Enable PWR and BKP clock */
+    RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE); 
+    
+    /* Configure EXTI Line17(RTC Alarm) to generate an interrupt on rising edge */
+    EXTI_ClearITPendingBit(EXTI_Line17);
+    EXTI_InitStructure.EXTI_Line = EXTI_Line17;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure);
+
+    /* RTC clock source configuration */
+    PWR_BackupAccessCmd(ENABLE);// Allow access to BKP Domain
+    BKP_DeInit();// Reset Backup Domain 
+		/* Enable the LSI OSC */
+		RCC_LSICmd(ENABLE);
+		/* Wait till LSI is ready */
+		while (RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
+		{}    
+    //RCC_LSEConfig(RCC_LSE_ON);// Enable the LSE OSC 
+    //while(RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET)// Wait till LSE is ready 
+    //{
+    //}
+    
+    RCC_RTCCLKConfig(RCC_RTCCLKSource_LSI);// Select the RTC Clock Source   RCC_RTCCLKSource_LSI
+    RCC_RTCCLKCmd(ENABLE);// Enable the RTC Clock 
+
+    /* RTC configuration */
+    RTC_WaitForSynchro();// Wait for RTC APB registers synchronisation 
+    RTC_SetPrescaler(39999);// Set the RTC time base to 1s 39999
+    RTC_WaitForLastTask();// Wait until last write operation on RTC registers has finished
+    RTC_ITConfig(RTC_IT_ALR, ENABLE);// Enable the RTC Alarm interrupt 
+    RTC_WaitForLastTask();// Wait until last write operation on RTC registers has finished 
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);// 2 bits for Preemption Priority and 2 bits for Sub Priority 
+    NVIC_InitStructure.NVIC_IRQChannel = RTCAlarm_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);    
+}
+
+void EXTI1_Configuration(void)
+{
+    EXTI_InitTypeDef EXTI_InitStructure;  
+    NVIC_InitTypeDef NVIC_InitStructure;
+	  GPIO_InitTypeDef GPIO_InitStructure;
+   
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;   
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+	
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);   
+    GPIO_EXTILineConfig(GPIO_PortSourceGPIOC, GPIO_PinSource1);  
+    EXTI_ClearITPendingBit(EXTI_Line1);
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;  
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;  
+    EXTI_InitStructure.EXTI_Line = EXTI_Line1;  
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;  
+    EXTI_Init(&EXTI_InitStructure); 
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+    NVIC_InitStructure.NVIC_IRQChannel =  EXTI1_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x02;  
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;     
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
+    NVIC_Init(&NVIC_InitStructure);
+}
+
+void mcusleep()
+{
+	  GPIO_InitTypeDef GPIO_InitStructure;
+
+	  //打开RTC时钟
+		Alarm_Init();
+				/* Wait till RTC Second event occurs */
+		RTC_ClearFlag(RTC_FLAG_SEC);
+		while(RTC_GetFlagStatus(RTC_FLAG_SEC) == RESET);
+		/* Alarm in 4 second */
+		RTC_SetAlarm(RTC_GetCounter()+ 2);
+		/* Wait until last write operation on RTC registers has finished */
+		RTC_WaitForLastTask();
+
+    ADC_Cmd(ADC1, DISABLE);
+
+    //将所有GPIO口设为模拟输入			
+	  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |RCC_APB2Periph_GPIOB |RCC_APB2Periph_GPIOC,ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD |RCC_APB2Periph_GPIOE |RCC_APB2Periph_GPIOF |RCC_APB2Periph_GPIOG,ENABLE);
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;  
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;  //GPIO_Speed_50MHz
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; //GPIO_Mode_IN_FLOATING
+
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+		GPIO_Init(GPIOB, &GPIO_InitStructure);
+		GPIO_Init(GPIOC, &GPIO_InitStructure);
+		GPIO_Init(GPIOD, &GPIO_InitStructure);
+		GPIO_Init(GPIOE, &GPIO_InitStructure);
+		GPIO_Init(GPIOF, &GPIO_InitStructure);
+		GPIO_Init(GPIOG, &GPIO_InitStructure);
+		
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;  
+		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+		GPIO_Init(GPIOA, &GPIO_InitStructure);
+    GPIO_SetBits(GPIOA, GPIO_Pin_11);
+		
+		EXTI1_Configuration();
+					
+		IWDG_Feed();
+		//要实现低功耗，得执行如下两个语句
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR,ENABLE);//配置电源低功耗模式
+		//进入停止模式(低功耗)，直至外部中断触发时被唤醒
+		PWR_EnterSTOPMode(PWR_Regulator_LowPower,PWR_STOPEntry_WFI);
+}
+
+#define RCC_PLLSource_HSE_Div1           ((u32)0x00010000)
+void RCC_Configuration(void)
+{
+    ErrorStatus HSEStartUpStatus;
+
+    //使能外部晶振
+    RCC_HSEConfig(RCC_HSE_ON);
+    //等待外部晶振稳定
+    HSEStartUpStatus = RCC_WaitForHSEStartUp();
+    //如果外部晶振启动成功，则进行下一步操作
+    if(HSEStartUpStatus==SUCCESS)
+    {
+        //设置HCLK(AHB时钟)=SYSCLK
+        RCC_HCLKConfig(RCC_SYSCLK_Div1);
+
+        //PCLK1(APB1) = HCLK/2
+        RCC_PCLK1Config(RCC_HCLK_Div2);
+
+        //PCLK2(APB2) = HCLK
+        RCC_PCLK2Config(RCC_HCLK_Div1);
+        
+ 
+        RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_4);
+        //启动PLL
+        RCC_PLLCmd(ENABLE);
+        //等待PLL稳定
+        while(RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
+        //系统时钟SYSCLK来自PLL输出
+        RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
+        //切换时钟后等待系统时钟稳定
+        while(RCC_GetSYSCLKSource()!=0x08);  
+     }
+	  /* RCC system reset(for debug purpose) */ 
+}
+
+void EXTI1_IRQHandler(void)
+{
+    if(EXTI_GetITStatus(EXTI_Line1) != RESET)
+    {
+			  EXTI_DeInit();
+				EXTI_ClearITPendingBit(EXTI_Line1); /* 清除中断标志位 */
+			  DelayMS(300);
+				RCC_Configuration();
+				__set_FAULTMASK(1);
+				NVIC_SystemReset();
+		}
+}
