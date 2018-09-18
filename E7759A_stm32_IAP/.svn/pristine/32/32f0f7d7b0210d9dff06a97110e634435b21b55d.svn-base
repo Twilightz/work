@@ -1,0 +1,92 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.15
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=58512-953A9-T3DMI-TGXWD-7KGDQ-0GB0Y
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.15.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 2 (build 169)
+Assembler:       Armasm.exe V5.05 update 2 (build 169)
+Linker/Locator:  ArmLink.exe V5.05 update 2 (build 169)
+Library Manager: ArmAr.exe V5.05 update 2 (build 169)
+Hex Converter:   FromElf.exe V5.05 update 2 (build 169)
+CPU DLL:         SARMCM3.DLL V5.15.0
+Dialog DLL:      DCM.DLL V1.13.2.0
+Target DLL:      Segger\JL2CM3.dll V2.99.15.0
+Dialog DLL:      TCM.DLL V1.14.5.0
+ 
+<h2>Project:</h2>
+E:\Nordic\bikesoft\E7759A_stm32_IAP\Project\E6202Prj.uvproj
+Project File Date:  08/15/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'E6202'
+compiling main.c...
+..\App\inc\ymodem.h(109): warning:  #1295-D: Deprecated declaration Ymodem_Receive - give arg types
+  void Ymodem_Receive();
+..\App\src\main.c: 1 warning, 0 errors
+compiling menu.c...
+..\App\inc\ymodem.h(109): warning:  #1295-D: Deprecated declaration Ymodem_Receive - give arg types
+  void Ymodem_Receive();
+..\App\src\menu.c: 1 warning, 0 errors
+compiling ymodem.c...
+..\App\inc\ymodem.h(109): warning:  #1295-D: Deprecated declaration Ymodem_Receive - give arg types
+  void Ymodem_Receive();
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 56 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h")
+  #define  NULL   ((void *)0)
+..\App\src\ymodem.c(138): warning:  #68-D: integer conversion resulted in a change of sign
+                        return -1;
+..\App\src\ymodem.c(143): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;                      
+..\App\src\ymodem.c(147): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;  
+..\App\src\ymodem.c(161): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;
+..\App\src\ymodem.c(175): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                return -1;
+..\App\src\ymodem.c(203): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                   return -1;
+..\App\src\ymodem.c(241): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                        return -1;
+..\App\src\ymodem.c(92): warning:  #177-D: variable "k" was declared but never referenced
+      u32 i, k;
+..\App\src\ymodem.c(95): warning:  #177-D: variable "index" was declared but never referenced
+          u32 index = 0;
+..\App\src\ymodem.c(101): warning:  #177-D: variable "data" was declared but never referenced
+          u8 data[1024]={0x00};
+..\App\src\ymodem.c(308): warning:  #68-D: integer conversion resulted in a change of sign
+                        return -1;
+..\App\src\ymodem.c(313): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;                      
+..\App\src\ymodem.c(317): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;  
+..\App\src\ymodem.c(331): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                        return -1;
+..\App\src\ymodem.c(345): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                return -1;
+..\App\src\ymodem.c(373): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                   return -1;
+..\App\src\ymodem.c(411): warning:  #68-D: integer conversion resulted in a change of sign
+                                                                                        return -1;
+..\App\src\ymodem.c(262): warning:  #177-D: variable "k" was declared but never referenced
+      u32 i, k;
+..\App\src\ymodem.c(265): warning:  #177-D: variable "index" was declared but never referenced
+          u32 index = 0;
+..\App\src\ymodem.c(271): warning:  #177-D: variable "data" was declared but never referenced
+          u8 data[1024]={0x00};
+..\App\src\ymodem.c(48): warning:  #177-D: variable "j" was declared but never referenced
+  static u32 j = 0;
+..\App\src\ymodem.c: 23 warnings, 0 errors
+linking...
+Program Size: Code=13724 RO-data=932 RW-data=80 ZI-data=7232  
+FromELF: creating hex file...
+".\obj\..\..\bin\E7759A.axf" - 0 Error(s), 25 Warning(s).
+</pre>
+</body>
+</html>

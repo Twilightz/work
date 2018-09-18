@@ -1,0 +1,71 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2012, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: Main.c
+*
+*  文件描述：E7759A主函数main
+*             
+*             
+*  创 建 者: zhexuan.wei
+*
+*  创建日期：2017-06-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+
+#define MAIN_GLOBALS
+#include "main.h"
+#include "SysTick.h"
+#include "Shell.h"
+#include "bsp.h"
+#include "bsp_iwdg.h"
+#include <string.h>
+#include "menu.h"
+#include "flash_if.h"
+#include "ymodem.h"
+
+
+/*
+********************************************************************************
+*  函数名称: main
+*
+*  功能描述: 主函数，应用程序入口
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+
+extern UTCPTRANSDEC packet;
+
+int main(void)
+{	
+	  packet.Len   = 0;
+    packet.State = 0;
+	
+    BSP_Init();
+	  //shell初始化
+    ShellInit();                                                                                                                                               
+    //系统定时器初始化
+    systick_init();
+	  Com3Init(&COM3, 115200, COM_PARA_8N1);
+	  ComxPutChar(&COM3,CRC16);
+	  //RTU_DEBUG("main\r\n");
+	  Main_Menu();
+	
+}
