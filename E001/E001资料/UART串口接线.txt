@@ -1,0 +1,5 @@
+#define SERIAL_PORT          2
+À¶É«½ÓRX
+
+
+#define CONSOLE_PORT         3 

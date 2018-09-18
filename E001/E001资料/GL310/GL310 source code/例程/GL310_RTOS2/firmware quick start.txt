@@ -1,0 +1,21 @@
+1.解開壓縮包會有下列目錄
+\
+\bin
+\BSP_Library_Data
+\bin
+\GL310_Build_FreeRTOS
+\Release
+\Source
+
+其中 
+1.
+\BSP_Library_Data 是 GL310 的 BSP project 目錄
+\BSP_Library_Data\BSP_Library.mcp 是 GL310 BSP 的 CodeWarrior IDE  的 project file
+2.
+\GL310_Build_FreeRTOS 是 FreeRTOS 及 Scan Firmware 目錄
+\GL310_Build_FreeRTOS\FreeRTOS.mcp 是 FreeRTOS 的 CodeWarrior IDE  的 project file
+\GL310_Build_FreeRTOS\GL310_Scan.mcp 是 Scan Firmware 的 CodeWarrior IDE  的 project file
+
+Build project 的順序可以先 build BSP_Library.mcp 跟 FreeRTOS.mcp , 然後再 build GL310_Scan.mcp
+
+
