@@ -1,0 +1,961 @@
+/*
+********************************************************************************
+*  Copyright (C), 2017, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: Main.c
+*
+*  文件描述：E7759A主函数main
+*             
+*             
+*  创 建 者: zhexuan.wei
+*
+*  创建日期：2017-06-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+
+#define MAIN_GLOBALS
+#include "main.h"
+#include "CipherFunc.h"
+#include "SysTick.h"
+#include "Shell.h"
+#include "bsp.h"
+#include "bsp_iwdg.h"
+#include <string.h>
+#include "GPIODrv.h"
+#include "Delay.h"
+#include "Public.h"
+#include "Adc.h"
+#include "Exti.h"
+#include "Timer.h"
+#include "Flash.h"
+#include "Can.h"
+#include <stdlib.h>
+
+/*
+********************************************************************************                                                                  
+*  内部函数声明                                                                                                        
+********************************************************************************
+*/
+void StructInit(void);
+void RevUart1Data(void);
+void bandrateinit(void);
+void UART3_Data_Pro(u8 dat);
+void SetUartBaudrate(u8 data);
+void UART1_Data_Pro(u8* data,u16 length);
+void recvpacketparse(PACKET* Precvpacket);
+void senddatapacket(COMX * pcom,u8* data,u16 length);
+void Analog_can_communication(u32 id);
+/*
+********************************************************************************                                                                  
+*  外部函数声明                                                                                                        
+********************************************************************************
+*/
+
+/*
+********************************************************************************                                                                  
+*  外部全局变量定义                                                                                                       
+********************************************************************************
+*/
+bool timer3onoff = FALSE; //FALSE表示定时器3是关闭的
+bool is_accon_ack  = FALSE; //FALSE表示没有收到accon应答
+bool is_accoff_ack  = FALSE;//FALSE表示没有收到accoff应答
+bool cancel_shutdown  = FALSE;//FALSE表示没有收到取消关机命令
+CANPACKET sendcanpacket;
+/*
+********************************************************************************                                                                  
+*  外部变量声明                                                                                                       
+********************************************************************************
+*/
+extern u16 RxCounter;
+extern bool is_RxFrame;
+extern volatile u8 acconoff;
+extern u8 batteryvolt[10];
+/*
+********************************************************************************                                                                 
+*  内部变量定义                                                                                                         
+********************************************************************************
+*/
+bool accstatus = TRUE; //TRUE表示acc on,FALSE表示acc off
+
+UART1DATASTRUCT  UART1Data;//定义处理第三方串口（UART1）数据结构体
+UART3DATASTRUCT  UART3Data;//定义接收UART3原始数据
+PACKET UART3Recvpacket; //定义UART3接收到的报文
+
+//点火
+u8 turnoncmd[6] = {0x30, 0x00, 0x01,0x01};
+//熄火
+u8 turnoffcmd[6] = {0x30, 0x00, 0x01, 0x00};
+//版本
+u8 version[10] = {0x21, 0x00, 0x04,'v','3','.','0'};
+//UART波特率
+u8 ackbaudrate[6] = {0x31,0x00, 0x01};
+//UART3回显
+u8 echo[6] = {0x11,0x00, 0x01};
+
+/*
+********************************************************************************
+*  函数名称: main
+*
+*  功能描述: 主函数，应用程序入口
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+int main(void)
+{
+	  u8 tmp;
+    //u32 localtime;
+	
+    BSP_Init();
+	
+    //GPIO初始化
+    GpioInit(); 
+
+    //shell初始化
+    ShellInit();
+	
+	  //硬件GPIO初始化
+    GPIO_Configuration();
+   
+    //中断初始化
+    EXTI0_Configuration();
+    
+	  //ADC初始化
+    ADC_Configuration();
+    
+		//定时器初始化                                                                                                                                          
+		TIMER3_Configuration();
+		TIMER5_Configuration();
+    TIMER6_Configuration();	
+		//系统定时器初始化
+    systick_init();
+
+    // 加密校验函数，JTAG调试时要将此函数屏蔽
+#if VECTTAB_FLASH_OFFSET == 0x4000
+    CmpCipher();
+#endif
+    //串口和CAN波特率初始化
+    bandrateinit();
+    StructInit();	
+		ADC_Configuration();
+		//IWDG 30s 超时溢出（看门狗）
+	  IWDG_Config(IWDG_Prescaler_64 ,3125);//625
+		TIM_Cmd(TIM6, ENABLE);
+		//RTU_DEBUG("app start\r\n");
+    
+		while(1)
+    {
+        //localtime = systick_getcnt();
+				//若汽车点火
+        if(acconoff == ACC_ON)
+				{
+					 //处理UART3串口数据
+					 while(ComxGetChar(&COM3, &tmp))
+					 {	
+							UART3_Data_Pro(tmp);
+					 }
+					 //处理第三方串口(UART1）串口
+					 RevUart1Data();				
+					 //查询CAN1接口是否有数据，并将CAN1数据通过UART3传出
+					 CanToUtcp(1, &Can1, &COM3);	
+           IWDG_Feed();
+				}	
+				//若汽车熄火
+        else if(acconoff == ACC_OFF)
+        {			
+						while(ComxGetChar(&COM3, &tmp))
+						{
+								UART3_Data_Pro(tmp);
+						}
+            RevUart1Data();
+						CanToUtcp(1, &Can1, &COM3);	
+						IWDG_Feed();
+				}
+        //if((localtime + 5) < systick_getcnt())
+        //{
+        //  RTU_DEBUG("main loop ticks <%d>\r\n", systick_getcnt() - localtime);
+        //}
+    }
+}
+
+/*
+********************************************************************************
+*  函数名称: StructInit
+*
+*  功能描述: 结构体初始化
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void StructInit(void)
+{
+    UART3Data.Len   = 0;
+    UART3Data.State = 0;
+	
+	  UART3Recvpacket.candata = NULL;
+	  UART3Recvpacket.data = NULL;
+	  UART3Recvpacket.sendthird = NULL;
+	  UART3Recvpacket.revthird = NULL;
+	
+	  UART1Data.Dat = NULL;
+}
+/*
+********************************************************************************
+*  函数名称: UART3_Data_Pro
+*
+*  功能描述: 处理UART3数据
+*            
+*
+*  输入参数: dat
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void UART3_Data_Pro(u8 dat)
+{
+    u8 dle;
+    u16 i, k;
+	  u16 index = 0;
+	  u8 cha,chb;
+	  u16 CurrentPacketLen = 0;
+	  static u8 flag = 0;
+	 
+    switch(UART3Data.State)
+    {
+			//处理BINTRANS_DLE和BINTRANS_STX
+			case 0:
+		       if(UART3Data.Len<1)
+					 {
+								UART3Data.Dat[UART3Data.Len++] = dat;
+					 }
+					 //若遇到BINTRANS_DLE，则往下判断
+		       if(UART3Data.Dat[0] == BINTRANS_DLE)
+					 {			
+        			 if(flag==0)
+							 {
+								  flag=1;
+							 }
+							 else
+							 {
+									UART3Data.Dat[UART3Data.Len++] = dat;
+									if(UART3Data.Len == 2)
+									{
+										  //若遇到第二个字节是BINTRANS_STX，则表明可能是一帧数据。
+											if(UART3Data.Dat[1] == BINTRANS_STX)
+											{
+													flag = 0;
+													UART3Data.State  = 1;
+											}
+											else
+											{
+													flag = 0;
+													UART3Data.Len = 0;
+											}
+									}											
+							}
+					}
+					else
+					{
+						  
+							UART3Data.Len = 0;
+					}
+          break;
+	   case 1:
+					UART3Data.Dat[UART3Data.Len++] = dat;
+					// 找结尾字节
+					if(UART3Data.Dat[UART3Data.Len - 2] == BINTRANS_DLE && 
+            UART3Data.Dat[UART3Data.Len - 1] == BINTRANS_ETX)
+					{  
+            // 转义字节
+            for(dle = 0, k = 0, i = 2; i < UART3Data.Len - 2; i++)
+            {
+							  //将<DLE><DLE>转换为<DLE>
+                if(UART3Data.Dat[i] == BINTRANS_DLE)
+                {
+                    if(dle == 1)
+                    {
+                        dle = 0;
+                        continue;
+                    }
+                    else
+                    {
+                        dle = 1;
+                    }
+                }
+                else
+                {
+                    dle = 0;
+                }
+                UART3Data.Esc[k++] = UART3Data.Dat[i];
+            }
+						
+						//取当前长度
+						ato16(&UART3Data.Esc[1],&CurrentPacketLen);
+						//
+						if(k == FIXED_LENGTH+CurrentPacketLen+CHECKSUM)
+						{
+								UART3Data.Len = k;
+								UART3Recvpacket.cha = UART3Data.Esc[UART3Data.Len-2];
+								UART3Recvpacket.chb = UART3Data.Esc[UART3Data.Len-1];	
+						
+								CalculateChecksum(UART3Data.Esc,UART3Data.Len-2,&cha,&chb);
+										 
+								if(UART3Recvpacket.cha == cha && UART3Recvpacket.chb == chb)
+								{
+									 //当前数据包长度(不包括校验)
+									 UART3Recvpacket.CurrentLen = UART3Data.Len-2;
+									 UART3Recvpacket.data = (u8*)malloc(UART3Recvpacket.CurrentLen);
+									 if(UART3Recvpacket.data == NULL)
+									 {
+										  return;
+									 }
+									 //将数据包拷贝到recvpacket.data
+									 memcpy(UART3Recvpacket.data,UART3Data.Esc,UART3Recvpacket.CurrentLen);
+									 UART3Recvpacket.index = 0;	
+									 UART3Recvpacket.codecState = CODEC_STATE_PACKET_TYPE;
+									 //对UART3报文进行处理
+									 recvpacketparse(&UART3Recvpacket);
+									 UART3Data.Len = 0;
+									 UART3Data.State = 0;
+							 }
+							 else
+							 {
+									 UART3Data.Len = 0;
+									 UART3Data.State = 0;
+							 }
+						}
+						else
+						{
+								UART3Data.Len = 0;
+								UART3Data.State = 0;
+						}
+			  }
+        // 超出最大长度
+        if(UART3Data.Len >= BINTRANS_MAXLEN)
+        {
+            UART3Data.Len   = 0;
+            UART3Data.State = 0;
+        }
+        break;
+    default:
+        UART3Data.Len   = 0;
+        UART3Data.State = 0;
+        break;
+    }
+    
+    return;
+}
+/*
+********************************************************************************
+*  函数名称: UART1_Data_Pro
+*
+*  功能描述: 将接收到不定长的UART1数据进行处理
+*            
+*
+*  输入参数: data，length
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void UART1_Data_Pro(u8* data,u16 length)
+{
+		u16 CurrentPacketLen;
+			
+	  if(data == NULL)
+		{
+			 return;
+		}
+		memcpy(&UART1Data.Dat[FIXED_LENGTH],data,length);
+		UART1Data.Dat[0] = 0x50;
+		CurrentPacketLen = length;
+		c16toa(&CurrentPacketLen,&UART1Data.Dat[1]);
+		senddatapacket(&COM3,UART1Data.Dat,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+}
+/*
+********************************************************************************
+*  函数名称: bandrateinit
+*
+*  功能描述: 初始化UART、CAN速率
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void bandrateinit(void)
+{
+	  u16 bandrate;
+	
+	  MemReadData(PAGE_ADDR,&bandrate,1);
+		if(bandrate == 0x9600)
+		{
+			Com1Init(&COM1, 9600, COM_PARA_8N1);
+			Com3Init(&COM3, 9600, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x1920)
+		{
+			Com1Init(&COM1, 19200, COM_PARA_8N1);
+			Com3Init(&COM3, 19200, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x5760)
+		{
+			Com1Init(&COM1, 57600, COM_PARA_8N1);
+			Com3Init(&COM3, 57600, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x1152)
+		{
+			Com1Init(&COM1, 115200, COM_PARA_8N1);
+			Com3Init(&COM3, 115200, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x2304)
+		{
+			Com1Init(&COM1, 230400, COM_PARA_8N1);
+			Com3Init(&COM3, 230400, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x4608)
+		{
+			Com1Init(&COM1, 460800, COM_PARA_8N1);
+			Com3Init(&COM3, 460800, COM_PARA_8N1);
+		}
+	  else if(bandrate == 0x5000)
+		{
+			Com1Init(&COM1, 500000, COM_PARA_8N1);
+			Com3Init(&COM3, 500000, COM_PARA_8N1);
+		}
+	  else if(bandrate == 0x5800)
+		{
+			Com1Init(&COM1, 576000, COM_PARA_8N1);
+			Com3Init(&COM3, 576000, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x9216)
+		{
+			Com1Init(&COM1, 921600, COM_PARA_8N1);
+			Com3Init(&COM3, 921600, COM_PARA_8N1);
+		}
+		else
+		{
+			Com1Init(&COM1, 115200, COM_PARA_8N1);
+			Com3Init(&COM3, 115200, COM_PARA_8N1);
+
+		}
+
+		if(bandrate == 0x250)
+		{
+			CAN1Init(&Can1, CANX_BAUD_250K);
+			
+		}else if(bandrate == 0x500)
+		{
+			CAN1Init(&Can1, CANX_BAUD_500K);
+		}
+		else
+		{
+			CAN1Init(&Can1, CANX_BAUD_250K);
+		}
+
+}
+
+/*
+********************************************************************************
+*  函数名称: senddatapacket
+*
+*  功能描述: 往串口发送协议数据包
+*            
+*
+*  输入参数: pcom，data，length
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+//length=type(一个字节）+当前长度（两个字节) +数据 +校检和（两个字节）
+
+void senddatapacket(COMX * pcom,u8* data,u16 length)
+{
+	  u16 i;
+	  u8 cha,chb;
+  
+    if(pcom == NULL && data == NULL && length == 0)
+		{
+			return;
+		}
+		
+		CalculateChecksum(data,length-2,&cha,&chb);
+		data[length-2] = cha;
+		data[length-1] = chb;
+		
+	  ComxPutChar(pcom, BINTRANS_DLE);
+		ComxPutChar(pcom, BINTRANS_STX);
+		for(i = 0; i < length; i++)
+		{
+				if(data[i] == BINTRANS_DLE)
+				{
+						ComxPutChar(pcom, BINTRANS_DLE);
+				}
+				
+				ComxPutChar(pcom, data[i]);
+		}				
+    ComxPutChar(pcom, BINTRANS_DLE);
+	  ComxPutChar(pcom, BINTRANS_ETX);
+		
+}
+
+/*
+********************************************************************************
+*  函数名称: recvpacketparse
+*
+*  功能描述: 接收数据包，并处理。
+*            
+*
+*  输入参数: Precvpacket
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void recvpacketparse(PACKET* Precvpacket)
+{
+	  u8 iterator=0;
+	  u16 index = 0;
+	  u16 canbandrate = 0;
+	  u16 CurrentPacketLen = 0;
+	  u32 canid=0;
+		
+	  //当指针为空，且长度数据长度小于等于0时，退出函数。
+    if(Precvpacket == NULL && Precvpacket->CurrentLen <= 0)
+		{
+			  return;
+		}
+	 	for(index = 0; index < Precvpacket->CurrentLen; index++)
+		{
+				iterator = Precvpacket->data[index];
+			
+			  switch(Precvpacket->codecState)
+		    {
+					 //报文类型
+					 case CODEC_STATE_PACKET_TYPE:
+								Precvpacket->PacketType = iterator;
+					      Precvpacket->codecState = CODEC_STATE_CURRENT_PACKET_LENGTH;
+					  break;
+					 //报文当前长度
+					 case CODEC_STATE_CURRENT_PACKET_LENGTH:
+							  Precvpacket->CurrentPacketLen[Precvpacket->index++] = iterator;
+								if(Precvpacket->index == 2)
+								{
+										Precvpacket->index = 0;
+										CurrentPacketLen = 0;
+										ato16(Precvpacket->CurrentPacketLen,&CurrentPacketLen);
+									
+									  if(Precvpacket->PacketType == 0x40)
+										{
+												Precvpacket->candata = (u8*)malloc(CurrentPacketLen);
+											  if(Precvpacket->candata == NULL)
+													return;
+										}
+										else if(Precvpacket->PacketType == 0x51)
+										{
+												Precvpacket->revthird = (u8*)malloc(CurrentPacketLen);
+											  if(Precvpacket->revthird == NULL)
+												  return;
+										}
+										else if(Precvpacket->PacketType == 0x50)
+										{
+												Precvpacket->sendthird = (u8*)malloc(CurrentPacketLen);
+											  if(Precvpacket->sendthird == NULL)
+												  return;
+										}
+										Precvpacket->codecState = CODEC_STATE_PAYLOAD;								 
+							  }			
+							break;
+					//有效载荷（应用数据）
+					case CODEC_STATE_PAYLOAD:
+						 //接收E7759的CAN数据,并将CAN数据发送给CAN分析仪
+					  if(Precvpacket->PacketType == 0x40)
+						{		
+								Precvpacket->candata[Precvpacket->index++] = iterator;
+								if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+							  {
+									  ato32(&Precvpacket->candata[1],&canid);
+									  if(canid == 0x0CF004D0 || canid == 0x0CF004B0)
+										{
+												Analog_can_communication(canid);
+											  free(Precvpacket->candata);
+											  free(Precvpacket->data);
+										}
+										else
+										{
+												UartDataToCanData(CurrentPacketLen,Precvpacket->candata);
+											  free(Precvpacket->candata);
+											  free(Precvpacket->data);
+										}
+										Precvpacket->index = 0;  
+								}
+
+						}
+						//接收到E7759发来的第三方数据,并通过COM1将数据发送给第三方设备
+						else if(Precvpacket->PacketType == 0x51)
+						{
+							  
+								Precvpacket->revthird[FIXED_LENGTH+Precvpacket->index++] = iterator;
+							 
+								if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+								{
+									 Precvpacket->index = 0;
+									 Precvpacket->revthird[0] = Precvpacket->PacketType;
+									 memcpy(&Precvpacket->revthird[1],Precvpacket->CurrentPacketLen,2);
+									 ComxPutData(&COM1,&Precvpacket->revthird[FIXED_LENGTH],CurrentPacketLen);
+									 free(Precvpacket->revthird);
+									 free(Precvpacket->data);
+									 //senddatapacket(&COM1,Precvpacket->recvthirddata,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+								}						
+						}
+						//COM1接收到第三方设备的数据，然后通过COM3将数据发给E7759
+						else if(Precvpacket->PacketType == 0x50)
+						{
+								Precvpacket->sendthird[FIXED_LENGTH+CHECKSUM+Precvpacket->index++] = iterator;
+							 
+							  if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+								{	
+									 Precvpacket->index = 0;									 
+                   Precvpacket->sendthird[0] = Precvpacket->PacketType;
+									 memcpy(&Precvpacket->sendthird[1],Precvpacket->CurrentPacketLen,2);
+									 senddatapacket(&COM3,Precvpacket->sendthird,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+									 free(Precvpacket->sendthird);
+									 free(Precvpacket->data);
+								}
+					
+						}
+						else
+						{ 
+					      Precvpacket->command = iterator;
+								switch(Precvpacket->PacketType)
+								{
+									  //接收到ACC ON或OFF的应答
+										case 0x31:
+												switch(Precvpacket->command)
+												{
+													//接收到到ACC ON应答
+													case 0x01:
+                              if(timer3onoff == TRUE)
+                              {
+                                TIM_Cmd(TIM3, DISABLE);																
+																timer3onoff = FALSE;
+                              }																
+															is_accon_ack = TRUE;
+															is_accoff_ack =	FALSE;	
+															break;
+													//接收到ACC OFF应答
+													case 0x00:
+															is_accon_ack = FALSE;
+															is_accoff_ack = TRUE;
+	                            break;													
+											}
+											break;
+									case 0x10:
+									    echo[3] = Precvpacket->command;
+										  senddatapacket(&COM3,echo,FIXED_LENGTH+1+CHECKSUM);          								
+											break;
+										//接收E7759的控制命令
+									case 0x20:
+										  switch(Precvpacket->command)
+											{
+												//获取软件版本命令
+												case 0x33:														
+												   	 senddatapacket(&COM3,version,FIXED_LENGTH+4+CHECKSUM);
+												     break;
+												//获取电池电压
+												case 0x34:	
+                             ADC1_SAMPLING();
+                             if(batteryvolt[6] == 0x00)
+                             {															 
+																batteryvolt[6] += 0x30;
+                             }													 
+														 senddatapacket(&COM3,batteryvolt,FIXED_LENGTH+4+CHECKSUM);
+														 break;
+								
+										}               								
+								     break;
+								case 0x30:
+										  switch(Precvpacket->command)
+											{	
+												//接收到Android应用取消关机
+												case 0x02:
+                             cancel_shutdown = TRUE;												
+														 break;
+												//关机
+												case 0x03:
+									           GPIO_ResetBits(GPIOA, GPIO_Pin_11);							
+														 break;
+												//远程升级
+												case 0x04:
+														 TIM_Cmd(TIM5, ENABLE);
+														 break;
+												//切换到500K命令
+												case 0x50:
+													   //RTU_DEBUG("Setting 500K!\r\n");
+												     CAN1Init(&Can1, CANX_BAUD_500K);
+												     canbandrate = 0x500;
+														 MemWriteData(PAGE_ADDR+8,&canbandrate,1);
+												     DelayMS(1000);
+												     ackbaudrate[3] = 0x50;
+														 senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+												//切换到250K命令
+												case 0x25:
+														 //RTU_DEBUG("Setting 250K!\r\n");
+												     CAN1Init(&Can1, CANX_BAUD_250K);
+												     canbandrate = 0x250;
+												     MemWriteData(PAGE_ADDR+8,&canbandrate,1);
+												     DelayMS(1000);
+												     ackbaudrate[3] = 0x25;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+												//9600波特率
+												case 0x9:
+														 //RTU_DEBUG("Setting 9600Baudrate!\r\n");
+												     SetUartBaudrate(0x09);
+														 break;
+											 //19200波特率
+											 case 0x19:
+														 //RTU_DEBUG("Setting 19200Baudrate!\r\n");
+												     SetUartBaudrate(0x19);
+														 break;
+											//57600波特率
+										 	case 0x57:
+														 //RTU_DEBUG("Setting 57600Baudrate!\r\n");
+												     SetUartBaudrate(0x57);
+														 break;
+											//115200波特率
+											case 0x11:
+														 //RTU_DEBUG("Setting 115200Baudrate!\r\n");
+												     SetUartBaudrate(0x11);
+														 break;
+											//230400波特率
+											case 0x23:
+														 //RTU_DEBUG("Setting 230400Baudrate!\r\n");
+												     SetUartBaudrate(0x23);
+														 break;
+											//460800波特率
+											case 0x46:
+														 //RTU_DEBUG("Setting 460800Baudrate!\r\n");
+												     SetUartBaudrate(0x46);
+														 break;
+										}               								
+								    break;
+							
+							 }
+							 free(Precvpacket->data);
+					}			
+          break;
+				}
+		}
+}
+/*
+********************************************************************************
+*  函数名称: Analog_can_communication
+*
+*  功能描述: 模拟汽车发动机CAN通信
+*            
+*
+*  输入参数: id
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+/*
+假设发动机名称为EEC1，发动机控制器(ECU)源地址为0x00,ID为0x0CF00400，长度为8bytes
+*/
+//模拟汽车发动机CAN通信
+void Analog_can_communication(u32 id)
+{
+	  static u8 count = 0;
+	  u8 i,candata[8],buf[20];
+		u16 CurrentPacketLen = 0;
+    u32 ID = 0;
+	 
+	  //RTU_DEBUG("Analog_can_communication\r\n");
+	
+	  if(id == 0x0CF004D0)
+		{
+			ID = 0x0CF00400;
+			//车速最小0km/h,最高车速120km/h
+			candata[4] = 0x3C+count;
+	  }
+		else if(id == 0x0CF004B0)
+		{
+			ID = 0x0CF00401;
+			memset(candata,1,8);
+		}
+    buf[0] = 1;
+    buf[1] = (u8)(ID >> 24);
+    buf[2] = (u8)(ID >> 16);
+    buf[3] = (u8)(ID >> 8);
+    buf[4] = (u8)(ID >> 0);
+    buf[5] = 8;	
+
+	  for (i = 0; i < 8; i++)
+    {
+       buf[6 + i] = candata[i];
+    }
+		sendcanpacket.candata[0] = 0x41;
+		CurrentPacketLen = 0x0E;
+		c16toa(&CurrentPacketLen,&sendcanpacket.candata[1]);
+		memcpy(&sendcanpacket.candata[FIXED_LENGTH],buf,14);
+		senddatapacket(&COM3,sendcanpacket.candata,FIXED_LENGTH+14+CHECKSUM);
+    count++;
+    if(count == 60)
+		{
+			 count = 0;
+		}		
+ 
+}
+/*
+********************************************************************************
+*  函数名称: SetUartBaudrate
+*
+*  功能描述: 设置UART波特率
+*            
+*
+*  输入参数: data
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void SetUartBaudrate(u8 data)
+{
+	  u16 Baud;
+	  u32 Baudrate = 0;
+	
+    if(data == 0x9)
+		{
+			Baud = 0x9600;
+			Baudrate = 9600;
+			ackbaudrate[3] = 0x9;
+		}
+		else if(data == 0x19)
+		{
+			Baud = 0x1920;
+			Baudrate = 19200;
+			ackbaudrate[3] = 0x19;
+		}
+		else if(data == 0x57)
+		{
+			Baud = 0x5760;
+			Baudrate = 57600;
+			ackbaudrate[3] = 0x57;
+		}
+		else if(data == 0x11)
+		{
+			Baud = 0x1152;
+			Baudrate = 115200;
+			ackbaudrate[3] = 0x11;
+		}
+		else if(data == 0x23)
+		{
+			Baud = 0x2304;
+			Baudrate = 230400;
+			ackbaudrate[3] = 0x23;
+		}
+		else if(data == 0x46)
+		{
+			Baud = 0x4608;
+			Baudrate = 460800;
+			ackbaudrate[3] = 0x46;
+		}
+	  Com1Init(&COM1, Baudrate, COM_PARA_8N1);
+		Com3Init(&COM3, Baudrate, COM_PARA_8N1);
+		
+		MemWriteData(PAGE_ADDR,&Baud,1);
+		DelayMS(1000);
+	  senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+}
+/*
+********************************************************************************
+*  函数名称: RevUart1Data
+*
+*  功能描述: 接收UART1数据
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void RevUart1Data(void)
+{
+	  u16 Uart1RxLength = 0;
+	  u8 *Uart1RxData = NULL;
+
+	  if(is_RxFrame == TRUE)
+	  {
+				if(RxCounter > 0 && RxCounter <= 1000)
+				{
+					 Uart1RxData = (u8*)malloc(RxCounter);
+					 if(Uart1RxData == NULL)
+					 {
+							return;
+					 }
+					 Uart1RxLength = ComxGetData(&COM1,Uart1RxData,RxCounter);
+					 UART1Data.Dat = (u8*)malloc(FIXED_LENGTH+Uart1RxLength+CHECKSUM);
+					 if(UART1Data.Dat == NULL)
+					 {
+							 return;
+					 }
+					 //处理UART1数据
+					 UART1_Data_Pro(Uart1RxData,Uart1RxLength);
+					 free(Uart1RxData);
+					 free(UART1Data.Dat);
+				}
+				else if(RxCounter > 1000)
+        {
+					 ComxClrRcv(&COM1);
+				}					
+				is_RxFrame = FALSE;
+				RxCounter = 0;
+				Uart1RxLength = 0;
+		}	
+}

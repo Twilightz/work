@@ -1,0 +1,61 @@
+/*
+**********************************************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮深圳研发中心
+*
+*  项目名称： E7759A
+*  
+*  文件名称:  J1939.h
+*
+*  文件描述： J1939应用诊断程序类型定义
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2017-11-24
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+**********************************************************************************************************
+*/
+#ifndef __J1939_H
+#define __J1939_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+#include "stm32f10x.h"
+
+#define J1939_DATA_LENGTH	8  //数据长度
+
+//诊断器名字的定义	
+#define J1939_ARBITRARY_ADDRESS 0x00
+#define J1939_INDUSTRY_GROUP 0
+#define J1939_VEHICLE_INSTANCE 0
+#define J1939_CA_NAME7 (J1939_ARBITRARY_ADDRESS | (J1939_INDUSTRY_GROUP << 4) | J1939_VEHICLE_INSTANCE)
+#define J1939_VEHICLE_SYSTEM 0
+#define J1939_CA_NAME6 (J1939_VEHICLE_SYSTEM << 1)
+#define J1939_FUNCTION 0
+#define J1939_CA_NAME5 J1939_FUNCTION
+#define J1939_FUNCTION_INSTANCE 0
+#define J1939_ECU_INSTANCE 0
+#define J1939_CA_NAME4 ((J1939_FUNCTION_INSTANCE << 3) | J1939_ECU_INSTANCE)
+#define J1939_MANUFACTURER_CODE 0
+#define J1939_IDENTITY_NUMBER 50
+#define J1939_CA_NAME3 (J1939_MANUFACTURER_CODE >> 3)
+#define J1939_CA_NAME2 (((J1939_MANUFACTURER_CODE & 0x07) << 5) | (J1939_IDENTITY_NUMBER >> 16))
+#define J1939_CA_NAME1 ((J1939_IDENTITY_NUMBER >> 8) & 0xFF)
+#define J1939_CA_NAME0 (J1939_IDENTITY_NUMBER & 0xFF)	
+	
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __J1939_H */
+

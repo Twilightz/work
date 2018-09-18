@@ -1,0 +1,116 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: Obd.c
+*
+*  文件描述：OBD II应用诊断程序
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2017-10-9 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "Obd.h"
+#include "CanDrv.h"
+#include <string.h>
+#include <stdlib.h>
+#include "Shell.h"
+#include "Obd_Network.h"
+
+
+DiagnosticRequestHandle* PrequestHandle = NULL;
+
+void diagnostic_request(DiagnosticRequestHandle* Handle,DiagnosticResponseReceived  callback)
+{
+	
+    PrequestHandle = Handle;
+		PrequestHandle->appcallback = callback;
+		PrequestHandle->networkcallback = NULL;
+  
+		diagnostic_request_extwork_send_msg(PrequestHandle);
+	
+}
+
+u32 diagnostic_decode_pid_bitfield(DiagnosticResponse* response)
+{
+	
+}
+
+float diagnostic_decode_pid(DiagnosticResponse* response)
+{
+     if(response == NULL)
+	     return -1;
+	 
+     switch(response->Pid){
+			 
+	  	 case LOAD_VALUE:
+					return  response->DataField[3]* 100.0 / 255.0;
+			 
+			 case ECT:
+					return  response->DataField[3] - 40;
+		 
+			 case FRP:
+					return  response->DataField[3]*3.0;
+		 
+			 case IMAP:
+					return  response->DataField[3];
+		 
+			 case ENGINE_RPM:
+					return  response->DataField[3]*256 + response->DataField[4] /4.0;
+			 
+			 case VEHICLE_SPEED:
+				  return response->DataField[3];
+		 
+			 case AFR:
+				  return  response->DataField[3]*256 + response->DataField[4] /100.0;
+		 
+			default:
+				  return  diagnostic_decode_pid_bitfield(response);
+     }
+}
+
+
+void  DiagnosticResponsePro(DiagnosticResponse* response)
+{
+       float diagnosticdata;
+
+       if(response == NULL)
+					return;
+	     
+			 response->Pid = response->DataField[2];
+       diagnosticdata = diagnostic_decode_pid(response);
+	     RTU_DEBUG("diagnosticdata=%f\r\n",diagnosticdata);
+}
+
+
+void OBD_ISO15765_4_Connection(u8 Channel,u32 id,u16 baud,u8* msgdata,u16 msglength)
+{
+   if(Channel == 0 || id == 0 || baud == 0 || msgdata == NULL || msglength == 0)
+	   	return;
+
+	 CAN1Init(&Can1, baud);
+	 //diagnostic_request(Channel,id,msgdata,msglength,DiagnosticResponsePro);
+	 //msgdata[2] = PID_2;
+	 //diagnostic_request(id,msgdata,msglength,DiagnosticPidResponseReceived);
+	 //msgdata[2] = PID_3;
+	 //diagnostic_request(id,msgdata,msglength,DiagnosticPidResponseReceived);
+	 //msgdata[2] = OBD_REQUIRE;
+	 //diagnostic_request(id,msgdata,msglength,DiagnosticPidResponseReceived);
+	 //msgdata[2] = MONITOR_STATUS;
+	 //diagnostic_request(id,msgdata,msglength,DiagnosticPidResponseReceived);
+}
+
+

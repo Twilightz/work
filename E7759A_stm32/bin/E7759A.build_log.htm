@@ -1,0 +1,193 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.15
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=58512-953A9-T3DMI-TGXWD-7KGDQ-0GB0Y
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.15.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 2 (build 169)
+Assembler:       Armasm.exe V5.05 update 2 (build 169)
+Linker/Locator:  ArmLink.exe V5.05 update 2 (build 169)
+Library Manager: ArmAr.exe V5.05 update 2 (build 169)
+Hex Converter:   FromElf.exe V5.05 update 2 (build 169)
+CPU DLL:         SARMCM3.DLL V5.15.0
+Dialog DLL:      DCM.DLL V1.13.2.0
+Target DLL:      Segger\JL2CM3.dll V2.99.15.0
+Dialog DLL:      TCM.DLL V1.14.5.0
+ 
+<h2>Project:</h2>
+F:\weizhexuan\work\E7759A\E7759A_stm32\Project\E6202Prj.uvproj
+Project File Date:  12/05/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'E6202'
+compiling main.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\src\main.c: 1 warning, 0 errors
+compiling Shell.c...
+compiling SysTick.c...
+compiling template.c...
+compiling CipherFunc.c...
+compiling Public.c...
+..\App\src\Public.c(354): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(data == 
+ULL && cha == 
+ULL && chb == 
+ULL && length < 0)
+..\App\src\Public.c: 1 warning, 0 errors
+compiling stm32f4xx_it.c...
+compiling Adc.c...
+compiling Can.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\src\Can.c(62): warning:  #177-D: variable "StdId" was declared but never referenced
+   u32 StdId;     // ??×¼ID
+..\App\src\Can.c(63): warning:  #177-D: variable "ExtId" was declared but never referenced
+      u32 ExtId;     // À©Õ¹ID
+..\App\src\Can.c(68): warning:  #177-D: variable "CurrentPacketLen" was declared but never referenced
+          u16 CurrentPacketLen = 0;
+..\App\src\Can.c(286): warning:  #188-D: enumerated type mixed with another type
+          return id&0x04;
+..\App\src\Can.c(291): warning:  #188-D: enumerated type mixed with another type
+          return id&0x02;
+..\App\src\Can.c(309): warning:  #188-D: enumerated type mixed with another type
+                Is_Filtered = PrequestHandle->Request.BitField&0x01;
+..\App\src\Can.c(297): warning:  #177-D: variable "i" was declared but never referenced
+                u8 i = 0;
+..\App\src\Can.c(429): warning:  #177-D: variable "SendStatus" was declared but never referenced
+          u8 SendStatus;
+..\App\src\Can.c: 9 warnings, 0 errors
+compiling Delay.c...
+compiling Exti.c...
+compiling Flash.c...
+compiling Timer.c...
+compiling GPIODrv.c...
+compiling Obd.c...
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 72 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h")
+  #define  NULL   ((void *)0)
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\src\Obd.c(93): warning:  #68-D: integer conversion resulted in a change of sign
+                        return -1;
+..\App\src\Obd.c(94): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid_bitfield"
+  }
+..\App\src\Obd.c(247): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid"
+  }
+..\App\src\Obd.c(99): warning:  #177-D: variable "value" was declared but never referenced
+           int value;
+..\App\src\Obd.c(100): warning:  #177-D: variable "fvalue" was declared but never referenced
+           float fvalue;
+..\App\src\Obd.c(253): warning:  #550-D: variable "diagnosticdata" was set but never used
+           float diagnosticdata;
+..\App\src\Obd.c(296): warning:  #550-D: variable "FF_DL" was set but never used
+                 u16 FF_DL;
+..\App\src\Obd.c(297): warning:  #177-D: variable "RemainLength" was declared but never referenced
+       static u16 RemainLength; 
+..\App\src\Obd.c(298): warning:  #177-D: variable "Vin" was declared but never referenced
+           u8 Vin[17];
+..\App\src\Obd.c(374): warning:  #188-D: enumerated type mixed with another type
+         CAN1Init(&Can1, baud,0);
+..\App\src\Obd.c: 12 warnings, 0 errors
+compiling Obd_Network.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 56 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h")
+  #define  NULL   ((void *)0)
+..\App\src\Obd_Network.c(37): warning:  #188-D: enumerated type mixed with another type
+        return pci_type & 0xF0;
+..\App\src\Obd_Network.c: 3 warnings, 0 errors
+compiling UartProcess.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\src\UartProcess.c(139): warning:  #177-D: variable "index" was declared but never referenced
+          u16 index = 0;
+..\App\src\UartProcess.c(480): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(499): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(516): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                          if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(539): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(565): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                          if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(423): warning:  #177-D: variable "canid" was declared but never referenced
+          u32 canid = 0;
+..\App\src\UartProcess.c(424): warning:  #177-D: variable "channel" was declared but never referenced
+          u8 channel = 0;
+..\App\src\UartProcess.c: 9 warnings, 0 errors
+compiling J1939.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\J1939_Config.h(42): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME7" (declared at line 93 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME7  (CA_NAME_ARBITRARY <<7) | (CA_NAME_INDUSTRY_GROUP << 4) | (CA_NAME_VEHICLE_INSTANCE)
+..\App\inc\J1939_Config.h(46): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME6" (declared at line 95 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME6  (CA_NAME_VEHICLE_SYSTEM << 1) | CA_NAME_RETENTION
+..\App\inc\J1939_Config.h(49): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME5" (declared at line 97 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME5  CA_NAME_FUNCTION
+..\App\inc\J1939_Config.h(53): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME4" (declared at line 100 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME4  ((CA_NAME_FUNCTION_INSTANCE << 3) | CA_NAME_ECU_INSTANCE)
+..\App\inc\J1939_Config.h(57): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME3" (declared at line 103 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME3  (CA_NAME_MANUFACTURER_CODE >> 3)
+..\App\inc\J1939_Config.h(58): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME2" (declared at line 104 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME2 ((CA_NAME_MANUFACTURER_CODE << 8) | (CA_NAME_IDENTITY_NUMBER >> 16))
+..\App\inc\J1939_Config.h(59): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME1" (declared at line 105 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME1 ((CA_NAME_IDENTITY_NUMBER >> 8) & 0xFF)
+..\App\inc\J1939_Config.h(60): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME0" (declared at line 106 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME0 (CA_NAME_IDENTITY_NUMBER & 0xFF)
+..\App\src\J1939.c: 9 warnings, 0 errors
+compiling CanDrv.c...
+..\Driver\CanDrv.c(596): warning:  #188-D: enumerated type mixed with another type
+      CAN_ITConfig(pcan->pCanx, 
+AN_IT_TME, ier & 
+AN_IT_TME);
+..\Driver\CanDrv.c: 1 warning, 0 errors
+compiling GPIO.c...
+compiling Uart.c...
+..\Driver\Uart.c(387): warning:  #550-D: variable "clear" was set but never used
+      u8 clear=0;
+..\Driver\Uart.c(1060): warning:  #177-D: variable "queListIsFull" was declared but never referenced
+          u8 queListIsFull;
+..\Driver\Uart.c: 2 warnings, 0 errors
+compiling bsp.c...
+compiling bsp_iwdg.c...
+compiling system_stm32f10x.c...
+compiling core_cm3.c...
+compiling misc.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_bkp.c...
+compiling stm32f10x_can.c...
+compiling stm32f10x_cec.c...
+compiling stm32f10x_crc.c...
+compiling stm32f10x_dac.c...
+compiling stm32f10x_dbgmcu.c...
+compiling stm32f10x_dma.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_fsmc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_iwdg.c...
+compiling stm32f10x_pwr.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_rtc.c...
+compiling stm32f10x_sdio.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_wwdg.c...
+linking...
+Program Size: Code=32340 RO-data=1028 RW-data=164 ZI-data=18436  
+FromELF: creating hex file...
+After Build - User command #1: D:\keil\ARM\ARMCC\bin\fromelf.exe --bin -o ..\bin\E7759A.bin ..\bin\E7759A.axf
+".\obj\..\..\bin\E7759A.axf" - 0 Error(s), 47 Warning(s).
+</pre>
+</body>
+</html>

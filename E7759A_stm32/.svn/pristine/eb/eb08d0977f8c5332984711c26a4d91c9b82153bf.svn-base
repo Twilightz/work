@@ -1,0 +1,114 @@
+/*
+**********************************************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮深圳研发中心
+*
+*  项目名称： E7759A
+*  
+*  文件名称:  J1939.h
+*
+*  文件描述： J1939应用诊断程序类型定义
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2017-11-24
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+**********************************************************************************************************
+*/
+#ifndef __J1939_H
+#define __J1939_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+#include "stm32f10x.h"
+
+//函数返回代码
+#define RC_SUCCESS          0       //成功
+#define RC_QUEUEEMPTY			  1       //队列为空
+#define RC_QUEUEFULL			  1       //队列满
+#define RC_CANNOTRECEIVE		2       //不能接收
+#define RC_CANNOTTRANSMIT		2       //不能传输
+#define RC_PARAMERROR			  3       //参数错误
+	
+//J1939默认的优先级（参考J1939文档）
+#define J1939_CONTROL_PRIORITY			0x03 
+#define J1939_INFO_PRIORITY			    0x06 
+#define J1939_PROPRIETARY_PRIORITY	0x06 
+#define J1939_REQUEST_PRIORITY			0x06 
+#define J1939_ACK_PRIORITY			    0x06 
+#define J1939_TP_CM_PRIORITY			  0x07 
+#define J1939_TP_DT_PRIORITY			  0x07 	
+
+//J1939定义的地址
+#define J1939_GLOBAL_ADDRESS			255 
+#define J1939_NULL_ADDRESS			  254
+
+//J1939协议栈的PNG请求响应，相关的定义
+#define J1939_PF_REQUEST2				201  //请求
+#define J1939_PF_TRANSFER				202  //转移
+
+#define J1939_PF_REQUEST				234  //请求，用提供握手机制
+#define J1939_PF_ACKNOWLEDGMENT			232  //确认请求，用提供握手机制
+
+#define J1939_ACK_CONTROL_BYTE			0    //代表确认
+#define J1939_NACK_CONTROL_BYTE			1    //PNG不被支持。否定消息
+#define J1939_ACCESS_DENIED_CONTROL_BYTE	2//拒绝访问，但是信息是被支持
+#define J1939_CANNOT_RESPOND_CONTROL_BYTE	3//不能做出反应，有空能是接受的缓存不够
+
+//J1939网络层有关的定义
+#define J1939_PGN2_REQ_ADDRESS_CLAIM	0x00 
+#define J1939_PGN1_REQ_ADDRESS_CLAIM	0xEA   
+#define J1939_PGN0_REQ_ADDRESS_CLAIM	0x00 
+ 
+#define J1939_PGN2_COMMANDED_ADDRESS	0x00 
+#define J1939_PGN1_COMMANDED_ADDRESS	0xFE	//命令地址消息
+#define J1939_PGN0_COMMANDED_ADDRESS	0xD8    //参考J1939-81  地址命令配置
+ 
+#define J1939_PF_ADDRESS_CLAIMED		238
+#define J1939_PF_CANNOT_CLAIM_ADDRESS	238
+#define J1939_PF_PROPRIETARY_A			239         //专用A
+#define J1939_PF_PROPRIETARY_B			255         //专用B
+
+//TP协议支持的最大接受发送消息长度（最大可配置为1785）
+#define J1939_TP_MAX_MESSAGE_LENGTH 240
+/*
+*********************************************************************
+*  类、结构体类型定义
+*********************************************************************
+*/
+/*
+参数群编号（PGN）请参照SAE J1939-21的5.1.2章节
+*/
+typedef struct{
+		u32 PGN;   //参数群编号
+	  u8 data[J1939_TP_MAX_MESSAGE_LENGTH];
+	  u16 byte_count; //数据大小（字节）
+	  u8 SA; //目标地址
+}J1939_MESSAGE_T;
+
+typedef enum{
+		J1939_TP_TX_WAIT,
+	  J1939_TP_TX_CM_START,
+	  J1939_TP_TX_CM_WAIT,
+	  J1939_TP_TX_DT,
+	  J1939_TP_TX_WAIT_ACK,
+	  J1939_TP_TX_ERROR,
+	  J1939_TP_TX_DONE,
+}J1939_TP_Tx_Step;//协议的发送步骤
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __OBD_H */
+

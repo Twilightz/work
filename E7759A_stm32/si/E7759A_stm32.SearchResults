@@ -1,0 +1,34 @@
+---- JTAG_Set Matches (0 in 0 files) ----
+---- RCC_LSEConfig Matches (2 in 2 files) ----
+Stm32f10x_rcc.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):void RCC_LSEConfig(uint8_t RCC_LSE)
+Stm32f10x_rcc.h (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\inc):void RCC_LSEConfig(uint8_t RCC_LSE);
+---- GPIO_PinRemapConfig Matches (5 in 4 files) ----
+CanDrv.c (f:\weizhexuan\work\e7759a\e7759a_stm32\driver):    GPIO_PinRemapConfig(GPIO_Remap1_CAN1, ENABLE);
+Stm32f10x_gpio.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState)
+Stm32f10x_gpio.h (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\inc):void GPIO_PinRemapConfig(uint32_t GPIO_Remap, FunctionalState NewState);
+Uart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\driver):    //GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);
+Uart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\driver):    //GPIO_PinRemapConfig(GPIO_PartialRemap_USART3, ENABLE);
+---- ADC_CONFIG Matches (0 in 0 files) ----
+---- EXTI_INITIAL Matches (0 in 0 files) ----
+---- USART_ClockInit Matches (2 in 2 files) ----
+Stm32f10x_usart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):void USART_ClockInit(USART_TypeDef* USARTx, USART_ClockInitTypeDef* USART_ClockInitStruct)
+Stm32f10x_usart.h (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\inc):void USART_ClockInit(USART_TypeDef* USARTx, USART_ClockInitTypeDef* USART_ClockInitStruct);
+---- USART_ClockStructInit Matches (2 in 2 files) ----
+Stm32f10x_usart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):void USART_ClockStructInit(USART_ClockInitTypeDef* USART_ClockInitStruct)
+Stm32f10x_usart.h (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\inc):void USART_ClockStructInit(USART_ClockInitTypeDef* USART_ClockInitStruct);
+---- USART_Init Matches (15 in 4 files) ----
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<LI>Call Chain = __rt_entry_main &rArr; main &rArr; AppInit &rArr; bandrateinit &rArr; Com3Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = AppInit &rArr; bandrateinit &rArr; Com3Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = Com1Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = Com3Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR>[Called By]<UL><LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<P><STRONG><a name="[de]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = bandrateinit &rArr; Com3Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+E7759A.htm (f:\weizhexuan\work\e7759a\e7759a_stm32\bin):<LI>Call Chain = main &rArr; AppInit &rArr; bandrateinit &rArr; Com3Init &rArr; ComxConfig &rArr; USART_Init &rArr; RCC_GetClocksFreq
+Stm32f10x_usart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct)
+Stm32f10x_usart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\src):  *     This function has to be called before calling USART_Init()
+Stm32f10x_usart.h (f:\weizhexuan\work\e7759a\e7759a_stm32\stdperiphdrv\inc):void USART_Init(USART_TypeDef* USARTx, USART_InitTypeDef* USART_InitStruct);
+Uart.c (f:\weizhexuan\work\e7759a\e7759a_stm32\driver):    USART_Init(USART, &USART_InitStructure);

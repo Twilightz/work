@@ -1,0 +1,57 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: J1939.c
+*
+*  文件描述：J1939应用诊断程序
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2017-11-23 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "J1939.h"
+#include "J1939_Config.h"
+
+
+u8    J1939_Address; 
+u8  	Source_Address = 0xF9; //默认源地址为249
+
+u8    CA_Name[J1939_DATA_LENGTH];//设备的标识符（参考J1939-81）
+
+/*
+*输入: InitNAMEandAddress  是否需要初始化标识符
+*输出：   
+*说明: 这段代码被调用，在系统初始化中。（放在CAN设备初始化之后）
+       在总线上，声明设备自己的地址
+       如果设备需要初始化自己的标识符和地址，将InitNAMEandAddress置位
+*/
+void J1939_Initialization( u8 InitNAMEandAddress )
+{
+	
+	  if(InitNAMEandAddress)
+		{
+				CA_Name[7] = J1939_CA_NAME7;   
+        CA_Name[6] = J1939_CA_NAME6;   
+        CA_Name[5] = J1939_CA_NAME5;   
+        CA_Name[4] = J1939_CA_NAME4;   
+        CA_Name[3] = J1939_CA_NAME3;   
+        CA_Name[2] = J1939_CA_NAME2;   
+        CA_Name[1] = J1939_CA_NAME1;   
+        CA_Name[0] = J1939_CA_NAME0;   
+		}
+}
+

@@ -1,0 +1,927 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2012, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: Main.c
+*
+*  文件描述：E7759A主函数main
+*             
+*             
+*  创 建 者: zhexuan.wei
+*
+*  创建日期：2017-06-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+
+#define MAIN_GLOBALS
+#include "main.h"
+#include "CipherFunc.h"
+#include "SysTick.h"
+#include "Shell.h"
+#include "bsp.h"
+#include "bsp_iwdg.h"
+#include <string.h>
+#include "GPIODrv.h"
+#include "Delay.h"
+#include "Public.h"
+#include "Adc.h"
+#include "Exti.h"
+#include "Timer.h"
+#include "Flash.h"
+#include "Can.h"
+/*
+********************************************************************************                                                                  
+*  内部函数声明                                                                                                        
+********************************************************************************
+*/
+void CmdInit(void);
+void bandrateinit(void);
+u8 AndroidCmdEntry(u8 dat);
+u8 SerialEntry(u8 dat);
+void recvpacketparse(PACKET* Precvpacket);
+void senddatapacket(COMX * pcom,u8* data,u32 length);
+/*
+********************************************************************************                                                                  
+*  外部函数声明                                                                                                        
+********************************************************************************
+*/
+/*
+********************************************************************************                                                                  
+*  外部全局变量定义                                                                                                       
+********************************************************************************
+*/
+extern volatile u8 acconoff;
+u8 accoffcount=0;
+u8 accoffsecond = 0;
+/*
+********************************************************************************                                                                 
+*  内部变量定义                                                                                                         
+********************************************************************************
+*/
+bool is_accon_ack  = FALSE;
+bool is_accoff_ack  = FALSE;
+
+UTCPTRANSDEC  AndroidCmdDec;
+UTCPTRANSDEC  SerialCmdDec;
+PACKET recvpacket;
+
+
+//点火
+u8 turnoncmd[12] = {0x30, 0x00, 0x01, 0x00, 0x00, 0x00,0x01,0x00,0x00,0x01};
+u8 turnoffcmd[12] = {0x30, 0x00, 0x01, 0x00, 0x00, 0x00,0x01, 0x00,0x00,0x00};
+u8 version[15] = {0x21, 0x00, 0x04, 0x00, 0x00, 0x00, 0x04,0x00,0x00,'v','2','.','0'};
+u8 ackbaudrate[12] = {0x31,0x00, 0x01, 0x00, 0x00, 0x00, 0x01,0x00,0x00};
+
+/*
+********************************************************************************
+*  函数名称: main
+*
+*  功能描述: 主函数，应用程序入口
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+
+int main(void)
+{
+    u32 localtime;
+    u8 tmp;
+	
+    BSP_Init();
+	
+    //GPIO初始化
+    GpioInit(); 
+
+    //shell初始化
+    ShellInit();
+	
+	  //硬件GPIO初始化
+    GPIO_Configuration();
+   
+    //中断初始化
+    EXTI0_Configuration();
+    
+	  //ADC初始化
+    ADC_Configuration();
+    
+		//定时器初始化
+    TIMER_Configuration();                                                                                                                                                  
+		TIMER3_Configuration();
+		TIMER4_Configuration();
+		TIMER5_Configuration();
+    //系统定时器初始化
+    systick_init();
+
+    // 加密校验函数，JTAG调试时要将此函数屏蔽
+#if VECTTAB_FLASH_OFFSET == 0x4000
+    CmpCipher();
+#endif
+    //串口和CAN波特率初始化
+    bandrateinit();
+    CmdInit();	
+		//发送点火命令
+		senddatapacket(&COM3,turnoncmd,FIXED_LENGTH+1+CHECKSUM);
+		// IWDG 30s 超时溢出（看门狗）
+	  IWDG_Config(IWDG_Prescaler_64 ,3125);//625
+		RTU_DEBUG("application start!\r\n");	
+		while(1)
+    {
+        //localtime = systick_getcnt();
+				//若汽车点火
+        if(acconoff==ACC_ON)
+				{
+					  //RTU_DEBUG("run!\r\n");	
+					  //汽车点火无应答
+						//if(is_accon_ack==FALSE)
+						//{
+						  //查询应答
+						//	while(ComxGetChar(&COM3, &tmp))
+						//	{
+						//		AndroidCmdEntry(tmp);
+						//	} 
+						//	IWDG_Feed();
+						//}
+						//若汽车点火有应答
+						//else
+						//{
+					      
+							  //处理Android发来的数据
+								while(ComxGetChar(&COM3, &tmp))
+								{	
+										AndroidCmdEntry(tmp);
+								}
+								//处理第三方串口数据
+								while(ComxGetChar(&COM1, &tmp))
+								{
+										SerialEntry(tmp);
+								}
+								//查询CAN1接口是否有数据，并将CAN1数据通过COM3口传送
+								CanToUtcp(1, &Can1, &COM3);	
+                IWDG_Feed();								
+						//}
+				}	
+				//若汽车熄火
+        else if(acconoff==ACC_OFF)
+        {						
+					  //是否接收到ACC OFF应答
+						while(ComxGetChar(&COM3, &tmp))
+						{
+								AndroidCmdEntry(tmp);
+						}
+						//处理COM1接收到的数据
+						while(ComxGetChar(&COM1, &tmp))
+						{
+								SerialEntry(tmp);
+						}
+						//查询CAN1接口是否有数据，并将CAN1数据通过COM3口传送
+						CanToUtcp(1, &Can1, &COM3);	
+						//若无应答
+					
+					  if(is_accoff_ack==FALSE)
+						{
+							  if(accoffcount==0)
+								{
+									senddatapacket(&COM3,turnoffcmd,FIXED_LENGTH+1+CHECKSUM);
+									TIM_Cmd(TIM3, ENABLE);
+									accoffcount++;
+								}
+								else if(accoffcount<4&&accoffsecond==20)
+								{
+										senddatapacket(&COM3,turnoffcmd,FIXED_LENGTH+1+CHECKSUM);
+									  accoffsecond = 0;
+									  accoffcount++;
+								}
+								else if(accoffcount==3)
+								{
+										//若连续发送三次ACC OFF都没有应答，则强制关机
+									   GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+								}
+						}
+						else
+						{
+							  //有应答
+	              //GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+						}
+						IWDG_Feed();
+	         
+				}
+	
+        //if((localtime + 5) < systick_getcnt())
+        //{
+        //  RTU_DEBUG("main loop ticks <%d>\r\n", systick_getcnt() - localtime);
+        //}
+    }
+}
+
+
+/*
+********************************************************************************
+*  函数名称: CmdInit
+*
+*  功能描述: 命令解析初始化
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void CmdInit(void)
+{
+    AndroidCmdDec.Len   = 0;
+    AndroidCmdDec.State = 0;
+	  SerialCmdDec.Len   = 0;
+    SerialCmdDec.State = 0;
+}
+
+/*
+********************************************************************************
+*  函数名称: AndroidCmdEntry
+*
+*  功能描述: 主CPU控制命令解析
+*            
+*
+*  输入参数: dat   字节数据
+*            
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+u8 AndroidCmdEntry(u8 dat)
+{
+    u8 dle;
+    u16 i, k;
+	  u16 index = 0;
+	  u8 cha,chb;
+	  static u8 flag = 0;
+	 
+	  //RTU_DEBUG("%x ",dat);
+    switch(AndroidCmdDec.State)
+    {
+		//处理BINTRANS_DLE和BINTRANS_STX
+    case 0:
+		       if(AndroidCmdDec.Len<1)
+					 {
+								AndroidCmdDec.Dat[AndroidCmdDec.Len++] = dat;
+					 }
+		       if(AndroidCmdDec.Dat[0] == BINTRANS_DLE)
+					 {			
+        			 if(flag==0)
+							 {
+								  flag=1;
+							 }
+							 else
+							 {
+									AndroidCmdDec.Dat[AndroidCmdDec.Len++] = dat;
+									if(AndroidCmdDec.Len==2)
+									{
+											if(AndroidCmdDec.Dat[1] == BINTRANS_STX)
+											{
+													flag = 0;
+													AndroidCmdDec.State  = 1;
+											}
+									else
+									{
+											flag = 0;
+											AndroidCmdDec.Len = 0;
+									}
+							}								
+						}
+					}
+					else
+					{
+							AndroidCmdDec.Len = 0;
+					}
+        break;
+	   case 1:
+			  AndroidCmdDec.Dat[AndroidCmdDec.Len++] = dat;
+		   
+        // 找结尾字节
+        if(AndroidCmdDec.Dat[AndroidCmdDec.Len - 2] == BINTRANS_DLE && 
+            AndroidCmdDec.Dat[AndroidCmdDec.Len - 1] == BINTRANS_ETX)
+        {
+
+            // 转义字节（除BINTRANS_DLE&&BINTRANS_STX以及BINTRANS_DLE&&BINTRANS_ETX）
+            for(dle = 0, k = 0, i = 2; i < AndroidCmdDec.Len - 2; i++)
+            {
+							  //将<DLE><DLE>转换为<DLE>
+                if(AndroidCmdDec.Dat[i] == BINTRANS_DLE)
+                {
+                    if(dle == 1)
+                    {
+                        dle = 0;
+                        continue;
+                    }
+                    else
+                    {
+                        dle = 1;
+                    }
+                }
+                else
+                {
+                    dle = 0;
+                }
+                //WinceCmdDec.Esc存储
+                AndroidCmdDec.Esc[k++] = AndroidCmdDec.Dat[i];
+            }
+						
+            AndroidCmdDec.Len = k;
+						
+						if(AndroidCmdDec.Len>=FIXED_LENGTH+CHECKSUM)
+						{
+
+              recvpacket.cha = AndroidCmdDec.Esc[AndroidCmdDec.Len-2];
+					    recvpacket.chb = AndroidCmdDec.Esc[AndroidCmdDec.Len-1];	
+						
+              CalculateChecksum(AndroidCmdDec.Esc,AndroidCmdDec.Len-2,&cha,&chb);
+												
+						  if(recvpacket.cha==cha&&recvpacket.chb==chb)
+						  {
+								//将数据包拷贝到recvpacket.data
+								memcpy(recvpacket.data,AndroidCmdDec.Esc,AndroidCmdDec.Len-2);
+								//当前数据包长度(不包括校验)
+								recvpacket.CurrentLen = AndroidCmdDec.Len-2;
+								recvpacket.index = 0;	
+								recvpacket.codecState = CODEC_STATE_PACKET_TYPE;
+								recvpacketparse(&recvpacket);
+								AndroidCmdDec.Len = 0;
+								AndroidCmdDec.State = 0;
+						  }
+							else
+							{
+								AndroidCmdDec.Len = 0;
+								AndroidCmdDec.State = 0;
+							}
+					 }
+					 else
+					 {
+						 	AndroidCmdDec.Len = 0;
+							AndroidCmdDec.State = 0;
+					 }
+
+        }
+
+        // 超出最大长度
+        if(AndroidCmdDec.Len >= BINTRANS_MAXLEN)
+        {
+            AndroidCmdDec.Len   = 0;
+            AndroidCmdDec.State = 0;
+        }
+        break;
+    default:
+        AndroidCmdDec.Len   = 0;
+        AndroidCmdDec.State = 0;
+        break;
+    }
+    
+    return 0;
+}
+static u32 counttemp=1;
+u8 SerialEntry(u8 dat)
+{
+    u8 dle;
+    u32 i, k;
+	  u32 index = 0;
+    static u8 Subcontracting = 0;//若为0表示没有分包。
+		static u16 CurrentPacketLen;
+		static u32 PacketTotalLengt;
+		static u16 CurrentPacketID;
+		
+	  SerialCmdDec.Dat[SerialCmdDec.Len++] = dat;
+		if((SerialCmdDec.Dat[SerialCmdDec.Len - 2] == 0xd && SerialCmdDec.Dat[SerialCmdDec.Len - 1] == 0xa)
+		    &&SerialCmdDec.Len<=500)
+		{
+			//处理未分包
+			if(Subcontracting==0)
+			{
+				 Subcontracting = 0;
+				 memcpy(&SerialCmdDec.Esc[FIXED_LENGTH],SerialCmdDec.Dat,SerialCmdDec.Len-2);
+				 SerialCmdDec.Esc[0] = 0x50;
+				 CurrentPacketLen = SerialCmdDec.Len-2;
+				 PacketTotalLengt = CurrentPacketLen;
+				 CurrentPacketID=0;
+				 c16toa(&CurrentPacketLen,&SerialCmdDec.Esc[1]);
+				 c32toa(&PacketTotalLengt,&SerialCmdDec.Esc[3]);
+				 c16toa(&CurrentPacketID,&SerialCmdDec.Esc[7]);
+         senddatapacket(&COM1,SerialCmdDec.Esc,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);				
+				 CurrentPacketLen = 0;
+				 PacketTotalLengt = 0;
+				 SerialCmdDec.Len = 0;						
+			}
+		}
+	  else if((SerialCmdDec.Dat[SerialCmdDec.Len - 2] != 0xd && SerialCmdDec.Dat[SerialCmdDec.Len - 1] != 0xa)
+			&&SerialCmdDec.Len==500)
+		{
+			 Subcontracting=1;
+		}
+		
+		//处理分包
+		if(Subcontracting==1)
+		{			
+			if(SerialCmdDec.Len==500)
+			{
+					SerialCmdDec.Esc[0] = 0x50;
+					if(SerialCmdDec.Dat[499] == 0xd)
+					{
+						CurrentPacketLen = SerialCmdDec.Len-1;	
+					}
+					else
+					{
+						CurrentPacketLen = SerialCmdDec.Len;
+					}
+					memcpy(&SerialCmdDec.Esc[FIXED_LENGTH],SerialCmdDec.Dat,CurrentPacketLen);
+					PacketTotalLengt = CurrentPacketLen*counttemp;
+					CurrentPacketID=counttemp;
+					c16toa(&CurrentPacketLen,&SerialCmdDec.Esc[1]);
+				  SerialCmdDec.Esc[3] = 0;
+					SerialCmdDec.Esc[4] = 0;
+					SerialCmdDec.Esc[5] = 0;
+					SerialCmdDec.Esc[6] = 0;
+					c16toa(&CurrentPacketID,&SerialCmdDec.Esc[7]);		
+					senddatapacket(&COM3,SerialCmdDec.Esc,FIXED_LENGTH+CurrentPacketLen+CHECKSUM); 
+					SerialCmdDec.Len = 0;		
+					counttemp++;
+		 }
+		 else
+		{
+					if((SerialCmdDec.Dat[SerialCmdDec.Len - 2] == 0xd && SerialCmdDec.Dat[SerialCmdDec.Len - 1] == 0xa)
+						 ||SerialCmdDec.Dat[SerialCmdDec.Len - 1] == 0xa)
+					{
+						 if(SerialCmdDec.Len>=1)
+						 {
+							 if(SerialCmdDec.Len==1)
+							 {
+							    CurrentPacketLen = SerialCmdDec.Len-1;
+							 }
+							 else if(SerialCmdDec.Len>=2)
+							 {
+								  CurrentPacketLen = SerialCmdDec.Len-2;
+							 }
+							 memcpy(&SerialCmdDec.Esc[FIXED_LENGTH],SerialCmdDec.Dat,CurrentPacketLen);
+							 PacketTotalLengt +=CurrentPacketLen;
+							 CurrentPacketID = counttemp;
+							 c16toa(&CurrentPacketLen,&SerialCmdDec.Esc[1]);
+							 c32toa(&PacketTotalLengt,&SerialCmdDec.Esc[3]);
+							 c16toa(&CurrentPacketID,&SerialCmdDec.Esc[7]);
+							 senddatapacket(&COM3,SerialCmdDec.Esc,FIXED_LENGTH+CurrentPacketLen+CHECKSUM); 
+							 counttemp = 1;
+							 Subcontracting=0;
+						}
+            SerialCmdDec.Len = 0;		
+					}
+		}
+  }		
+}
+void bandrateinit(void)
+{
+	  u16 bandrate;
+	
+	  MemReadData(PAGE_ADDR,&bandrate,1);
+		if(bandrate==0x9600)
+		{
+			Com1Init(&COM1, 9600, COM_PARA_8N1);
+			Com3Init(&COM3, 9600, COM_PARA_8N1);
+		}
+		else if(bandrate==0x1920)
+		{
+			Com1Init(&COM1, 19200, COM_PARA_8N1);
+			Com3Init(&COM3, 19200, COM_PARA_8N1);
+		}
+		else if(bandrate==0x5760)
+		{
+			Com1Init(&COM1, 57600, COM_PARA_8N1);
+			Com3Init(&COM3, 57600, COM_PARA_8N1);
+		}
+		else if(bandrate==0x1152)
+		{
+			Com1Init(&COM1, 115200, COM_PARA_8N1);
+			Com3Init(&COM3, 115200, COM_PARA_8N1);
+		}
+		else if(bandrate==0x2304)
+		{
+			Com1Init(&COM1, 230400, COM_PARA_8N1);
+			Com3Init(&COM3, 230400, COM_PARA_8N1);
+		}
+		else if(bandrate==0x4608)
+		{
+			Com1Init(&COM1, 460800, COM_PARA_8N1);
+			Com3Init(&COM3, 460800, COM_PARA_8N1);
+		}
+	  else if(bandrate==0x5000)
+		{
+			Com1Init(&COM1, 500000, COM_PARA_8N1);
+			Com3Init(&COM3, 500000, COM_PARA_8N1);
+		}
+	  else if(bandrate==0x5800)
+		{
+			Com1Init(&COM1, 576000, COM_PARA_8N1);
+			Com3Init(&COM3, 576000, COM_PARA_8N1);
+		}
+		else if(bandrate==0x9216)
+		{
+			Com1Init(&COM1, 921600, COM_PARA_8N1);
+			Com3Init(&COM3, 921600, COM_PARA_8N1);
+		}
+		else
+		{
+			Com1Init(&COM1, 115200, COM_PARA_8N1);
+			Com3Init(&COM3, 115200, COM_PARA_8N1);
+		}
+
+		//MemReadData(PAGE_ADDR,&bandrate,1);
+		//RTU_DEBUG("bandrate=%x\r\n",bandrate);
+
+		//MemReadData(PAGE_ADDR+8,&bandrate,1);
+		//RTU_DEBUG("bandrate=%x\r\n",bandrate);
+		if(bandrate==0x250)
+		{
+			CAN1Init(&Can1, CANX_BAUD_250K);
+			
+		}else if(bandrate==0x500)
+		{
+			CAN1Init(&Can1, CANX_BAUD_500K);
+		}
+		else
+		{
+			CAN1Init(&Can1, CANX_BAUD_250K);
+		}
+
+}
+
+/*
+********************************************************************************
+*  函数名称: senddatapacket
+*
+*  功能描述: 往串口发送协议数据包
+*            
+*
+*  输入参数: pcom，data，length
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+//length=type(一个字节）+当前长度（两个字节)+总长度（四个字节）+当前ID（两个字节）+数据长度+校检和（两个字节）
+
+void senddatapacket(COMX * pcom,u8* data,u32 length)
+{
+	  u8 cha,chb;
+	  u32 i;
+    if(pcom==NULL&&data==NULL&&length==0)
+		{
+			return;
+		}
+		
+		CalculateChecksum(data,length-2,&cha,&chb);
+		data[length-2] = cha;
+		data[length-1] = chb;
+		
+	  ComxPutChar(pcom, BINTRANS_DLE);
+		ComxPutChar(pcom, BINTRANS_STX);
+		for(i = 0; i < length; i++)
+		{
+				if(data[i] == BINTRANS_DLE)
+				{
+						ComxPutChar(pcom, BINTRANS_DLE);
+				}
+				ComxPutChar(pcom, data[i]);
+		}				
+    ComxPutChar(pcom, BINTRANS_DLE);
+	  ComxPutChar(pcom, BINTRANS_ETX);
+}
+
+/*
+********************************************************************************
+*  函数名称: recvpacketparse
+*
+*  功能描述: 接收数据包，并处理。
+*            
+*
+*  输入参数: Precvpacket
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void recvpacketparse(PACKET* Precvpacket)
+{
+	  u32 i = 0;
+	  u16 index = 0;
+	  u16 bandrate = 0;
+	  u8 iterator=0;
+	  u16 CurrentPacketLen = 0;
+		u32 PacketTotalLength = 0;
+	  u16 CurrentPackeID = 0;
+		
+	  //当指针为空，且长度数据长度小于等于0时，退出函数。
+    if(Precvpacket==NULL&&Precvpacket->CurrentLen<=0)
+		{
+			  return;
+		}
+	 	for(index=0;index<Precvpacket->CurrentLen;index++)
+		{
+				iterator = Precvpacket->data[index];
+			
+			  switch(Precvpacket->codecState)
+		    {
+					 //报文类型
+					 case CODEC_STATE_PACKET_TYPE:
+								Precvpacket->PacketType = iterator;
+					      Precvpacket->codecState=CODEC_STATE_CURRENT_PACKET_LENGTH;
+					  break;
+					 //报文当前长度
+					 case CODEC_STATE_CURRENT_PACKET_LENGTH:
+							  Precvpacket->CurrentPacketLen[Precvpacket->index++] = iterator;
+								if(Precvpacket->index==2)
+								{
+										Precvpacket->index = 0;
+										CurrentPacketLen = 0;
+										ato16(Precvpacket->CurrentPacketLen,&CurrentPacketLen);
+										Precvpacket->codecState=CODEC_STATE_PACKET_TOTAL_LENGTH;								 
+							  }			
+							break;
+					 //报文总长度
+           case CODEC_STATE_PACKET_TOTAL_LENGTH:
+							 	Precvpacket->PacketTotalLength[Precvpacket->index++] = iterator;
+								if(Precvpacket->index==4)
+								{
+										Precvpacket->index = 0;
+										PacketTotalLength = 0;
+										ato32(Precvpacket->PacketTotalLength,&PacketTotalLength);
+										Precvpacket->codecState=CODEC_STATE_CURRENT_PACKET_ID;									
+								}
+								break;
+					//报文当前ID
+					case CODEC_STATE_CURRENT_PACKET_ID:
+						    Precvpacket->CurrentPacketID[Precvpacket->index++] = iterator;
+					      if(Precvpacket->index==2)
+								{
+										Precvpacket->index = 0;
+										CurrentPackeID = 0;
+										ato16(Precvpacket->CurrentPacketID,&CurrentPackeID);
+										Precvpacket->codecState=CODEC_STATE_PAYLOAD;								 
+								}
+						    break;
+					//有效载荷（应用数据）
+					case CODEC_STATE_PAYLOAD:
+						 //接收E7759的CAN数据,并将CAN数据发送给CAN分析仪
+					  if(Precvpacket->PacketType==0x40)
+						{
+								Precvpacket->candata[Precvpacket->index++] = iterator;
+								if(Precvpacket->index==CurrentPacketLen&&CurrentPacketLen>=0)
+							  {
+										UartDataToCanData(CurrentPacketLen,Precvpacket->candata);
+										Precvpacket->index = 0;  
+								}
+
+						}
+						//接收到E7759发来的第三方数据,并通过COM1将数据发送给第三方设备
+						else if(Precvpacket->PacketType==0x51)
+						{
+								Precvpacket->thirddata[FIXED_LENGTH+Precvpacket->index++] = iterator;
+							 
+								if(Precvpacket->index==CurrentPacketLen&&CurrentPacketLen>=0)
+								{
+									 Precvpacket->index = 0;
+									 Precvpacket->thirddata[0] = Precvpacket->PacketType;
+									 memcpy(&Precvpacket->thirddata[1],Precvpacket->CurrentPacketLen,2);
+									 memcpy(&Precvpacket->thirddata[3],Precvpacket->PacketTotalLength,4);
+									 memcpy(&Precvpacket->thirddata[7],Precvpacket->CurrentPacketID,2);
+									 ComxPutData(&COM1,&Precvpacket->thirddata[FIXED_LENGTH],CurrentPacketLen);
+									 //senddatapacket(&COM1,Precvpacket->recvthirddata,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+								}						
+						}
+						//COM1接收到第三方设备的数据，然后通过COM3将数据发给E7759
+						else if(Precvpacket->PacketType==0x50)
+						{
+								Precvpacket->thirddata[FIXED_LENGTH+CHECKSUM+Precvpacket->index++] = iterator;
+							 
+							  if(Precvpacket->index==CurrentPacketLen&&CurrentPacketLen>=0)
+								{	
+									 Precvpacket->index = 0;									 
+                   Precvpacket->thirddata[0] = Precvpacket->PacketType;
+									 memcpy(&Precvpacket->thirddata[1],Precvpacket->CurrentPacketLen,2);
+									 memcpy(&Precvpacket->thirddata[3],Precvpacket->PacketTotalLength,4);
+									 memcpy(&Precvpacket->thirddata[7],Precvpacket->CurrentPacketID,2);
+									 senddatapacket(&COM3,Precvpacket->thirddata,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+								}
+					
+						}
+						else
+						{ 
+					      Precvpacket->command = iterator;
+								switch(recvpacket.PacketType)
+								{
+									  //接收到ACC ON或OFF的应答
+										case 0x31:
+												switch(recvpacket.command)
+												{
+													//接收到到ACC ON应答
+													case 0x01:
+                              ComxClrRcv(&COM1);													
+															ComxClrRcv(&COM3);	
+                              accoffsecond = 0;
+															accoffcount = 0;													
+															is_accon_ack = TRUE;
+															is_accoff_ack =	FALSE;									
+															break;
+													//接收到ACC OFF应答
+													case 0x00:
+														  //RTU_DEBUG("ACC OFF\r\n");
+															ComxClrRcv(&COM1);
+													    ComxClrRcv(&COM3);
+															is_accon_ack = FALSE;
+															is_accoff_ack = TRUE;
+													    accoffcount = 0;
+															accoffsecond = 0;
+													    TIM_Cmd(TIM3, DISABLE);
+													    TIM_Cmd(TIM4, ENABLE);
+                              break;													
+											}
+											break;
+							
+										//接收E7759的控制命令
+									case 0x20:
+										  switch(recvpacket.command)
+											{
+												//获取软件版本命令
+												case 0x33:
+												   	 senddatapacket(&COM3,version,FIXED_LENGTH+4+CHECKSUM);
+												     break;
+												//获取电池电压
+												case 0x34:	
+												     ADC1_SAMPLING();					
+														 //senddatapacket(&COM3,batteryvolt,FIXED_LENGTH+4+CHECKSUM);
+														 break;
+								
+										}               								
+								     break;
+								case 0x30:
+										  switch(recvpacket.command)
+											{
+												//接收到Android应用取消关机
+												case 0x02:								
+														 break;
+												//关机
+												case 0x03:
+									           GPIO_ResetBits(GPIOA, GPIO_Pin_11);							
+														 break;
+												//远程升级
+												case 0x04:
+														TIM_Cmd(TIM5, ENABLE);
+														 break;
+
+												//切换到500K命令
+												case 0x50:
+													   //RTU_DEBUG("Setting 500K!\r\n");
+												     CAN1Init(&Can1, CANX_BAUD_500K);
+												     bandrate = 0x500;
+														 MemWriteData(PAGE_ADDR+8,&bandrate,1);
+												     DelayMS(1000);
+												     ackbaudrate[9] = 0x50;
+														 senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+												//切换到250K命令
+												case 0x25:
+														 //RTU_DEBUG("Setting 250K!\r\n");
+												     CAN1Init(&Can1, CANX_BAUD_250K);
+												     bandrate = 0x250;
+												     MemWriteData(PAGE_ADDR+8,&bandrate,1);
+												     DelayMS(1000);
+												     ackbaudrate[9] = 0x25;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+												//9600波特率
+												case 0x9:
+														 //RTU_DEBUG("Setting 9600Baudrate!\r\n");
+												     Com1Init(&COM1, 9600, COM_PARA_8N1);
+												     Com3Init(&COM3, 9600, COM_PARA_8N1);
+												     bandrate = 0x9600;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+												     DelayMS(1000);
+												     ackbaudrate[9] = 0x9;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											 //19200波特率
+											 case 0x19:
+														 //RTU_DEBUG("Setting 19200Baudrate!\r\n");
+												     Com1Init(&COM1, 19200, COM_PARA_8N1);
+												     Com3Init(&COM3, 19200, COM_PARA_8N1);
+											       bandrate = 0x1920;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+														 ackbaudrate[9] = 0x19;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//57600波特率
+										 	case 0x57:
+														 //RTU_DEBUG("Setting 57600Baudrate!\r\n");
+												     Com1Init(&COM1, 57600, COM_PARA_8N1);
+												     Com3Init(&COM3, 57600, COM_PARA_8N1);
+											       bandrate = 0x5760;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x57;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//115200波特率
+											case 0x11:
+														 //RTU_DEBUG("Setting 115200Baudrate!\r\n");
+												     Com1Init(&COM1, 115200, COM_PARA_8N1);
+												     Com3Init(&COM3, 115200, COM_PARA_8N1);
+											       bandrate = 0x1152;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x11;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//230400波特率
+											case 0x23:
+														 //RTU_DEBUG("Setting 230400Baudrate!\r\n");
+												     Com1Init(&COM1, 230400, COM_PARA_8N1);
+												     Com3Init(&COM3, 230400, COM_PARA_8N1);
+											       bandrate = 0x2304;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x23;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//460800波特率
+											case 0x46:
+														 //RTU_DEBUG("Setting 460800Baudrate!\r\n");
+												     Com1Init(&COM1, 460800, COM_PARA_8N1);
+												     Com3Init(&COM3, 460800, COM_PARA_8N1);
+											       bandrate = 0x4608;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x46;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//500000波特率
+											case 0x51:
+														 //RTU_DEBUG("Setting 500000Baudrate!\r\n");
+												     Com1Init(&COM1, 500000, COM_PARA_8N1);
+												     Com3Init(&COM3, 500000, COM_PARA_8N1);
+											       bandrate = 0x5000;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x51;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//576000波特率
+											case 0x58:
+														 //RTU_DEBUG("Setting 576000Baudrate!\r\n");
+												     Com1Init(&COM1, 576000, COM_PARA_8N1);
+												     Com3Init(&COM3, 576000, COM_PARA_8N1);
+											       bandrate = 0x5800;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x58;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+											//921600波特率
+											case 0x92:
+														 //RTU_DEBUG("Setting 921600Baudrate!\r\n");
+												     Com1Init(&COM1, 921600, COM_PARA_8N1);
+												     Com3Init(&COM3, 921600, COM_PARA_8N1);
+											       bandrate = 0x9216;
+												     MemWriteData(PAGE_ADDR,&bandrate,1);
+											       DelayMS(1000);
+											       ackbaudrate[9] = 0x92;
+												     senddatapacket(&COM3,ackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+														 break;
+										}               								
+								    break;
+							
+							 }
+					}			
+          break;
+				}
+		}
+}

@@ -1,0 +1,266 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮西安研发中心
+*
+*  项目名称：xxxx
+*  
+*  文件名称: xxxx.c
+*
+*  文件描述：xxxx
+*             
+*             
+*  创 建 者: 皇海明
+*
+*  创建日期：2013-03-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "Can.h"
+
+#include "Public.h"
+#include "string.h"
+#include "shell.h"
+#include "Exti.h"
+#include "bsp_iwdg.h"
+#include "Obd.h"
+#include "UartProcess.h"
+/*
+外部变量声明
+*/
+extern bool diagnosticmode;
+extern CANPACKET sendcanpacket;
+extern DiagnosticRequestHandle* PrequestHandle;
+/*
+********************************************************************************
+*  函数名称: CanToUtcp
+*
+*  功能描述: 将CAN总线数据直接打包成UTCP二进制数据传输协议发送。
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void CanToUtcp(u8 channel, CANX * pcan, COMX * pcom)
+{
+    u8 i, buf[20];
+    CANQUEDATA data;
+	  u16 CurrentPacketLen = 0;
+    DiagnosticResponse response;
+    if(channel != 1 && channel != 2)
+    {
+        return;
+    }
+    
+    else if(pcan == NULL || pcom == NULL)
+    {
+        return;
+    }
+    while(CanReceive(pcan, &data))
+    {
+        buf[0] = channel;
+        buf[1] = (u8)(data.Id >> 24);
+        buf[2] = (u8)(data.Id >> 16);
+        buf[3] = (u8)(data.Id >> 8);
+        buf[4] = (u8)(data.Id >> 0);
+        buf[5] = data.Dlc;
+				for (i = 0; i < data.Dlc; i++)
+        {
+            buf[6 + i] = data.Data[i];
+        }
+				if (data.Dlc < 8)
+				{
+						memset(buf + 6 + data.Dlc, 0, 8 - data.Dlc);
+				}
+				//向串口发送CAN数据
+				IWDG_Feed();
+			
+				//if(diagnosticmode == TRUE)
+				//{
+				    RTU_DEBUG("data.Id=%x\r\n",data.Id);
+						response.Id = data.Id >> 21;
+						RTU_DEBUG("response.Id =%x\r\n",response.Id );
+						response.length = data.Dlc;
+						for(i=0;i<data.Dlc;i++)
+							RTU_DEBUG("%x \r\n",data.Data[i]);
+						memcpy(response.DataField,data.Data,data.Dlc);
+						PrequestHandle->networkcallback(&response);	
+				//}
+				//else
+				//{
+						//远程帧
+				//		if((buf[4]&0x02) == 0x02)
+				//		{
+				//				sendcanpacket.candata[0] = 0x41;
+				//				CurrentPacketLen = CANCHANNEL+CANID;
+				//				c16toa(&CurrentPacketLen,&sendcanpacket.candata[1]);
+				//				memcpy(&sendcanpacket.candata[FIXED_LENGTH],buf,CurrentPacketLen);
+				//				senddatapacket(&COM3,sendcanpacket.candata,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+				//		}
+						//数据帧
+				//		else
+				//		{
+				//				sendcanpacket.candata[0] = 0x41;
+				//				CurrentPacketLen = data.Dlc+6;
+				//				c16toa(&CurrentPacketLen,&sendcanpacket.candata[1]);
+				//				memcpy(&sendcanpacket.candata[FIXED_LENGTH],buf,14);
+				//				senddatapacket(&COM3,sendcanpacket.candata,FIXED_LENGTH+14+CHECKSUM);
+				//	  }
+
+			  //}				
+
+    }
+}
+
+/*
+********************************************************************************
+*  函数名称: UartDataToCanData
+*
+*  功能描述: 将收到的uart数据进行打包
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+
+void UartDataToCanData(u8 len, u8 *Data)
+{
+	CANQUEDATA data;
+	u8 i;
+	
+	if(Data == NULL && len == 0)
+	{
+		return;
+	}
+	memset(&data, 0, sizeof(CANQUEDATA));
+
+	data.Id = ((Data[1] << 24) | (Data[2] << 16) | (Data[3] << 8) | Data[4]);
+	data.Dlc = Data[5];
+	 
+	for(i = 0; i < Data[5]; i++)
+  {
+		data.Data[i] = Data[i+6];
+  }
+	 
+	CanTransmit(&Can1, &data);
+}
+
+/*
+一、过滤器完全无效  接收到的标示符全部通过
+0x1314 二进制码：0000 0000 0000 0000 0001 0011 0001 0100 
+CAN_Filter xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+CAN_FilterMask  0000 0000 0000 0000 0000 0000 0000 0000
+
+
+*/
+void CAN_SetFilterStd()
+{
+	 u8 i,num;
+	 u16 tmp,mask;
+	 u16 StdIdArray[2] = {0x7E8,0x7E9};
+
+   CAN_FilterInitTypeDef  CAN_FilterInitStructure;
+  
+   RTU_DEBUG("CAN_SetFilterStd\r\n");
+	 CAN_FilterInitStructure.CAN_FilterNumber = 0;
+   CAN_FilterInitStructure.CAN_FilterMode   = CAN_FilterMode_IdMask;
+   CAN_FilterInitStructure.CAN_FilterScale  = CAN_FilterScale_32bit;
+	 CAN_FilterInitStructure.CAN_FilterIdHigh         = (StdIdArray[0] << 5)&0xffff;
+	 RTU_DEBUG("CAN_FilterInitStructure.CAN_FilterIdHigh=%x\r\n",CAN_FilterInitStructure.CAN_FilterIdHigh);
+	 CAN_FilterInitStructure.CAN_FilterIdLow          = 0;
+	
+	 num = sizeof(StdIdArray)/sizeof(StdIdArray[0]);
+   for(i=0;i<num;i++)
+   {
+			tmp = (StdIdArray[0] << 5)&(StdIdArray[i] << 5);
+			mask = tmp;
+   }
+	 RTU_DEBUG("mask=%x\r\n",mask);
+				
+	 CAN_FilterInitStructure.CAN_FilterMaskIdHigh     = mask;
+   CAN_FilterInitStructure.CAN_FilterMaskIdLow      = 0xffff; 
+   CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FIFO0;
+   CAN_FilterInitStructure.CAN_FilterActivation     = ENABLE;
+   CAN_FilterInit(&CAN_FilterInitStructure);
+}
+
+void CAN_SetFilterExt()
+{
+  CAN_FilterInitTypeDef  CAN_FilterInitStructure;
+   
+	CAN_FilterInitStructure.CAN_FilterNumber=0;
+	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdMask;
+	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_32bit;
+	//CAN_FilterInitStructure.CAN_FilterIdHigh=(((u32)ID<<3)&0xffff0000)>>16;
+	//CAN_FilterInitStructure.CAN_FilterIdLow=(((u32)ID<<3)|CAN_ID_EXT|CAN_RTR_DATA)&0xffff;
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0xffff;
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0xffff;
+	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_FIFO0;
+	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;
+	CAN_FilterInit(&CAN_FilterInitStructure);
+}
+/*
+ * bit2: 0为标准ID   1为扩展ID
+ *
+ */
+DiagnoticIdType Get_Id_type(u32 id)
+{
+	  
+	  return id&0x04;
+}
+
+DiagnoticFrameType Get_Frame_type(u32 id)
+{
+	  return id&0x02;
+}
+
+void Send_singleframe(void *handle)
+{
+	  bool Is_Filtered = FALSE;
+		u8 i = 0;
+		CANQUEDATA candata;
+	
+	  if(handle == NULL)
+			 return;
+		
+		RTU_DEBUG("Send_singleframe\r\n");
+		PrequestHandle = (DiagnosticRequestHandle*)handle;
+		candata.Dlc = 0x08;
+		candata.Id = PrequestHandle->Request.Id;
+    memcpy(&candata.Data[0], PrequestHandle->Request.DataField,0x08);
+		
+		Is_Filtered = PrequestHandle->Request.BitField&0x01;
+		if(Is_Filtered == TRUE)
+		{
+			if(PrequestHandle->Request.Ide == DIAGNOSTIC_CAN_ID_STANDARD)
+			{
+				 //CAN_SetFilterStd();
+			}
+			else if(PrequestHandle->Request.Ide == DIAGNOSTIC_CAN_ID_EXTENDED)
+			{
+				 //CAN_SetFilterExt();
+			}	
+		}
+		CanTransmit(&Can1, &candata);
+}
+
+
+
+
