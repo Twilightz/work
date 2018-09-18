@@ -1,0 +1,1 @@
+UEUpdater.exe updateall -p COM10 -i  "C:\Program Files (x86)\Neul\UEUpdaterCLI\Hi15RM1-HLB_V1.0.fwpkg"  --noBaudSwitch  --passive

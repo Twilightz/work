@@ -1,0 +1,206 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮西安研发中心
+*
+*  项目名称：xxxx
+*  
+*  文件名称: xxxx.c
+*
+*  文件描述：xxxx
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2013-03-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "GPIO.h"
+#include "shell.h"
+#include "sleep.h"
+#include "stm32f10x_pwr.h"
+#include "lis331dlh_driver.h"
+#include "stm32f10x_flash.h"
+#include  <bsp.h>
+#include "Delay.h"
+#include "Exti.h"
+#include "MPU_power.h"
+#include "UartProcess.h"
+
+
+extern uint8_t EC20Status;
+SLEEP_T sleepmode = SYSTEM_RUN;
+extern uint16_t Mpu_Power_State;
+//extern void AppInit(void);
+
+#define RCC_PLLSource_HSE_Div1           ((u32)0x00010000)
+
+
+u8 shutdown[6] = {0x1E, 0x00, 0x00};
+/**********************************************************************
+* 名称:RCC_Configuration()
+* 功能:配置时钟
+* 入口参数: 
+* 出口参数:
+-----------------------------------------------------------------------
+* 说明:
+***********************************************************************/
+void RCC_Configuration(void)
+{
+    ErrorStatus HSEStartUpStatus;
+
+    //使能外部晶振
+    RCC_HSEConfig(RCC_HSE_ON);
+    //等待外部晶振稳定
+    HSEStartUpStatus = RCC_WaitForHSEStartUp();
+    //如果外部晶振启动成功，则进行下一步操作
+    if(HSEStartUpStatus==SUCCESS)
+    {
+        //设置HCLK(AHB时钟)=SYSCLK
+        RCC_HCLKConfig(RCC_SYSCLK_Div1);
+
+        //PCLK1(APB1) = HCLK/2
+        RCC_PCLK1Config(RCC_HCLK_Div2);
+
+        //PCLK2(APB2) = HCLK
+        RCC_PCLK2Config(RCC_HCLK_Div1);
+        
+ 
+        RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_4);
+        //启动PLL
+        RCC_PLLCmd(ENABLE);
+        //等待PLL稳定
+        while(RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET);
+        //系统时钟SYSCLK来自PLL输出
+        RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);
+        //切换时钟后等待系统时钟稳定
+        while(RCC_GetSYSCLKSource()!=0x08);  
+     }
+	  /* RCC system reset(for debug purpose) */ 
+}
+
+
+
+//唤醒
+void mcu_makeup(void)
+{
+		RCC_Configuration();
+		//AppInit();
+		//RTU_DEBUG("mcu_makeup\r\n");
+		sleepmode = SYSTEM_RUN;
+}
+
+
+void mcu_sleep(u8 is_DeepSleep)
+{
+	  GPIO_InitTypeDef GPIO_InitStructure;
+
+		//轻度睡眠
+    if(is_DeepSleep == 0)
+		{
+			  sleepmode = SYSTEM_LIGHT_SLEEP;
+			  EC20Status = 0;
+				//CAN1_STB9
+	      GPIO_SetBits(GPIOC, GPIO_Pin_7);
+	      //CAN2_STB
+	      GPIO_SetBits(GPIOC, GPIO_Pin_8);
+	      DelayMS(50);
+			  #if 0
+        senddatapacket(&COM2,shutdown,FIXED_LENGTH+0+CHECKSUM);
+        #endif
+				GPIO_SetBits(GPIOB, GPIO_Pin_0);	
+				DelayMS(1000);
+				GPIO_ResetBits(GPIOB, GPIO_Pin_0);
+		
+			  GPIO_ResetBits(GPIOA, GPIO_Pin_12);
+
+			  Mpu_Power_State = _MPU_POWER_OFF;
+
+		}
+		//深度睡眠
+	
+		if(is_DeepSleep == 1)
+		{
+			  sleepmode = SYSTEM_DEEP_SLEEP;
+        #if 0
+			  senddatapacket(&COM2,shutdown,FIXED_LENGTH+0+CHECKSUM);
+			  //关掉EC20
+        #endif
+				GPIO_SetBits(GPIOB, GPIO_Pin_0);	
+				DelayMS(1000);
+				GPIO_ResetBits(GPIOB, GPIO_Pin_0);
+		
+			  GPIO_ResetBits(GPIOA, GPIO_Pin_12);
+				//将所有GPIO口设为模拟输入
+	
+				GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;  
+				GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+				GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING; 
+ 
+				GPIO_Init(GPIOA, &GPIO_InitStructure);
+				GPIO_Init(GPIOB, &GPIO_InitStructure);
+				GPIO_Init(GPIOC, &GPIO_InitStructure);
+				GPIO_Init(GPIOD, &GPIO_InitStructure);
+				GPIO_Init(GPIOE, &GPIO_InitStructure);
+				GPIO_Init(GPIOF, &GPIO_InitStructure);
+				GPIO_Init(GPIOG, &GPIO_InitStructure);
+			
+			  //关闭硬件看门狗
+				GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;  
+				GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+				GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+				GPIO_Init(GPIOC, &GPIO_InitStructure);
+				GPIO_ResetBits(GPIOC, GPIO_Pin_4);
+		
+				//当PC4和PB14都为低电平时，关掉看门狗
+				GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14;  
+				GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+				GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+				GPIO_Init(GPIOB, &GPIO_InitStructure);
+				GPIO_ResetBits(GPIOB, GPIO_Pin_14);
+
+				EXTI1_Configuration();
+				//要实现低功耗，得执行如下两个语句
+				RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR,ENABLE);//配置电源低功耗模式
+				//进入停止模式(低功耗)，直至外部中断触发时被唤醒
+				PWR_EnterSTOPMode(PWR_Regulator_LowPower,PWR_STOPEntry_WFI);
+				
+		}
+
+}
+
+void quit_light_sleep()
+{
+	  u8 status;
+	
+		//CAN1_STB9
+	  GPIO_ResetBits(GPIOC, GPIO_Pin_7);
+	  //CAN2_STB
+	  GPIO_ResetBits(GPIOC, GPIO_Pin_8);
+	
+		status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_12);
+		if(status == 0)
+		{  
+				while(EC20Status == 0)
+	  		{
+						DelayMS(50);
+						Mpu_Power_Manage();
+				}
+		}
+		GPIO_SetBits(GPIOB, GPIO_Pin_0);	
+		DelayMS(300);
+    GPIO_ResetBits(GPIOB, GPIO_Pin_0);
+		sleepmode = SYSTEM_RUN;
+}
+
+
+
+

@@ -1,0 +1,26 @@
+---- SystemInit Matches (9 in 3 files) ----
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin): <LI><a href="#[52]">SystemInit</a> from system_stm32f10x.o(i.SystemInit) referenced from startup_stm32f10x_cl.o(.text)
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<P><STRONG><a name="[52]"></a>SystemInit</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  *    Then SystemInit() function is called, in "startup_stm32f10x_xx.s" file, to
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  * 3. If the system clock source selected by user fails to startup, the SystemInit()
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):void SystemInit (void)
+System_stm32f10x.h (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):extern void SystemInit(void);
+---- SystemInit Matches (9 in 3 files) ----
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin): <LI><a href="#[52]">SystemInit</a> from system_stm32f10x.o(i.SystemInit) referenced from startup_stm32f10x_cl.o(.text)
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<P><STRONG><a name="[52]"></a>SystemInit</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
+E9633_TBOX.htm (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\bin):<BR>[Called By]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  *    Then SystemInit() function is called, in "startup_stm32f10x_xx.s" file, to
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):  * 3. If the system clock source selected by user fails to startup, the SystemInit()
+System_stm32f10x.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):void SystemInit (void)
+System_stm32f10x.h (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\cmsis):extern void SystemInit(void);
+---- RCC_Configuration Matches (3 in 1 files) ----
+Sleep.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\app\src):* Ãû³Æ:RCC_Configuration()
+Sleep.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\app\src):void RCC_Configuration(void)
+Sleep.c (f:\weizhexuan\work\e9633_tbox\mcu\e9633_tbox_stm32\app\src):		RCC_Configuration();
+---- NVIC_SETFAULTMASK Matches (0 in 0 files) ----
+---- GenerateSystemReset Matches (0 in 0 files) ----

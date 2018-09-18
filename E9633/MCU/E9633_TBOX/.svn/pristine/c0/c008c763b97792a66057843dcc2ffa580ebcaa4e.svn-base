@@ -1,0 +1,1216 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮深圳研发中心
+*
+*  项目名称：E7759A
+*  
+*  文件名称: UartProcess.c
+*
+*  文件描述：串口数据处理程序
+*             
+*             
+*  创 建 者: 韦哲轩
+*
+*  创建日期：2017-10-9 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+
+#include "Obd.h"
+#include "Shell.h"
+#include <stdlib.h>
+#include "Public.h"
+#include "Can.h"
+#include "Flash.h"
+#include "Adc.h"
+#include "Delay.h"
+#include "string.h"
+#include "Delay.h"
+#include "UartProcess.h"
+//#include "sleep.h"
+#include "J1939.h"
+#include "lis331dlh_driver.h"
+#include "Exti.h"
+#include "Sleep.h"
+#include "flash_if.h"
+/*
+********************************************************************************                                                                  
+*  外部变量声明                                                                                                       
+********************************************************************************
+*/
+
+extern u8 threhold;
+extern u16 RxCounter;
+extern u16 RxCounter1;
+extern u16 NCANackbaudrate;
+
+extern  AxesRaw_t data;
+
+extern bool is_RxFrame;
+extern bool is_RxFrame1;
+
+bool is_uart1echo = FALSE;
+
+/*
+********************************************************************************                                                                 
+*  内部变量定义                                                                                                         
+********************************************************************************
+*/
+
+bool is_accoff_ack  = FALSE;
+bool is_accon_ack  = FALSE;
+bool is_collision_ack  = FALSE;
+bool is_rollover_ack = FALSE;
+bool is_overturned_ack = FALSE;
+bool is_pullout_ack = FALSE;
+bool is_insert_ack = FALSE;
+bool is_accelerate_ack = FALSE;
+
+u8 Serialnumber;
+
+PACKET UART2Recvpacket; 
+CHARGSTATUS chargstatus = UNCHARGED;
+CANPACKET sendcanpacket;
+
+UART2DATASTRUCT  UART2Data;
+UART3DATASTRUCT  UART3Data;
+UART1DATASTRUCT  UART1Data;
+
+WORK_MODE_T work_mode = CAN_MODE;
+DiagnosticRequestHandle RequestHandle;
+CHANNEL_TYPE_T channel = CAN_CHANNEL_1;
+
+/*
+********************************************************************************                                                                  
+*  内部函数声明                                                                                                        
+********************************************************************************
+*/
+void senddatapacket(COMX * pcom,u8* data,u16 length);
+void recvpacketparse(PACKET* Precvpacket);
+/*
+********************************************************************************                                                                  
+*  外部函数声明                                                                                                        
+********************************************************************************
+*/
+extern u8 turnoncmd[6];
+extern u8 turnoffcmd[6];
+/*
+********************************************************************************
+*  函数名称: StructInit
+*
+*  功能描述: 结构体初始化
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void StructInit(void)
+{
+    UART2Data.Len   = 0;
+    UART2Data.State = 0;
+	
+	  UART2Recvpacket.candata = NULL;
+	  //UART2Recvpacket.data = NULL;
+	
+}
+
+
+/*
+********************************************************************************
+*  函数名称: UART2_Data_Pro
+*
+*  功能描述: 处理UART2数据
+*            
+*
+*  输入参数: dat
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void UART2_Data_Pro(u8 dat)
+{
+    u8 dle;
+
+    u16 i, k;
+	  u16 index = 0;
+	  u8 cha,chb;
+	  u16 CurrentPacketLen = 0;
+	  static u8 flag = 0;
+
+    switch(UART2Data.State)
+    {
+			//处理BINTRANS_DLE和BINTRANS_STX
+			case 0:
+		       if(UART2Data.Len<1)
+					 {
+								UART2Data.Dat[UART2Data.Len++] = dat;
+					 }
+					 //若遇到BINTRANS_DLE，则往下判断
+		       if(UART2Data.Dat[0] == BINTRANS_DLE)
+					 {			
+        			 if(flag==0)
+							 {
+								  flag=1;
+							 }
+							 else
+							 {
+									UART2Data.Dat[UART2Data.Len++] = dat;
+									if(UART2Data.Len == 2)
+									{
+										  //若遇到第二个字节是BINTRANS_STX，则表明可能是一帧数据。
+											if(UART2Data.Dat[1] == BINTRANS_STX)
+											{
+													flag = 0;
+													UART2Data.State  = 1;
+											}
+											else
+											{
+													flag = 0;
+													UART2Data.Len = 0;
+											}
+									}											
+							}
+					}
+					else
+					{
+							UART2Data.Len = 0;
+					}
+          break;
+	   case 1:
+					UART2Data.Dat[UART2Data.Len++] = dat;
+					// 找结尾字节
+					if(UART2Data.Dat[UART2Data.Len - 2] == BINTRANS_DLE && 
+            UART2Data.Dat[UART2Data.Len - 1] == BINTRANS_ETX)
+					{  
+            // 转义字节
+            for(dle = 0, k = 0, i = 2; i < UART2Data.Len - 2; i++)
+            {
+							  //将<DLE><DLE>转换为<DLE>
+                if(UART2Data.Dat[i] == BINTRANS_DLE)
+                {
+                    if(dle == 1)
+                    {
+                        dle = 0;
+                        continue;
+                    }
+                    else
+                    {
+                        dle = 1;
+                    }
+                }
+                else
+                {
+                    dle = 0;
+                }
+                UART2Data.Esc[k++] = UART2Data.Dat[i];
+            }
+						
+						//取当前长度
+						ato16(&UART2Data.Esc[1],&CurrentPacketLen);
+						if(k == FIXED_LENGTH+CurrentPacketLen+CHECKSUM)
+						{
+								UART2Data.Len = k;
+								UART2Recvpacket.cha = UART2Data.Esc[UART2Data.Len-2];
+								UART2Recvpacket.chb = UART2Data.Esc[UART2Data.Len-1];	
+						
+								CalculateChecksum(UART2Data.Esc,UART2Data.Len-2,&cha,&chb);
+										 
+								if(UART2Recvpacket.cha == cha && UART2Recvpacket.chb == chb)
+								{
+									 //当前数据包长度(不包括校验)
+									 UART2Recvpacket.CurrentLen = UART2Data.Len-2;
+									 //RTU_DEBUG("UART3Recvpacket.CurrentLen=%d\r\n",UART3Recvpacket.CurrentLen);
+									 //UART3Recvpacket.data = (u8*)malloc(UART3Recvpacket.CurrentLen);
+									 //if(UART3Recvpacket.data == NULL)
+									 //{
+										//  return;
+									 //}
+									 //将数据包拷贝到recvpacket.data
+									 memcpy(UART2Recvpacket.data,UART2Data.Esc,UART2Recvpacket.CurrentLen);
+									 UART2Recvpacket.index = 0;	
+									 UART2Recvpacket.codecState = CODEC_STATE_PACKET_TYPE;
+									 //对UART2报文进行处理
+									 recvpacketparse(&UART2Recvpacket);
+									 UART2Data.Len = 0;
+									 UART2Data.State = 0;
+							 }
+							 else
+							 {
+									 UART2Data.Len = 0;
+									 UART2Data.State = 0;
+							 }
+						}
+						else
+						{
+								UART2Data.Len = 0;
+								UART2Data.State = 0;
+						}
+			  }
+        // 超出最大长度
+        if(UART2Data.Len >= BINTRANS_MAXLEN)
+        {
+            UART2Data.Len   = 0;
+            UART2Data.State = 0;
+        }
+        break;
+    default:
+        UART2Data.Len   = 0;
+        UART2Data.State = 0;
+        break;
+    }	
+    return;
+}
+/*
+********************************************************************************
+*  函数名称: UART3_Data_Pro
+*
+*  功能描述: 将接收到不定长的UART3数据进行处理
+*            
+*
+*  输入参数: data，length
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void Send_UART3_Data(u8* data,u16 length)
+{
+		u16 CurrentPacketLen;
+			
+	  if(data == NULL)
+		{
+			 return;
+		}
+		data[0] = 0x21;
+		CurrentPacketLen = length;
+		c16toa(&CurrentPacketLen,&data[1]);
+		//RTU_DEBUG("Send_UART3_Data->CurrentPacketLen=%d!\r\n",CurrentPacketLen);
+		senddatapacket(&COM2,data,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+}
+void Send_UART1_Data(u8* data,u16 length)
+{
+		u16 CurrentPacketLen;
+			
+	  if(data == NULL)
+		{
+			 return;
+		}
+		data[0] = 0x21;
+		CurrentPacketLen = length;
+		c16toa(&CurrentPacketLen,&data[1]);
+		//RTU_DEBUG("Send_UART1_Data->CurrentPacketLen=%d!\r\n",CurrentPacketLen);
+		senddatapacket(&COM2,data,FIXED_LENGTH+CurrentPacketLen+CHECKSUM);
+}
+
+void UART3_Data_Pro()
+{
+	  u8 i;
+		u16 Uart1RxLength = 0;
+
+
+	  if(is_RxFrame == TRUE)
+	  {
+				if(RxCounter > 0 && RxCounter <= 1000)
+				{
+					 UART3Data.Dat[3] = RS485;
+					 for(i=0;i<RxCounter;i++)
+					 {
+					   ComxGetChar(&COM3,&UART3Data.Dat[4+i]);
+					 }	
+					 ComxClrRcv(&COM3);
+					 //处理UART1数据
+					 //if(is_uart1echo == TRUE)
+					 //{
+						//  ComxPutData(&COM3,&UART3Data.Dat[4],RxCounter);
+					  //	is_uart1echo = FALSE;
+					 //}
+					 //else
+					 //{
+							Send_UART3_Data(UART3Data.Dat,RxCounter+1);
+					 //}
+				}
+        RxCounter = 0;				
+				is_RxFrame = FALSE;
+				Uart1RxLength = 0;
+		}
+}
+
+void UART1_Data_Pro()
+{
+	  u8 i;
+		u16 Uart1RxLength1 = 0;
+
+	  if(is_RxFrame1 == TRUE)
+	  {
+				if(RxCounter1 > 0 && RxCounter1 <= 1000)
+				{
+					 UART1Data.Dat[3] = UART1;
+					 for(i=0;i<RxCounter1;i++)
+					 {
+					   ComxGetChar(&COM1,&UART1Data.Dat[4+i]);
+					 }	
+					 ComxClrRcv(&COM1);
+					
+					 //处理UART1数据
+					 //if(is_uart1echo == TRUE)
+					 //{
+					 //	  ComxPutData(&COM1,&UART1Data.Dat[4],RxCounter1);
+					 // 	is_uart1echo = FALSE;
+					 //}
+					 //else
+					 //{
+						  Send_UART1_Data(UART1Data.Dat,RxCounter1+1);
+					 //}
+				}
+        RxCounter1 = 0;				
+				is_RxFrame1 = FALSE;
+				Uart1RxLength1 = 0;
+		}
+}
+/*
+********************************************************************************
+*  函数名称: senddatapacket
+*
+*  功能描述: 往串口发送协议数据包
+*            
+*
+*  输入参数: pcom，data，length
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void SendRS485(COMX * pcom,u8* data,u16 length)
+{
+	 u16 i;
+	 for(i = 0; i < length; i++)
+	 {
+			ComxPutChar(pcom, data[i]);
+	 }	
+
+}
+
+void SendUartDate(COMX * pcom,u8* data,u16 length)
+{
+	 u16 i;
+	 for(i = 0; i < length; i++)
+	 {
+			ComxPutChar(pcom, data[i]);
+	 }	
+}
+
+//length=type(一个字节）+当前长度（两个字节) +数据 +校检和（两个字节）
+
+void senddatapacket(COMX * pcom,u8* data,u16 length)
+{
+	  u16 i;
+	  u8 cha,chb;
+  
+    if(pcom == NULL && data == NULL && length == 0)
+		{
+			 return;
+		}
+		
+		CalculateChecksum(data,length-2,&cha,&chb);
+		data[length-2] = cha;
+		data[length-1] = chb;
+		
+	  ComxPutChar(pcom, BINTRANS_DLE);
+		ComxPutChar(pcom, BINTRANS_STX);
+		for(i = 0; i < length; i++)
+		{
+				if(data[i] == BINTRANS_DLE)
+				{
+						ComxPutChar(pcom, BINTRANS_DLE);
+				}
+				
+				ComxPutChar(pcom, data[i]);
+		}				
+    ComxPutChar(pcom, BINTRANS_DLE);
+	  ComxPutChar(pcom, BINTRANS_ETX);
+		
+}
+
+u8 version[11] = {0x82,0x00,0x04,'1','.','1','2'};
+
+void getversion(void)
+{	
+		senddatapacket(&COM2,version,FIXED_LENGTH+4+CHECKSUM);
+}
+
+static u16 SNLength = 0;
+
+u8 SNack[37] = {0x83,0x00,0x00};
+//OK
+void readSN(void)
+{ 
+    MemReadData(PAGE_ADDR,&SNLength,1);
+	  if(SNLength == 0xFFFF)
+		{
+				SNLength =0;
+			  SNack[2] = SNLength;
+			  senddatapacket(&COM2,SNack,FIXED_LENGTH+SNLength+CHECKSUM);
+		}
+    else if(SNLength != 0xFFFF)
+		{
+			  SNack[2] = SNLength;
+			  MemReadSN(PAGE_ADDR+16,&SNack[3],SNLength);
+			  senddatapacket(&COM2,SNack,FIXED_LENGTH+SNLength+CHECKSUM);
+		}
+}
+
+u8 AccStatus[7] = {0x85,0x00,0x01};
+
+void getAccStatus(void)
+{			
+		AccStatus[3] = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_1);	
+    //0表示0N，1表示OFF
+		senddatapacket(&COM2,AccStatus,FIXED_LENGTH+1+CHECKSUM);
+}
+
+u8 chargack[6] = {0x87,0x00,0x01};
+void getChargStatus(void)
+{
+		chargack[3] = chargstatus;
+		senddatapacket(&COM2,chargack,FIXED_LENGTH+1+CHECKSUM);
+}
+extern float External_Battery;
+char batteryvoltstr[4];
+//外置电池
+u8 Ex_batteryvolt[10] = {0x88, 0x00, 0x04};
+
+void getEx_batteryvolt(void)
+{
+		f2s(External_Battery,batteryvoltstr);
+	  memcpy(&Ex_batteryvolt[3],batteryvoltstr,4);
+
+	  if(External_Battery < 7.00)
+		{
+				Ex_batteryvolt[2] = 0x01;
+				Ex_batteryvolt[3] = 0x30;
+
+				senddatapacket(&COM2,Ex_batteryvolt,FIXED_LENGTH+1+CHECKSUM);
+				//RTU_DEBUG("send!!!!>>>>!\r\n");
+
+		} 
+		if(External_Battery >= 7.00)
+	  {
+			  Ex_batteryvolt[2] = 0x04;
+				if(Ex_batteryvolt[6] == 0x00)
+				{															 
+					 Ex_batteryvolt[6] += 0x30;
+				}
+				senddatapacket(&COM2,Ex_batteryvolt,FIXED_LENGTH+4+CHECKSUM);
+				//RTU_DEBUG("send>>>>!\r\n");
+		}
+		//RTU_DEBUG("External_Battery=%.2f\r\n",External_Battery);
+}
+
+extern float Build_In_Battery;
+
+//内置电池
+u8 Bu_batteryvolt[10] = {0x89, 0x00, 0x00};
+
+void getBu_batteryvolt(void)
+{
+	  f2s(Build_In_Battery,batteryvoltstr);
+		memcpy(&Bu_batteryvolt[3],batteryvoltstr,4);
+	
+	  if(Build_In_Battery <= 0)//未挂内置电池时，检测到的电池电压为0
+		{
+			  Bu_batteryvolt[2] = 0x01;
+			  Bu_batteryvolt[3] = 0x30;
+			  senddatapacket(&COM2,Bu_batteryvolt,FIXED_LENGTH+1+CHECKSUM);
+			  //RTU_DEBUG("send 0\r\n");
+		}
+    else
+    {	
+			  Bu_batteryvolt[2] = 0x04;
+        if(Bu_batteryvolt[6] == 0x00)
+			  { 															 
+					 Bu_batteryvolt[6] += 0x30;
+			  }	
+        //RTU_DEBUG("send 1\r\n");				
+				senddatapacket(&COM2,Bu_batteryvolt,FIXED_LENGTH+4+CHECKSUM);
+		}
+}
+
+u8 g_sensorack[13] = {0x8A,0x00,0x06}; 
+
+void getGsensordata(void)
+{
+	  c16toa_1(&data.AXIS_X,&g_sensorack[3]);
+		c16toa_1(&data.AXIS_Y,&g_sensorack[5]);
+		c16toa_1(&data.AXIS_Z,&g_sensorack[7]);
+		senddatapacket(&COM2,g_sensorack,FIXED_LENGTH+6+CHECKSUM);
+}
+
+void Mcu_Upgrade(void)
+{
+	  u16 flashsec;
+		u8 Upgrade[7] = {0x81,0x00,0x02};
+
+		Upgrade[3] = MESSAGE_ID_MCU_UPGRADE;
+		Upgrade[4] = SUCCESS;
+    flashsec = 0x02;
+		MemWriteData(FLASH_ADDRESS,&flashsec,1);
+	  DelayMS(50);
+		TIM_Cmd(TIM3, DISABLE);
+	  TIM_Cmd(TIM4, DISABLE);
+		TIM_Cmd(TIM5, ENABLE);
+    //RTU_DEBUG("Mcu_Upgrade\r\n");
+    senddatapacket(&COM2,Upgrade,FIXED_LENGTH+2+CHECKSUM);	
+}
+
+void Enter_Sleep(void)
+{
+	  u8 Sleepack[7] = {0x81,0x00,0x02};
+
+		Sleepack[3] = MESSAGE_ID_SLEEP;
+		Sleepack[4] = SUCCESS;
+		senddatapacket(&COM2,Sleepack,FIXED_LENGTH+2+CHECKSUM);	
+	  DelayMS(50);
+    mcu_sleep(0);
+}
+
+void Enter_DeepSleep(void)
+{
+	  u8 Sleepack[7] = {0x81,0x00,0x02};
+  
+    //RTU_DEBUG("Enter_DeepSleep\r\n");
+		Sleepack[3] = MESSAGE_ID_DEEP_SLEEP;
+		Sleepack[4] = SUCCESS;
+		senddatapacket(&COM2,Sleepack,FIXED_LENGTH+2+CHECKSUM);	
+	  DelayMS(1000);
+    mcu_sleep(1);
+}
+extern u8 PullplugStatus;
+u8 Pullplug[6] = {0x9F,0x00,0x01};
+
+void INQUIRE_PULLPLUG(void)
+{												
+		Pullplug[3] = PullplugStatus;
+    //RTU_DEBUG("INQUIRE_PULLPLUG->PullplugStatus=%d\r\n",PullplugStatus);
+
+    //RTU_DEBUG("Pullplug[0]=%x,Pullplug[1]=%x,Pullplug[2]=%x,Pullplug[3]=%x,Pullplug[4]=%x,Pullplug[5]=%x\r\n",Pullplug[0],Pullplug[1],Pullplug[2],Pullplug[3],Pullplug[4],Pullplug[5]);	
+    //0表示0N，1表示OFF
+		senddatapacket(&COM2,Pullplug,FIXED_LENGTH+1+CHECKSUM);
+
+
+}
+void cmdparse(u8 PacketType)
+{
+		switch(PacketType)
+	  {
+				//获取ACC状态
+				case MESSAGE_ID_QUERY_ACC_STATUS:
+					 getAccStatus();
+				   break;
+				//获取充电状态
+				case MESSAGE_ID_QUERY_CHARG_STATUS:
+					 getChargStatus();
+					 break;
+			  //获取版本
+			  case MESSAGE_ID_MCU_VERSION:
+					 getversion();
+					 break;
+				//读SN号
+				case MESSAGE_ID_READ_SN:
+					 readSN();
+					 break;
+				//获取外置电池电压
+				case MESSAGE_ID_QUERY_POWER_VOLTAGE:
+					 getEx_batteryvolt();
+					 break;
+				//获取内置电池电压
+				case MESSAGE_ID_QUERY_BATTERY_VOLTAGE:
+					 getBu_batteryvolt();
+					 break;
+				//获取G-SENSOR X/Y/Z轴数据
+				case MESSAGE_ID_QUERY_GSENSR_DATA:
+					 getGsensordata();
+					 break;
+				//远程升级
+				case MESSAGE_ID_MCU_UPGRADE:
+					 Mcu_Upgrade();
+					 break;
+				//MCU和EC20进入睡眠模式
+				case MESSAGE_ID_SLEEP:
+					 //Enter_Sleep();
+					 break;
+        //MCU进入睡眠，EC20关掉电源
+				case MESSAGE_ID_DEEP_SLEEP:
+					 Enter_DeepSleep();
+					 break;
+				//查询拔插
+				case MESSAGE_ID_INQUIRE_PULLPLUG:
+					 INQUIRE_PULLPLUG();
+					 break;
+		}
+}
+
+u8 iterator = 0;
+u16 CurrentPacketLen = 0;
+
+u8 SNOkack[7] = {0x81,0x00,0x02};
+//OK
+void writeSN(PACKET* Precvpacket)
+{
+	  u16 writeSN[32];
+
+		writeSN[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			 SNLength = CurrentPacketLen;
+			 
+			 MemWriteData(PAGE_ADDR,&SNLength,1);
+			 MemWriteSN(PAGE_ADDR+16,writeSN,CurrentPacketLen);
+			 SNOkack[3] = MESSAGE_ID_WRITE_SN;
+			 SNOkack[4] = SUCCESS;
+			 senddatapacket(&COM2,SNOkack,FIXED_LENGTH+2+CHECKSUM);
+			 Precvpacket->index = 0; 	
+		}
+}
+
+u8 Thresholdack[7] = {0x81,0x00,0x02};
+//OK
+void SET_SHOCK_THRESHOLD(PACKET* Precvpacket)
+{
+	  u8 Threshold;
+	  Threshold = iterator;
+		//RTU_DEBUG("SET_SHOCK_THRESHOLD->Threshold=%d!\r\n",Threshold);
+    threhold = Threshold;
+	  Thresholdack[3] = MESSAGE_ID_SET_SHOCK_THRESHOLD;
+	  Thresholdack[4] = SUCCESS;
+		senddatapacket(&COM2,Thresholdack,FIXED_LENGTH+2+CHECKSUM);
+}
+
+u8 CANackbaudrate[6] = {0x90,0x00,0x01};
+//OK
+void queryCanRate(PACKET* Precvpacket)
+{
+		if(NCANackbaudrate == 250)
+	  {
+				CANackbaudrate[3] = CAN_RATE_250K;
+		}
+		else if(NCANackbaudrate == 500)
+		{
+				CANackbaudrate[3] = CAN_RATE_500K;
+		}
+		senddatapacket(&COM2,CANackbaudrate,FIXED_LENGTH+1+CHECKSUM);
+}
+
+u8 canbandrate[2];
+u8 ackbaudrate_1[7] = {0x81,0x00,0x02};
+//OK
+void SetCanRate(PACKET* Precvpacket)
+{
+
+		canbandrate[Precvpacket->index++] = iterator;
+    if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  channel = canbandrate[0];
+			  if(canbandrate[1] == CAN_RATE_250K)
+				{
+					  if(work_mode == CAN_MODE)
+						{
+							  if(channel == CAN_CHANNEL_1)
+								{
+										CAN1Init(&Can1, CANX_BAUD_250K,1);
+								}
+								else if(channel == CAN_CHANNEL_2)
+								{
+
+									 CAN2Init(&Can2, CANX_BAUD_250K,1);
+								}
+						}
+						else if(work_mode == OBD_MODE)
+						{
+							  if(channel == CAN_CHANNEL_1)
+								{
+										CAN1Init(&Can1, CANX_BAUD_250K,0);
+								}else if(channel == CAN_CHANNEL_2)
+							  {
+
+									  CAN2Init(&Can2, CANX_BAUD_250K,0);
+								}
+						}
+						DelayMS(1000);
+						ackbaudrate_1[3] = MESSAGE_ID_SET_CAN_RATE;
+						ackbaudrate_1[4] = SUCCESS;
+						senddatapacket(&COM2,ackbaudrate_1,FIXED_LENGTH+2+CHECKSUM);
+						NCANackbaudrate = 250;
+				}
+				else if(canbandrate[1] == CAN_RATE_500K)
+				{
+						if(work_mode == CAN_MODE)
+						{
+							  if(channel == CAN_CHANNEL_1)
+								{
+										CAN1Init(&Can1, CANX_BAUD_500K,1);
+								}else if(channel == CAN_CHANNEL_2)
+							  {
+									  CAN2Init(&Can2, CANX_BAUD_500K,1);
+								}
+						}
+						else if(work_mode == OBD_MODE)
+						{
+							  if(channel == CAN_CHANNEL_1)
+								{
+										CAN1Init(&Can1, CANX_BAUD_500K,0);
+								}else if(channel == CAN_CHANNEL_2)
+							  {
+									  CAN2Init(&Can2, CANX_BAUD_500K,0);
+								}
+						}
+						DelayMS(1000);
+						ackbaudrate_1[3] = MESSAGE_ID_SET_CAN_RATE;
+						ackbaudrate_1[4] = SUCCESS;
+						senddatapacket(&COM2,ackbaudrate_1,FIXED_LENGTH+2+CHECKSUM);
+					  NCANackbaudrate = 500;
+				}
+				Precvpacket->index = 0; 
+		}
+}
+
+u8 uartbandrate[5];
+u8 ackbaudrate[7] = {0x81,0x00,0x02};
+
+void SetUARTRate(PACKET* Precvpacket)
+{
+	  u32 Serialbandrate;
+
+		uartbandrate[Precvpacket->index++] = iterator;
+
+    if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  Serialnumber = uartbandrate[0];
+			
+			  ato32(&uartbandrate[1],&Serialbandrate);
+			  //RS485
+				if(Serialnumber == RS485)
+				{
+						Com3Init(&COM3, Serialbandrate, COM_PARA_8N1);
+				}
+				//DEBUG USART
+				else if(Serialnumber == UART1)
+				{
+						Com1Init(&COM1, Serialbandrate, COM_PARA_8N1);
+				}
+				ackbaudrate[3] = MESSAGE_ID_SET_UART_BAUDRATE;
+				ackbaudrate[4] = SUCCESS;
+				senddatapacket(&COM2,ackbaudrate,FIXED_LENGTH+2+CHECKSUM);
+        Precvpacket->index = 0; 
+		}
+}
+u8 modeack[6] = {0x92,0x00,0x01};
+//OK
+void queryWordMode(PACKET* Precvpacket)
+{
+    channel = iterator;
+	  switch(work_mode)
+		{
+			  case COMMAND_MODE:
+						modeack[3] = COMMAND_MODE;
+						senddatapacket(&COM2,modeack,FIXED_LENGTH+1+CHECKSUM);
+						break;
+				case OBD_MODE:
+						modeack[3] = OBD_MODE;
+						senddatapacket(&COM2,modeack,FIXED_LENGTH+1+CHECKSUM);
+						break;
+				case CAN_MODE:
+						modeack[3] = CAN_MODE;
+						senddatapacket(&COM2,modeack,FIXED_LENGTH+1+CHECKSUM);
+						break;
+		}
+}
+
+u8 modeack_1[7] = {0x81,0x00,0x02};
+//OK
+void SetWordMode(PACKET* Precvpacket)
+{
+	 	u8 workmode[2];
+
+		workmode[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  channel = workmode[0];
+			  work_mode = workmode[1];
+				if(work_mode == OBD_MODE)
+				{
+					  if(NCANackbaudrate == CAN_RATE_250K)
+						{
+								CAN1Init(&Can1, CANX_BAUD_250K,0);
+						}
+						else if(NCANackbaudrate == CAN_RATE_500K)
+						{
+								CAN1Init(&Can1, CANX_BAUD_500K,0);
+						}
+						DelayMS(1000);
+						work_mode = OBD_MODE;
+						modeack[3] = MESSAGE_ID_SET_WORK_MODE;	
+						modeack[4] = SUCCESS;									
+						senddatapacket(&COM2,modeack_1,FIXED_LENGTH+2+CHECKSUM);
+				}
+				else if(work_mode == CAN_MODE)
+				{
+					  if(NCANackbaudrate == CAN_RATE_250K)
+						{
+							  CAN1Init(&Can1, CANX_BAUD_250K,1);
+						}
+						else if(NCANackbaudrate == CAN_RATE_500K)
+            {
+								CAN1Init(&Can1, CANX_BAUD_500K,1);
+						}	
+            DelayMS(1000);						
+						work_mode = CAN_MODE;
+						modeack[3] = MESSAGE_ID_SET_WORK_MODE;	
+						modeack[4] = SUCCESS;									
+						senddatapacket(&COM2,modeack_1,FIXED_LENGTH+2+CHECKSUM);
+				}
+				Precvpacket->index = 0; 
+		}
+}
+
+//OK
+void CAN_TRANSMISSION(PACKET* Precvpacket)
+{
+		Precvpacket->can[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  work_mode = CAN_MODE;
+				UartDataToCanData(CurrentPacketLen,Precvpacket->can);
+				Precvpacket->index = 0;  
+		}
+}
+//OK
+void OBD_TRANSMISSION(PACKET* Precvpacket)
+{
+		Precvpacket->candata[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  work_mode = OBD_MODE;
+				RequestHandle.Request.buf = (u8*)malloc(CurrentPacketLen);
+				if(RequestHandle.Request.buf == NULL)
+						return;
+				memcpy(RequestHandle.Request.buf,Precvpacket->candata,CurrentPacketLen);
+				diagnostic_request(&RequestHandle,DiagnosticResponsePro);
+				free(Precvpacket->candata);
+            
+				Precvpacket->index = 0;  
+		}
+}
+
+void ACC_STATUS_RESPONSE(PACKET* Precvpacket)
+{
+	  u8 Accstatus;
+	
+		Accstatus = iterator;
+	  
+		if(Accstatus == ACC_STATUS_ON)
+		{
+				is_accon_ack = TRUE;
+			  is_accoff_ack = FALSE;
+		}
+		else if(Accstatus == ACC_STATUS_OFF)
+		{
+				is_accon_ack = FALSE;
+			  is_accoff_ack = TRUE;
+		}
+}
+
+
+void QUERY_INPUT_PIN_STATUS(PACKET* Precvpacket)
+{
+	  u8 status,gpio_pin;
+	  u8 gpiogack[6] = {0x94,0x00,0x01};
+    
+		gpio_pin = iterator;
+    switch(gpio_pin)
+    {
+			  //AD1(PA5)
+			  case PIN_AD1:
+						status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5);
+						gpiogack[3] = status;
+						break;
+				//AD2(PA4)
+			  case PIN_AD2:
+						status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4);
+						gpiogack[3] = status;
+						break;
+				//IN3_DET(PB15)
+			  case PIN_IN3_DET:
+						status = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_15);
+						gpiogack[3] = status;
+						break;
+		}
+		senddatapacket(&COM2,gpiogack,FIXED_LENGTH+1+CHECKSUM);
+}
+
+void SET_OUTPIN_PIN_STATUS(PACKET* Precvpacket)
+{
+	  u8 status;
+	  u8 gpio[2];
+	  u8 gpioack[7] = {0x81,0x00,0x02};
+    
+		gpio[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  switch(gpio[0])
+			  {
+					  case OUT_GPIO_Pin_14:
+							  if(gpio[1] == HIGH_LEVEL)
+								{
+									 GPIO_SetBits(GPIOA, GPIO_Pin_14);
+									 status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_14);
+									 gpioack[4] =SUCCESS;
+									 gpioack[3] = MESSAGE_ID_SET_OUTPUT_PIN;
+                }
+                else if(gpio[1] == LOW_LEVEL)
+                {
+									 GPIO_ResetBits(GPIOA, GPIO_Pin_14);
+									 status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_14);
+									 gpioack[4] =SUCCESS;
+									 gpioack[3] = MESSAGE_ID_SET_OUTPUT_PIN;
+								}									
+								break;
+						case OUT_GPIO_Pin_13:
+							if(gpio[1] == HIGH_LEVEL)
+								{
+									 GPIO_SetBits(GPIOA, GPIO_Pin_13);
+									 status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_13);
+									 gpioack[4] =SUCCESS;
+									 gpioack[3] = MESSAGE_ID_SET_OUTPUT_PIN;
+                }else if(gpio[1] == LOW_LEVEL)
+                {
+									 GPIO_ResetBits(GPIOA, GPIO_Pin_13);
+									 status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_13);
+									 gpioack[4] =SUCCESS;
+									 gpioack[3] = MESSAGE_ID_SET_OUTPUT_PIN;
+								}									
+								break;
+				}
+			  senddatapacket(&COM2,gpioack,FIXED_LENGTH+2+CHECKSUM);
+			  Precvpacket->index = 0; 
+		}
+}
+
+void PULLPLUG_ALARM(PACKET* Precvpacket)
+{
+	  u8 status;
+		status = iterator;
+	  //RTU_DEBUG("PULLPLUG_ALARM->status=%d!\r\n",status);
+		//拔插报警
+	  if(status == INSERT)
+		{
+			 is_insert_ack = TRUE;
+		}
+		else if(status == PULLOUT)
+		{
+		   is_pullout_ack = TRUE;
+		}
+}
+
+void EC20_TO_MCU_DATA_TRANSMISSION(PACKET* Precvpacket)
+{
+	  Precvpacket->uartdata[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  Serialnumber = Precvpacket->uartdata[0];
+			  //RTU_DEBUG("Serialnumber=%d!\r\n",Serialnumber);
+				if(Serialnumber == RS485)
+				{
+					  GPIO_SetBits(GPIOA, GPIO_Pin_8);
+					  SendRS485(&COM3,&Precvpacket->uartdata[1],CurrentPacketLen-1);
+					  DelayMS(50);
+						GPIO_ResetBits(GPIOA, GPIO_Pin_8);
+		
+				}else if(Serialnumber == UART1)
+			  {
+					  SendUartDate(&COM1,&Precvpacket->uartdata[1],CurrentPacketLen-1);
+				}		
+			  Precvpacket->index = 0; 
+		}
+	
+}
+
+void EC20_SIDE_UNIVERSAL_RESPONSE(PACKET* Precvpacket)
+{
+	  u8 EC20_ACK[2];
+	
+	  EC20_ACK[Precvpacket->index++] = iterator;
+		if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+		{
+			  switch(EC20_ACK[0])
+			  {
+					 //case MESSAGE_ID_PUSH_SHOCK:
+							   //is_collision_ack = TRUE;
+							   //break;
+					 //侧翻
+					 case MESSAGE_ID_PUSH_ROLLOVER:
+						    is_rollover_ack = TRUE;
+					      is_overturned_ack = TRUE;
+							  break;
+					 //急加速急减速
+					 case MESSAGE_ID_ACCELERATE:
+						    is_accelerate_ack = TRUE;
+						    break;
+				}
+			  Precvpacket->index = 0; 
+		}
+}
+/*
+********************************************************************************
+*  函数名称: recvpacketparse
+*
+*  功能描述: 接收数据包，并处理。
+*            
+*
+*  输入参数: Precvpacket
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void recvpacketparse(PACKET* Precvpacket)
+{
+	  u8 index = 0;
+
+	  //当指针为空，且长度数据长度等于0时，退出函数。
+    if(Precvpacket == NULL && Precvpacket->CurrentLen == 0)
+		{
+			  return;
+		}
+	 	for(index = 0; index < Precvpacket->CurrentLen; index++)
+		{
+				iterator = Precvpacket->data[index];
+
+			  switch(Precvpacket->codecState)
+		    {
+					 //报文类型
+					 case CODEC_STATE_PACKET_TYPE:
+								Precvpacket->PacketType = iterator;
+					      Precvpacket->codecState = CODEC_STATE_CURRENT_PACKET_LENGTH;
+					  break;
+					 //报文当前长度
+					 case CODEC_STATE_CURRENT_PACKET_LENGTH:
+							  Precvpacket->CurrentPacketLen[Precvpacket->index++] = iterator;
+								if(Precvpacket->index == 2)
+								{
+										Precvpacket->index = 0;
+										CurrentPacketLen = 0;
+                    //取得报文当前长度
+										ato16(Precvpacket->CurrentPacketLen,&CurrentPacketLen);
+										if(CurrentPacketLen == 0)
+										{
+												//获取版本等信息
+												cmdparse(Precvpacket->PacketType);
+										}
+									  if(Precvpacket->PacketType == MESSAGE_ID_EC20_TO_MCU_OBD_TRANSMISSION)
+										{
+												Precvpacket->candata = (u8*)malloc(CurrentPacketLen);
+											  if(Precvpacket->candata == NULL)
+													 return;
+										}
+										Precvpacket->codecState = CODEC_STATE_PAYLOAD;								 
+							  }			
+							  break;
+					//有效载荷（应用数据）
+					case CODEC_STATE_PAYLOAD:
+							  if(CurrentPacketLen > 0)
+							  {
+										switch(Precvpacket->PacketType)
+								    {
+											  //写SN号
+											  case MESSAGE_ID_WRITE_SN:
+														writeSN(Precvpacket);
+														break;
+												//设置震动阈值
+												case MESSAGE_ID_SET_SHOCK_THRESHOLD:
+													  SET_SHOCK_THRESHOLD(Precvpacket);
+													  break;
+											  //查询CAN速率
+												case MESSAGE_ID_QUERY_CAN_RATE:
+													  queryCanRate(Precvpacket);
+														break;
+												//设置CAN速率
+												case MESSAGE_ID_SET_CAN_RATE:
+                            SetCanRate(Precvpacket);
+														break;
+												//设置串口速率
+												case MESSAGE_ID_SET_UART_BAUDRATE:
+													  SetUARTRate(Precvpacket);
+													  break;
+												//查询工作模式
+												case MESSAGE_ID_QUERY_WORK_MODE:
+                            queryWordMode(Precvpacket);
+													  break;
+												//设置工作模式
+												case MESSAGE_ID_SET_WORK_MODE:
+                            //SetWordMode(Precvpacket);
+													  break;
+												//发送CAN数据
+												case MESSAGE_ID_EC20_TO_MCU_CAN_TRANSMISSION:
+													  work_mode = CAN_MODE;
+                            CAN_TRANSMISSION(Precvpacket);
+												    break;
+												//发送OBD数据
+												case MESSAGE_ID_EC20_TO_MCU_OBD_TRANSMISSION:
+													  work_mode = OBD_MODE;
+                            OBD_TRANSMISSION(Precvpacket);
+													  break;
+												//ACC状态应答
+												case MESSAGE_ID_ACC_STATUS_RESPONSE:
+													  ACC_STATUS_RESPONSE(Precvpacket);
+													  break;
+												//查询输入引脚状态
+												case MESSAGE_ID_QUERY_INPUT_PIN_STATUS: 
+														QUERY_INPUT_PIN_STATUS(Precvpacket);
+														break;
+												//设置输出引脚状态
+												case MESSAGE_ID_SET_OUTPUT_PIN:
+													  SET_OUTPIN_PIN_STATUS(Precvpacket);
+													  break;
+												//拔插报警
+												case MESSAGE_ID_PULLPLUG_ALARM:
+													  PULLPLUG_ALARM(Precvpacket);
+													  break;
+												//EC20到MCU的数据透传
+												case MESSAGE_ID_EC20_TO_MCU_DATA_TRANSMISSION:
+													  EC20_TO_MCU_DATA_TRANSMISSION(Precvpacket);
+													  break;
+												//EC20端通用应答
+												case MESSAGE_ID_EC20_SIDE_UNIVERSAL_RESPONSE:
+													  EC20_SIDE_UNIVERSAL_RESPONSE(Precvpacket);
+													  break;
+										}
+						  }
+				 }
+		}
+}
+
+
+
+

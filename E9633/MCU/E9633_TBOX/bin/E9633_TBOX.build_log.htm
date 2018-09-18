@@ -1,0 +1,241 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.15
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=58512-953A9-T3DMI-TGXWD-7KGDQ-0GB0Y
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.15.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 2 (build 169)
+Assembler:       Armasm.exe V5.05 update 2 (build 169)
+Linker/Locator:  ArmLink.exe V5.05 update 2 (build 169)
+Library Manager: ArmAr.exe V5.05 update 2 (build 169)
+Hex Converter:   FromElf.exe V5.05 update 2 (build 169)
+CPU DLL:         SARMCM3.DLL V5.15.0
+Dialog DLL:      DCM.DLL V1.13.2.0
+Target DLL:      Segger\JL2CM3.dll V2.99.15.0
+Dialog DLL:      TCM.DLL V1.14.5.0
+ 
+<h2>Project:</h2>
+F:\weizhexuan\work\E9633_TBOX\MCU\E9633_TBOX\Project\E9633_TBOX_STM32Prj.uvproj
+Project File Date:  04/24/2018
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'E9633_TBOX'
+compiling main.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\App\src\main.c(86): warning:  #177-D: variable "data" was declared but never referenced
+          AxesRaw_t data;
+..\App\src\main.c: 4 warnings, 0 errors
+compiling Shell.c...
+compiling SysTick.c...
+compiling CipherFunc.c...
+compiling Public.c...
+..\App\src\Public.c(354): warning:  #186-D: pointless comparison of unsigned integer with zero
+          if(data == 
+ULL && cha == 
+ULL && chb == 
+ULL && length < 0)
+..\App\src\Public.c: 1 warning, 0 errors
+compiling stm32f4xx_it.c...
+compiling Adc.c...
+..\App\src\Adc.c(135): warning:  #177-D: variable "i" was declared but never referenced
+          u8 i;
+..\App\src\Adc.c: 1 warning, 0 errors
+compiling Can.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\App\src\Can.c(122): warning:  #223-D: function "memset" declared implicitly
+              memset(buf + 6 + data.Dlc, 0, 8 - data.Dlc);
+..\App\src\Can.c(143): warning:  #223-D: function "memcpy" declared implicitly
+              memcpy(&sendcanpacket.candata[FIXED_LENGTH],buf,CurrentPacketLen);
+..\App\src\Can.c(152): warning:  #223-D: function "memcpy" declared implicitly
+              memcpy(&sendcanpacket.candata[FIXED_LENGTH],buf,14);
+..\App\src\Can.c(167): warning:  #223-D: function "memset" declared implicitly
+                memset(&data, 0, sizeof(CANQUEDATA));
+..\App\src\Can.c(322): warning:  #223-D: function "memcpy" declared implicitly
+      memcpy(&candata.Data[0], PrequestHandle->Request.DataField,0x08);
+..\App\src\Can.c(329): warning:  #188-D: enumerated type mixed with another type
+                Is_Filtered = PrequestHandle->Request.BitField&0x01;
+..\App\src\Can.c(299): warning:  #177-D: variable "sendcount" was declared but never referenced
+          static u8 sendcount = 0;
+..\App\src\Can.c(413): warning:  #223-D: function "memset" declared implicitly
+                                                memset(buf + 6 + data.Dlc, 0, 8 - data.Dlc);
+..\App\src\Can.c(430): warning:  #223-D: function "memcpy" declared implicitly
+                                memcpy(response.DataField,data.Data,data.Dlc);
+..\App\src\Can.c(466): warning:  #223-D: function "memset" declared implicitly
+                                                memset(buf + 6 + data.Dlc, 0, 8 - data.Dlc);
+..\App\src\Can.c(483): warning:  #223-D: function "memcpy" declared implicitly
+                                memcpy(response.DataField,data.Data,data.Dlc);
+..\App\src\Can.c(558): warning:  #223-D: function "memcpy" declared implicitly
+          memcpy(&candata.Data[0], &MsgPtr->Data[0],candata.Dlc);
+..\App\src\Can.c(546): warning:  #177-D: variable "j" was declared but never referenced
+          u32 i,j;
+..\App\src\Can.c(547): warning:  #177-D: variable "SendStatus" was declared but never referenced
+          u8 SendStatus;
+..\App\src\Can.c: 17 warnings, 0 errors
+compiling Delay.c...
+compiling Exti.c...
+compiling Flash.c...
+compiling Timer.c...
+..\App\src\Timer.c(265): warning:  #223-D: function "DelayMS" declared implicitly
+                                                                                                        DelayMS(10);
+..\App\src\Timer.c: 1 warning, 0 errors
+compiling GPIODrv.c...
+compiling UartProcess.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\App\src\UartProcess.c(194): warning:  #177-D: variable "index" was declared but never referenced
+          u16 index = 0;
+..\App\src\UartProcess.c(439): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(444): warning:  #223-D: function "IWDG_Feed" declared implicitly
+                                                                          IWDG_Feed();
+..\App\src\UartProcess.c(458): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                                if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(479): warning:  #186-D: pointless comparison of unsigned integer with zero
+                                                          if(Precvpacket->index == CurrentPacketLen && CurrentPacketLen >= 0)
+..\App\src\UartProcess.c(390): warning:  #177-D: variable "i" was declared but never referenced
+          u8 i = 0;
+..\App\src\UartProcess.c(395): warning:  #177-D: variable "canid" was declared but never referenced
+          u32 canid = 0;
+..\App\src\UartProcess.c: 10 warnings, 0 errors
+compiling sleep.c...
+compiling J1939.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\App\inc\J1939_Config.h(42): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME7" (declared at line 93 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME7  (CA_NAME_ARBITRARY <<7) | (CA_NAME_INDUSTRY_GROUP << 4) | (CA_NAME_VEHICLE_INSTANCE)
+..\App\inc\J1939_Config.h(46): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME6" (declared at line 95 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME6  (CA_NAME_VEHICLE_SYSTEM << 1) | CA_NAME_RETENTION
+..\App\inc\J1939_Config.h(49): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME5" (declared at line 97 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME5  CA_NAME_FUNCTION
+..\App\inc\J1939_Config.h(53): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME4" (declared at line 100 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME4  ((CA_NAME_FUNCTION_INSTANCE << 3) | CA_NAME_ECU_INSTANCE)
+..\App\inc\J1939_Config.h(57): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME3" (declared at line 103 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME3  (CA_NAME_MANUFACTURER_CODE >> 3)
+..\App\inc\J1939_Config.h(58): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME2" (declared at line 104 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME2 ((CA_NAME_MANUFACTURER_CODE << 8) | (CA_NAME_IDENTITY_NUMBER >> 16))
+..\App\inc\J1939_Config.h(59): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME1" (declared at line 105 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME1 ((CA_NAME_IDENTITY_NUMBER >> 8) & 0xFF)
+..\App\inc\J1939_Config.h(60): warning:  #47-D: incompatible redefinition of macro "J1939_CA_NAME0" (declared at line 106 of "..\App\inc\J1939.h")
+  #define J1939_CA_NAME0 (CA_NAME_IDENTITY_NUMBER & 0xFF)
+..\App\src\J1939.c: 11 warnings, 0 errors
+compiling Obd.c...
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 72 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h")
+  #define  NULL   ((void *)0)
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\App\src\Obd.c(86): warning:  #68-D: integer conversion resulted in a change of sign
+                        return -1;
+..\App\src\Obd.c(87): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid_bitfield"
+  }
+..\App\src\Obd.c(240): warning:  #940-D: missing return statement at end of non-void function "diagnostic_decode_pid"
+  }
+..\App\src\Obd.c(92): warning:  #177-D: variable "value" was declared but never referenced
+           int value;
+..\App\src\Obd.c(93): warning:  #177-D: variable "fvalue" was declared but never referenced
+           float fvalue;
+..\App\src\Obd.c(246): warning:  #550-D: variable "diagnosticdata" was set but never used
+           float diagnosticdata;
+..\App\src\Obd.c(289): warning:  #177-D: variable "i" was declared but never referenced
+           u8  Mode,i;
+..\App\src\Obd.c(290): warning:  #550-D: variable "FF_DL" was set but never used
+                 u16 FF_DL;
+..\App\src\Obd.c(291): warning:  #177-D: variable "RemainLength" was declared but never referenced
+       static u16 RemainLength; 
+..\App\src\Obd.c(292): warning:  #177-D: variable "Vin" was declared but never referenced
+           u8 Vin[17];
+..\App\src\Obd.c: 14 warnings, 0 errors
+compiling Obd_Network.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+  extern void J1939_SendPGN();
+..\App\inc\can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+  void CAN_SetFilterStd();
+..\App\inc\can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+  void CAN_SetFilterExt();
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 56 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h")
+  #define  NULL   ((void *)0)
+..\App\src\Obd_Network.c(37): warning:  #188-D: enumerated type mixed with another type
+        return pci_type & 0xF0;
+..\App\src\Obd_Network.c(71): warning:  #223-D: function "OBD_Send_singleframe" declared implicitly
+            OBD_Send_singleframe(PrequestHandle);
+..\App\src\Obd_Network.c: 6 warnings, 0 errors
+compiling MPU_power.c...
+compiling CanDrv.c...
+..\Driver\CanDrv.c(519): warning:  #223-D: function "memcpy" declared implicitly
+                memcpy(pTxMsg->Data, pCAN->Data, pCAN->Dlc);
+..\Driver\CanDrv.c(580): warning:  #188-D: enumerated type mixed with another type
+      CAN_ITConfig(pcan->pCanx, 
+AN_IT_TME, ier & 
+AN_IT_TME);
+..\Driver\CanDrv.c: 2 warnings, 0 errors
+compiling GPIO.c...
+compiling Uart.c...
+compiling bsp.c...
+compiling bsp_iwdg.c...
+compiling lis331dlh_driver.c...
+..\Driver\bsp.h(91): warning:  #47-D: incompatible redefinition of macro "NULL" (declared at line 61 of "C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h")
+  #define  NULL   ((void *)0)
+..\Driver\lis331dlh_driver.c: 1 warning, 0 errors
+compiling I2C.c...
+compiling system_stm32f10x.c...
+compiling core_cm3.c...
+compiling misc.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_bkp.c...
+compiling stm32f10x_can.c...
+compiling stm32f10x_cec.c...
+compiling stm32f10x_crc.c...
+compiling stm32f10x_dac.c...
+compiling stm32f10x_dbgmcu.c...
+compiling stm32f10x_dma.c...
+compiling stm32f10x_exti.c...
+compiling stm32f10x_flash.c...
+compiling stm32f10x_fsmc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_i2c.c...
+compiling stm32f10x_iwdg.c...
+compiling stm32f10x_pwr.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_rtc.c...
+compiling stm32f10x_sdio.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_tim.c...
+compiling stm32f10x_usart.c...
+compiling stm32f10x_wwdg.c...
+assembling startup_stm32f10x_cl.s...
+linking...
+Program Size: Code=40512 RO-data=1040 RW-data=184 ZI-data=16960  
+FromELF: creating hex file...
+After Build - User command #1: D:\keil\ARM\ARMCC\bin\fromelf.exe --bin -o ..\bin\E9633_TBOX.bin ..\bin\E9633_TBOX.axf
+".\obj\..\..\bin\E9633_TBOX.axf" - 0 Error(s), 68 Warning(s).
+</pre>
+</body>
+</html>

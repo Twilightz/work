@@ -1,0 +1,2390 @@
+2018-1-22_10:6:31 <--> Download firehose file ......
+2018-1-22_10:6:31 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-1-22_10:6:33 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-1-22_10:6:33 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-1-22_10:6:33 <--> DL-Firehose Sahara mappings:
+2018-1-22_10:6:34 <--> DL-Firehose 2: amss.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 6: apps.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 8: dsp
+2018-1-22_10:6:34 <--> DL-Firehose 1.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 10: dbl.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 11: osbl.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 12: dsp2.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 16: efs1.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 17: efs2.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 20: efs3.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 21: sbl1.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 22: sbl2.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 23: rpm.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 25: tz.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 28: dsp3.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 29: acdb.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 30: wdt.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 31: mba.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-1-22_10:6:34 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-1-22_10:6:34 <--> DL-Firehose 10:06:33: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-1-22_10:6:34 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-1-22_10:6:34 <--> DL-Firehose 10:06:33: 127032 bytes transferred in 0.297000 seconds (0.4079MBps)
+2018-1-22_10:6:34 <--> DL-Firehose 10:06:33: File transferred successfully
+2018-1-22_10:6:34 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-1-22_10:6:34 <--> DL-Firehose well ** SUCCESS!!
+2018-1-22_10:6:34 <--> DL-Firehose 10:06:33: Sahara protocol completed
+2018-1-22_10:6:34 <--> DL-Firehose, wait for 3 seconds ......
+2018-1-22_10:6:35 <--> DL-Firehose, wait for 2 seconds ......
+2018-1-22_10:6:36 <--> DL-Firehose, wait for 1 seconds ......
+2018-1-22_10:6:38 <--> Download rawprogram file ......
+2018-1-22_10:6:38 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-1-22_10:6:44 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-1-22_10:6:45 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-1-22_10:6:45 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-1-22_10:6:45 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-1-22_10:6:45 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 16.43% ),  percent files transferred  16.43% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 21.68% ),  percent files transferred  21.68% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 27.49% ),  percent files transferred  27.49% 
+2018-1-22_10:6:54 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-1-22_10:7:3 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-1-22_10:7:3 <--> DL-Rawprogram( 39.90% ),  percent files transferred  39.90% 
+2018-1-22_10:7:3 <--> DL-Rawprogram( 51.73% ),  percent files transferred  51.73% 
+2018-1-22_10:7:3 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-1-22_10:7:3 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 59.71% ),  percent files transferred  59.71% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 71.16% ),  percent files transferred  71.16% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 82.85% ),  percent files transferred  82.85% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 88.68% ),  percent files transferred  88.68% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 94.10% ),  percent files transferred  94.10% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 99.79% ),  percent files transferred  99.79% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-1-22_10:7:19 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-1-22_10:7:19 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-1-22_10:7:20 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-1-22_10:7:21 <--> PASS, FW download success.
+2018-1-24_14:38:17 <--> Download firehose file ......
+2018-1-24_14:38:17 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-1-24_14:38:17 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-1-24_14:38:17 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-1-24_14:38:17 <--> DL-Firehose Sahara mappings:
+2018-1-24_14:38:18 <--> DL-Firehose 2: amss.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 6: apps.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 8: dsp
+2018-1-24_14:38:18 <--> DL-Firehose 1.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 10: dbl.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 11: osbl.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 12: dsp2.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 16: efs1.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 17: efs2.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 20: efs3.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 21: sbl1.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 22: sbl2.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 23: rpm.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 25: tz.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 28: dsp3.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 29: acdb.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 30: wdt.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 31: mba.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-1-24_14:38:18 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-1-24_14:38:18 <--> DL-Firehose 14:38:17: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-1-24_14:38:18 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-1-24_14:38:18 <--> DL-Firehose 14:38:17: 127032 bytes transferred in 0.110000 seconds (1.1013MBps)
+2018-1-24_14:38:18 <--> DL-Firehose 14:38:17: File transferred successfully
+2018-1-24_14:38:18 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-1-24_14:38:18 <--> DL-Firehose well ** SUCCESS!!
+2018-1-24_14:38:18 <--> DL-Firehose 14:38:17: Sahara protocol completed
+2018-1-24_14:38:18 <--> DL-Firehose, wait for 3 seconds ......
+2018-1-24_14:38:19 <--> DL-Firehose, wait for 2 seconds ......
+2018-1-24_14:38:20 <--> DL-Firehose, wait for 1 seconds ......
+2018-1-24_14:38:22 <--> Download rawprogram file ......
+2018-1-24_14:38:22 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-1-24_14:38:28 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-1-24_14:38:29 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-1-24_14:38:29 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-1-24_14:38:29 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-1-24_14:38:29 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-1-24_14:38:38 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-1-24_14:38:38 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-1-24_14:38:38 <--> DL-Rawprogram( 16.29% ),  percent files transferred  16.29% 
+2018-1-24_14:38:39 <--> DL-Rawprogram( 22.14% ),  percent files transferred  22.14% 
+2018-1-24_14:38:39 <--> DL-Rawprogram( 27.93% ),  percent files transferred  27.93% 
+2018-1-24_14:38:39 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-1-24_14:38:47 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-1-24_14:38:47 <--> DL-Rawprogram( 45.93% ),  percent files transferred  45.93% 
+2018-1-24_14:38:47 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-1-24_14:38:47 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 65.39% ),  percent files transferred  65.39% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 71.26% ),  percent files transferred  71.26% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 83.05% ),  percent files transferred  83.05% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 88.13% ),  percent files transferred  88.13% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 92.85% ),  percent files transferred  92.85% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 98.19% ),  percent files transferred  98.19% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-1-24_14:39:4 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-1-24_14:39:4 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-1-24_14:39:5 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-1-24_14:39:6 <--> PASS, FW download success.
+2018-1-24_14:57:58 <--> Download firehose file ......
+2018-1-24_14:57:58 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-1-24_14:57:59 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-1-24_14:57:59 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-1-24_14:57:59 <--> DL-Firehose Sahara mappings:
+2018-1-24_14:57:59 <--> DL-Firehose 2: amss.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 6: apps.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 8: dsp
+2018-1-24_14:57:59 <--> DL-Firehose 1.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 10: dbl.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 11: osbl.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 12: dsp2.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 16: efs1.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 17: efs2.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 20: efs3.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 21: sbl1.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 22: sbl2.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 23: rpm.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 25: tz.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 28: dsp3.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 29: acdb.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 30: wdt.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 31: mba.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-1-24_14:57:59 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-1-24_14:57:59 <--> DL-Firehose 14:57:58: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-1-24_14:57:59 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-1-24_14:57:59 <--> DL-Firehose 14:57:59: 127032 bytes transferred in 0.219000 seconds (0.5532MBps)
+2018-1-24_14:57:59 <--> DL-Firehose 14:57:59: File transferred successfully
+2018-1-24_14:57:59 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-1-24_14:57:59 <--> DL-Firehose well ** SUCCESS!!
+2018-1-24_14:57:59 <--> DL-Firehose 14:57:59: Sahara protocol completed
+2018-1-24_14:57:59 <--> DL-Firehose, wait for 3 seconds ......
+2018-1-24_14:58:1 <--> DL-Firehose, wait for 2 seconds ......
+2018-1-24_14:58:2 <--> DL-Firehose, wait for 1 seconds ......
+2018-1-24_14:58:3 <--> Download rawprogram file ......
+2018-1-24_14:58:3 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-1-24_14:58:9 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-1-24_14:58:10 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-1-24_14:58:10 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-1-24_14:58:10 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-1-24_14:58:10 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 16.57% ),  percent files transferred  16.57% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 22.45% ),  percent files transferred  22.45% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 28.33% ),  percent files transferred  28.33% 
+2018-1-24_14:58:19 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 40.00% ),  percent files transferred  40.00% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 46.02% ),  percent files transferred  46.02% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 51.96% ),  percent files transferred  51.96% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-1-24_14:58:27 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 60.01% ),  percent files transferred  60.01% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 65.97% ),  percent files transferred  65.97% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 71.95% ),  percent files transferred  71.95% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 82.65% ),  percent files transferred  82.65% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 88.56% ),  percent files transferred  88.56% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 94.50% ),  percent files transferred  94.50% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-1-24_14:58:43 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-1-24_14:58:43 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-1-24_14:58:44 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-1-24_14:58:45 <--> PASS, FW download success.
+2018-2-2_11:25:51 <--> Download firehose file ......
+2018-2-2_11:25:51 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:25:53 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_11:25:53 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_11:25:53 <--> DL-Firehose Sahara mappings:
+2018-2-2_11:25:53 <--> DL-Firehose 2: amss.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 6: apps.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 8: dsp
+2018-2-2_11:25:53 <--> DL-Firehose 1.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 25: tz.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 31: mba.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_11:25:53 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_11:25:53 <--> DL-Firehose 11:25:52: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_11:25:53 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:25:53 <--> DL-Firehose 11:25:53: 127032 bytes transferred in 0.109000 seconds (1.1114MBps)
+2018-2-2_11:25:53 <--> DL-Firehose 11:25:53: File transferred successfully
+2018-2-2_11:25:53 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_11:25:53 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_11:25:53 <--> DL-Firehose 11:25:53: Sahara protocol completed
+2018-2-2_11:25:53 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_11:25:54 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_11:25:56 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_11:25:57 <--> Download rawprogram file ......
+2018-2-2_11:25:57 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_11:26:3 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_11:26:4 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_11:26:4 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_11:26:4 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-2_11:26:4 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 16.51% ),  percent files transferred  16.51% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 22.34% ),  percent files transferred  22.34% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 28.07% ),  percent files transferred  28.07% 
+2018-2-2_11:26:13 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-2_11:26:22 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-2_11:26:22 <--> DL-Rawprogram( 39.95% ),  percent files transferred  39.95% 
+2018-2-2_11:26:22 <--> DL-Rawprogram( 51.78% ),  percent files transferred  51.78% 
+2018-2-2_11:26:22 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-2_11:26:22 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 59.97% ),  percent files transferred  59.97% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 71.35% ),  percent files transferred  71.35% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 83.01% ),  percent files transferred  83.01% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 88.81% ),  percent files transferred  88.81% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 94.83% ),  percent files transferred  94.83% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_11:26:38 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_11:26:38 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_11:26:39 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_11:26:40 <--> PASS, FW download success.
+2018-2-2_11:49:46 <--> Download firehose file ......
+2018-2-2_11:49:46 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:49:47 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_11:49:47 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_11:49:47 <--> DL-Firehose Sahara mappings:
+2018-2-2_11:49:47 <--> DL-Firehose 2: amss.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 6: apps.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 8: dsp
+2018-2-2_11:49:47 <--> DL-Firehose 1.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 25: tz.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 31: mba.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_11:49:47 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_11:49:47 <--> DL-Firehose 11:49:47: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_11:49:47 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:49:47 <--> DL-Firehose 11:49:47: 127032 bytes transferred in 0.093000 seconds (1.3027MBps)
+2018-2-2_11:49:47 <--> DL-Firehose 11:49:47: File transferred successfully
+2018-2-2_11:49:47 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_11:49:47 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_11:49:47 <--> DL-Firehose 11:49:47: Sahara protocol completed
+2018-2-2_11:49:47 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_11:49:49 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_11:49:50 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_11:49:51 <--> Download rawprogram file ......
+2018-2-2_11:49:51 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_11:49:57 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_11:49:58 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_11:49:58 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_11:49:58 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-2_11:49:58 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 16.48% ),  percent files transferred  16.48% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 22.35% ),  percent files transferred  22.35% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 28.20% ),  percent files transferred  28.20% 
+2018-2-2_11:50:7 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-2_11:50:15 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-2_11:50:16 <--> DL-Rawprogram( 39.95% ),  percent files transferred  39.95% 
+2018-2-2_11:50:16 <--> DL-Rawprogram( 51.88% ),  percent files transferred  51.88% 
+2018-2-2_11:50:16 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-2_11:50:16 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 59.84% ),  percent files transferred  59.84% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 71.72% ),  percent files transferred  71.72% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 82.63% ),  percent files transferred  82.63% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 88.53% ),  percent files transferred  88.53% 
+2018-2-2_11:50:31 <--> DL-Rawprogram( 94.58% ),  percent files transferred  94.58% 
+2018-2-2_11:50:32 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_11:50:32 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_11:50:32 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_11:50:32 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_11:50:33 <--> PASS, FW download success.
+2018-2-2_11:58:15 <--> Download firehose file ......
+2018-2-2_11:58:15 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:58:16 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_11:58:16 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_11:58:16 <--> DL-Firehose Sahara mappings:
+2018-2-2_11:58:16 <--> DL-Firehose 2: amss.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 6: apps.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 8: dsp
+2018-2-2_11:58:16 <--> DL-Firehose 1.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_11:58:16 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 25: tz.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 31: mba.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_11:58:17 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_11:58:17 <--> DL-Firehose 11:58:16: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_11:58:17 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_11:58:17 <--> DL-Firehose 11:58:16: 127032 bytes transferred in 0.187000 seconds (0.6478MBps)
+2018-2-2_11:58:17 <--> DL-Firehose 11:58:16: File transferred successfully
+2018-2-2_11:58:17 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_11:58:17 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_11:58:17 <--> DL-Firehose 11:58:16: Sahara protocol completed
+2018-2-2_11:58:17 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_11:58:18 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_11:58:19 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_11:58:20 <--> Download rawprogram file ......
+2018-2-2_11:58:20 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_11:58:26 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_11:58:27 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_11:58:27 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_11:58:27 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-2_11:58:27 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 16.59% ),  percent files transferred  16.59% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 22.44% ),  percent files transferred  22.44% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 28.31% ),  percent files transferred  28.31% 
+2018-2-2_11:58:37 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-2_11:58:45 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-2_11:58:45 <--> DL-Rawprogram( 39.94% ),  percent files transferred  39.94% 
+2018-2-2_11:58:45 <--> DL-Rawprogram( 51.85% ),  percent files transferred  51.85% 
+2018-2-2_11:58:45 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-2_11:58:45 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 60.02% ),  percent files transferred  60.02% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 71.93% ),  percent files transferred  71.93% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 83.09% ),  percent files transferred  83.09% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 89.12% ),  percent files transferred  89.12% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 95.14% ),  percent files transferred  95.14% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_11:59:1 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_11:59:1 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_11:59:2 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_11:59:2 <--> PASS, FW download success.
+2018-2-2_12:7:51 <--> Download firehose file ......
+2018-2-2_12:7:51 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_12:7:52 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_12:7:52 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_12:7:52 <--> DL-Firehose Sahara mappings:
+2018-2-2_12:7:52 <--> DL-Firehose 2: amss.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 6: apps.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 8: dsp
+2018-2-2_12:7:52 <--> DL-Firehose 1.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 25: tz.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 31: mba.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_12:7:52 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_12:7:52 <--> DL-Firehose 12:07:52: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_12:7:52 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_12:7:52 <--> DL-Firehose 12:07:52: 127032 bytes transferred in 0.156000 seconds (0.7766MBps)
+2018-2-2_12:7:52 <--> DL-Firehose 12:07:52: File transferred successfully
+2018-2-2_12:7:53 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_12:7:53 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_12:7:53 <--> DL-Firehose 12:07:52: Sahara protocol completed
+2018-2-2_12:7:53 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_12:7:54 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_12:7:55 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_12:7:56 <--> Download rawprogram file ......
+2018-2-2_12:7:56 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_12:8:2 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_12:8:3 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_12:8:3 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_12:8:3 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-2_12:8:3 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 16.51% ),  percent files transferred  16.51% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 22.37% ),  percent files transferred  22.37% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 28.21% ),  percent files transferred  28.21% 
+2018-2-2_12:8:12 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-2_12:8:21 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-2_12:8:21 <--> DL-Rawprogram( 39.91% ),  percent files transferred  39.91% 
+2018-2-2_12:8:21 <--> DL-Rawprogram( 51.78% ),  percent files transferred  51.78% 
+2018-2-2_12:8:21 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-2_12:8:21 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 60.01% ),  percent files transferred  60.01% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 71.56% ),  percent files transferred  71.56% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 82.63% ),  percent files transferred  82.63% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 88.59% ),  percent files transferred  88.59% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 94.45% ),  percent files transferred  94.45% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_12:8:37 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_12:8:37 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_12:8:38 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_12:8:39 <--> PASS, FW download success.
+2018-2-2_12:15:28 <--> Download firehose file ......
+2018-2-2_12:15:28 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_12:15:29 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_12:15:29 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_12:15:29 <--> DL-Firehose Sahara mappings:
+2018-2-2_12:15:29 <--> DL-Firehose 2: amss.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 6: apps.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 8: dsp
+2018-2-2_12:15:29 <--> DL-Firehose 1.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 25: tz.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 31: mba.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_12:15:29 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_12:15:29 <--> DL-Firehose 12:15:29: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_12:15:29 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_12:15:29 <--> DL-Firehose 12:15:29: 127032 bytes transferred in 0.141000 seconds (0.8592MBps)
+2018-2-2_12:15:29 <--> DL-Firehose 12:15:29: File transferred successfully
+2018-2-2_12:15:29 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_12:15:29 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_12:15:29 <--> DL-Firehose 12:15:29: Sahara protocol completed
+2018-2-2_12:15:29 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_12:15:31 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_12:15:32 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_12:15:33 <--> Download rawprogram file ......
+2018-2-2_12:15:33 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_12:15:39 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_12:15:40 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_12:15:40 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_12:15:40 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-2_12:15:40 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 16.56% ),  percent files transferred  16.56% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 22.44% ),  percent files transferred  22.44% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 28.31% ),  percent files transferred  28.31% 
+2018-2-2_12:15:49 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-2_12:15:58 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-2_12:15:58 <--> DL-Rawprogram( 39.97% ),  percent files transferred  39.97% 
+2018-2-2_12:15:58 <--> DL-Rawprogram( 51.85% ),  percent files transferred  51.85% 
+2018-2-2_12:15:58 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-2_12:15:58 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 59.26% ),  percent files transferred  59.26% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 71.19% ),  percent files transferred  71.19% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 76.72% ),  percent files transferred  76.72% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 82.40% ),  percent files transferred  82.40% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 87.94% ),  percent files transferred  87.94% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 93.83% ),  percent files transferred  93.83% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 99.78% ),  percent files transferred  99.78% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_12:16:14 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_12:16:14 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_12:16:15 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_12:16:16 <--> PASS, FW download success.
+2018-2-2_14:8:27 <--> Download firehose file ......
+2018-2-2_14:8:27 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_14:8:28 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_14:8:28 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_14:8:28 <--> DL-Firehose Sahara mappings:
+2018-2-2_14:8:28 <--> DL-Firehose 2: amss.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 6: apps.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 8: dsp
+2018-2-2_14:8:28 <--> DL-Firehose 1.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 25: tz.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 31: mba.mbn
+2018-2-2_14:8:28 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_14:8:28 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_14:8:29 <--> DL-Firehose 14:08:28: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_14:8:29 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_14:8:29 <--> DL-Firehose 14:08:28: 127032 bytes transferred in 0.110000 seconds (1.1013MBps)
+2018-2-2_14:8:29 <--> DL-Firehose 14:08:28: File transferred successfully
+2018-2-2_14:8:29 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_14:8:29 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_14:8:29 <--> DL-Firehose 14:08:28: Sahara protocol completed
+2018-2-2_14:8:29 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_14:8:30 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_14:8:31 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_14:8:32 <--> Download rawprogram file ......
+2018-2-2_14:8:32 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_14:8:38 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_14:8:39 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_14:8:39 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_14:8:40 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_14:8:40 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 16.19% ),  percent files transferred  16.19% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 21.23% ),  percent files transferred  21.23% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 26.86% ),  percent files transferred  26.86% 
+2018-2-2_14:8:49 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_14:8:58 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_14:8:58 <--> DL-Rawprogram( 39.68% ),  percent files transferred  39.68% 
+2018-2-2_14:8:58 <--> DL-Rawprogram( 45.56% ),  percent files transferred  45.56% 
+2018-2-2_14:8:58 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_14:8:58 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 59.77% ),  percent files transferred  59.77% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 64.25% ),  percent files transferred  64.25% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 70.22% ),  percent files transferred  70.22% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 75.54% ),  percent files transferred  75.54% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 82.98% ),  percent files transferred  82.98% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 89.04% ),  percent files transferred  89.04% 
+2018-2-2_14:9:14 <--> DL-Rawprogram( 94.93% ),  percent files transferred  94.93% 
+2018-2-2_14:9:15 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_14:9:15 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_14:9:15 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_14:9:15 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_14:9:16 <--> PASS, FW download success.
+2018-2-2_16:17:7 <--> Download firehose file ......
+2018-2-2_16:17:7 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_16:17:11 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_16:17:11 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_16:17:11 <--> DL-Firehose Sahara mappings:
+2018-2-2_16:17:11 <--> DL-Firehose 2: amss.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 6: apps.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 8: dsp
+2018-2-2_16:17:11 <--> DL-Firehose 1.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_16:17:11 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 25: tz.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 31: mba.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_16:17:12 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_16:17:12 <--> DL-Firehose 16:17:09: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_16:17:12 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_16:17:12 <--> DL-Firehose 16:17:11: 127032 bytes transferred in 2.199000 seconds (0.0551MBps)
+2018-2-2_16:17:12 <--> DL-Firehose 16:17:11: File transferred successfully
+2018-2-2_16:17:12 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_16:17:12 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_16:17:12 <--> DL-Firehose 16:17:11: Sahara protocol completed
+2018-2-2_16:17:12 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_16:17:13 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_16:17:14 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_16:17:16 <--> Download rawprogram file ......
+2018-2-2_16:17:16 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_16:17:23 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_16:17:25 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_16:17:25 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_16:17:25 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_16:17:25 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 8.34% ),  percent files transferred   8.34% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 13.21% ),  percent files transferred  13.21% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 16.50% ),  percent files transferred  16.50% 
+2018-2-2_16:17:38 <--> DL-Rawprogram( 19.44% ),  percent files transferred  19.44% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 22.27% ),  percent files transferred  22.27% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 27.98% ),  percent files transferred  27.98% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 31.03% ),  percent files transferred  31.03% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 32.07% ),  percent files transferred  32.07% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 33.07% ),  percent files transferred  33.07% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 36.63% ),  percent files transferred  36.63% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 39.48% ),  percent files transferred  39.48% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 42.20% ),  percent files transferred  42.20% 
+2018-2-2_16:18:0 <--> DL-Rawprogram( 44.99% ),  percent files transferred  44.99% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 48.22% ),  percent files transferred  48.22% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 56.68% ),  percent files transferred  56.68% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 58.17% ),  percent files transferred  58.17% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 63.67% ),  percent files transferred  63.67% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 67.11% ),  percent files transferred  67.11% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 70.45% ),  percent files transferred  70.45% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 73.66% ),  percent files transferred  73.66% 
+2018-2-2_16:18:20 <--> DL-Rawprogram( 76.87% ),  percent files transferred  76.87% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 80.25% ),  percent files transferred  80.25% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 86.28% ),  percent files transferred  86.28% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 89.58% ),  percent files transferred  89.58% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 92.74% ),  percent files transferred  92.74% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 95.36% ),  percent files transferred  95.36% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 96.54% ),  percent files transferred  96.54% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 99.06% ),  percent files transferred  99.06% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_16:18:37 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_16:18:37 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_16:18:38 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_16:18:39 <--> PASS, FW download success.
+2018-2-2_16:54:26 <--> Download firehose file ......
+2018-2-2_16:54:26 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_16:54:26 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_16:54:26 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_16:54:26 <--> DL-Firehose Sahara mappings:
+2018-2-2_16:54:26 <--> DL-Firehose 2: amss.mbn
+2018-2-2_16:54:26 <--> DL-Firehose 6: apps.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 8: dsp
+2018-2-2_16:54:27 <--> DL-Firehose 1.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 25: tz.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 31: mba.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_16:54:27 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_16:54:27 <--> DL-Firehose 16:54:26: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_16:54:27 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_16:54:27 <--> DL-Firehose 16:54:26: 127032 bytes transferred in 0.140000 seconds (0.8653MBps)
+2018-2-2_16:54:27 <--> DL-Firehose 16:54:26: File transferred successfully
+2018-2-2_16:54:27 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_16:54:27 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_16:54:27 <--> DL-Firehose 16:54:26: Sahara protocol completed
+2018-2-2_16:54:27 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_16:54:28 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_16:54:29 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_16:54:31 <--> Download rawprogram file ......
+2018-2-2_16:54:31 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_16:54:36 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_16:54:38 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_16:54:38 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_16:54:38 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_16:54:38 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 16.24% ),  percent files transferred  16.24% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 21.97% ),  percent files transferred  21.97% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 27.31% ),  percent files transferred  27.31% 
+2018-2-2_16:54:47 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_16:54:56 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_16:54:56 <--> DL-Rawprogram( 39.50% ),  percent files transferred  39.50% 
+2018-2-2_16:54:56 <--> DL-Rawprogram( 50.98% ),  percent files transferred  50.98% 
+2018-2-2_16:54:56 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_16:54:56 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 59.84% ),  percent files transferred  59.84% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 71.60% ),  percent files transferred  71.60% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 76.83% ),  percent files transferred  76.83% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 82.92% ),  percent files transferred  82.92% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 88.90% ),  percent files transferred  88.90% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 94.79% ),  percent files transferred  94.79% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_16:55:12 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_16:55:12 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_16:55:13 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_16:55:14 <--> PASS, FW download success.
+2018-2-2_17:2:8 <--> Download firehose file ......
+2018-2-2_17:2:8 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:2:9 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_17:2:9 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_17:2:9 <--> DL-Firehose Sahara mappings:
+2018-2-2_17:2:9 <--> DL-Firehose 2: amss.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 6: apps.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 8: dsp
+2018-2-2_17:2:9 <--> DL-Firehose 1.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 25: tz.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_17:2:9 <--> DL-Firehose 31: mba.mbn
+2018-2-2_17:2:10 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_17:2:10 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_17:2:10 <--> DL-Firehose 17:02:09: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_17:2:10 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:2:10 <--> DL-Firehose 17:02:09: 127032 bytes transferred in 0.281000 seconds (0.4311MBps)
+2018-2-2_17:2:10 <--> DL-Firehose 17:02:09: File transferred successfully
+2018-2-2_17:2:10 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_17:2:10 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_17:2:10 <--> DL-Firehose 17:02:09: Sahara protocol completed
+2018-2-2_17:2:10 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_17:2:11 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_17:2:12 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_17:2:13 <--> Download rawprogram file ......
+2018-2-2_17:2:13 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_17:2:19 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_17:2:20 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_17:2:20 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_17:2:20 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_17:2:20 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 16.22% ),  percent files transferred  16.22% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 22.07% ),  percent files transferred  22.07% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 27.37% ),  percent files transferred  27.37% 
+2018-2-2_17:2:30 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_17:2:39 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_17:2:39 <--> DL-Rawprogram( 39.54% ),  percent files transferred  39.54% 
+2018-2-2_17:2:39 <--> DL-Rawprogram( 51.17% ),  percent files transferred  51.17% 
+2018-2-2_17:2:39 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_17:2:39 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 59.32% ),  percent files transferred  59.32% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 65.20% ),  percent files transferred  65.20% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 70.71% ),  percent files transferred  70.71% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 76.00% ),  percent files transferred  76.00% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 82.98% ),  percent files transferred  82.98% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 88.97% ),  percent files transferred  88.97% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 94.96% ),  percent files transferred  94.96% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_17:2:55 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_17:2:55 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_17:2:56 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_17:2:57 <--> PASS, FW download success.
+2018-2-2_17:49:22 <--> Download firehose file ......
+2018-2-2_17:49:22 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:49:25 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_17:49:25 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_17:49:25 <--> DL-Firehose Sahara mappings:
+2018-2-2_17:49:25 <--> DL-Firehose 2: amss.mbn
+2018-2-2_17:49:25 <--> DL-Firehose 6: apps.mbn
+2018-2-2_17:49:25 <--> DL-Firehose 8: dsp
+2018-2-2_17:49:25 <--> DL-Firehose 1.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 25: tz.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 31: mba.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_17:49:26 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_17:49:26 <--> DL-Firehose 17:49:24: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_17:49:26 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:49:26 <--> DL-Firehose 17:49:25: 127032 bytes transferred in 1.092000 seconds (0.1109MBps)
+2018-2-2_17:49:26 <--> DL-Firehose 17:49:25: File transferred successfully
+2018-2-2_17:49:26 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_17:49:26 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_17:49:26 <--> DL-Firehose 17:49:25: Sahara protocol completed
+2018-2-2_17:49:26 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_17:49:27 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_17:49:28 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_17:49:30 <--> Download rawprogram file ......
+2018-2-2_17:49:30 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_17:49:36 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_17:49:37 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_17:49:37 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_17:49:37 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_17:49:37 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 16.10% ),  percent files transferred  16.10% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 21.36% ),  percent files transferred  21.36% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 26.70% ),  percent files transferred  26.70% 
+2018-2-2_17:49:46 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_17:49:55 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_17:49:55 <--> DL-Rawprogram( 39.61% ),  percent files transferred  39.61% 
+2018-2-2_17:49:55 <--> DL-Rawprogram( 51.11% ),  percent files transferred  51.11% 
+2018-2-2_17:49:55 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_17:49:55 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 59.83% ),  percent files transferred  59.83% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 65.36% ),  percent files transferred  65.36% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 71.05% ),  percent files transferred  71.05% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 76.90% ),  percent files transferred  76.90% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 82.92% ),  percent files transferred  82.92% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 88.92% ),  percent files transferred  88.92% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_17:50:11 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_17:50:11 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_17:50:12 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_17:50:13 <--> PASS, FW download success.
+2018-2-2_17:58:16 <--> Download firehose file ......
+2018-2-2_17:58:16 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:58:17 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-2_17:58:17 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-2_17:58:17 <--> DL-Firehose Sahara mappings:
+2018-2-2_17:58:17 <--> DL-Firehose 2: amss.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 6: apps.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 8: dsp
+2018-2-2_17:58:17 <--> DL-Firehose 1.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 10: dbl.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 11: osbl.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 12: dsp2.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 16: efs1.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 17: efs2.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 20: efs3.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 21: sbl1.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 22: sbl2.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 23: rpm.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 25: tz.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 28: dsp3.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 29: acdb.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 30: wdt.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 31: mba.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-2_17:58:17 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-2_17:58:17 <--> DL-Firehose 17:58:17: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-2_17:58:17 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-2_17:58:17 <--> DL-Firehose 17:58:17: 127032 bytes transferred in 0.078000 seconds (1.5532MBps)
+2018-2-2_17:58:17 <--> DL-Firehose 17:58:17: File transferred successfully
+2018-2-2_17:58:17 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-2_17:58:17 <--> DL-Firehose well ** SUCCESS!!
+2018-2-2_17:58:17 <--> DL-Firehose 17:58:17: Sahara protocol completed
+2018-2-2_17:58:17 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-2_17:58:18 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-2_17:58:20 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-2_17:58:21 <--> Download rawprogram file ......
+2018-2-2_17:58:21 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-2_17:58:27 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-2_17:58:28 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-2_17:58:28 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-2_17:58:28 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-2_17:58:28 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 16.12% ),  percent files transferred  16.12% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 21.42% ),  percent files transferred  21.42% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 26.70% ),  percent files transferred  26.70% 
+2018-2-2_17:58:37 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-2_17:58:46 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-2_17:58:46 <--> DL-Rawprogram( 39.30% ),  percent files transferred  39.30% 
+2018-2-2_17:58:46 <--> DL-Rawprogram( 45.14% ),  percent files transferred  45.14% 
+2018-2-2_17:58:46 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-2_17:58:46 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 59.70% ),  percent files transferred  59.70% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 65.56% ),  percent files transferred  65.56% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 88.60% ),  percent files transferred  88.60% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 94.37% ),  percent files transferred  94.37% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-2_17:59:2 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-2_17:59:2 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-2_17:59:3 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-2_17:59:4 <--> PASS, FW download success.
+2018-2-3_11:37:4 <--> Download firehose file ......
+2018-2-3_11:37:4 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-3_11:37:5 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-3_11:37:5 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-3_11:37:5 <--> DL-Firehose Sahara mappings:
+2018-2-3_11:37:5 <--> DL-Firehose 2: amss.mbn
+2018-2-3_11:37:5 <--> DL-Firehose 6: apps.mbn
+2018-2-3_11:37:5 <--> DL-Firehose 8: dsp
+2018-2-3_11:37:5 <--> DL-Firehose 1.mbn
+2018-2-3_11:37:5 <--> DL-Firehose 10: dbl.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 11: osbl.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 12: dsp2.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 16: efs1.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 17: efs2.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 20: efs3.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 21: sbl1.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 22: sbl2.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 23: rpm.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 25: tz.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 28: dsp3.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 29: acdb.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 30: wdt.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 31: mba.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-3_11:37:6 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-3_11:37:6 <--> DL-Firehose 11:37:05: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-3_11:37:6 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-3_11:37:6 <--> DL-Firehose 11:37:05: 127032 bytes transferred in 0.125000 seconds (0.9692MBps)
+2018-2-3_11:37:6 <--> DL-Firehose 11:37:05: File transferred successfully
+2018-2-3_11:37:6 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-3_11:37:6 <--> DL-Firehose well ** SUCCESS!!
+2018-2-3_11:37:6 <--> DL-Firehose 11:37:05: Sahara protocol completed
+2018-2-3_11:37:6 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-3_11:37:7 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-3_11:37:8 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-3_11:37:10 <--> Download rawprogram file ......
+2018-2-3_11:37:10 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-3_11:37:16 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-3_11:37:17 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-3_11:37:17 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-3_11:37:17 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-3_11:37:17 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 16.15% ),  percent files transferred  16.15% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 21.98% ),  percent files transferred  21.98% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 27.81% ),  percent files transferred  27.81% 
+2018-2-3_11:37:26 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-3_11:37:35 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-3_11:37:35 <--> DL-Rawprogram( 39.65% ),  percent files transferred  39.65% 
+2018-2-3_11:37:35 <--> DL-Rawprogram( 51.49% ),  percent files transferred  51.49% 
+2018-2-3_11:37:35 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-3_11:37:35 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 59.84% ),  percent files transferred  59.84% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 71.71% ),  percent files transferred  71.71% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 82.94% ),  percent files transferred  82.94% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 88.60% ),  percent files transferred  88.60% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 94.41% ),  percent files transferred  94.41% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-3_11:37:51 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-3_11:37:51 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-3_11:37:52 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-3_11:37:52 <--> PASS, FW download success.
+2018-2-3_11:46:17 <--> Download firehose file ......
+2018-2-3_11:46:17 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-3_11:46:17 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-3_11:46:18 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-3_11:46:18 <--> DL-Firehose Sahara mappings:
+2018-2-3_11:46:18 <--> DL-Firehose 2: amss.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 6: apps.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 8: dsp
+2018-2-3_11:46:18 <--> DL-Firehose 1.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 10: dbl.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 11: osbl.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 12: dsp2.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 16: efs1.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 17: efs2.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 20: efs3.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 21: sbl1.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 22: sbl2.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 23: rpm.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 25: tz.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 28: dsp3.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 29: acdb.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 30: wdt.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 31: mba.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-3_11:46:18 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-3_11:46:18 <--> DL-Firehose 11:46:17: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-3_11:46:18 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-3_11:46:18 <--> DL-Firehose 11:46:17: 127032 bytes transferred in 0.172000 seconds (0.7043MBps)
+2018-2-3_11:46:18 <--> DL-Firehose 11:46:17: File transferred successfully
+2018-2-3_11:46:18 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-3_11:46:18 <--> DL-Firehose well ** SUCCESS!!
+2018-2-3_11:46:18 <--> DL-Firehose 11:46:17: Sahara protocol completed
+2018-2-3_11:46:18 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-3_11:46:19 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-3_11:46:21 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-3_11:46:22 <--> Download rawprogram file ......
+2018-2-3_11:46:22 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-3_11:46:27 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-3_11:46:29 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-3_11:46:29 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-3_11:46:29 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-3_11:46:29 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 16.31% ),  percent files transferred  16.31% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 22.19% ),  percent files transferred  22.19% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 28.11% ),  percent files transferred  28.11% 
+2018-2-3_11:46:38 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-3_11:46:47 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-3_11:46:47 <--> DL-Rawprogram( 39.56% ),  percent files transferred  39.56% 
+2018-2-3_11:46:47 <--> DL-Rawprogram( 50.11% ),  percent files transferred  50.11% 
+2018-2-3_11:46:47 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-3_11:46:47 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 59.88% ),  percent files transferred  59.88% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 70.98% ),  percent files transferred  70.98% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 76.68% ),  percent files transferred  76.68% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 82.99% ),  percent files transferred  82.99% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 88.94% ),  percent files transferred  88.94% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 95.02% ),  percent files transferred  95.02% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-3_11:47:3 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-3_11:47:3 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-3_11:47:4 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-3_11:47:4 <--> PASS, FW download success.
+2018-2-5_15:30:4 <--> Download firehose file ......
+2018-2-5_15:30:4 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-5_15:30:6 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-5_15:30:6 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-5_15:30:6 <--> DL-Firehose Sahara mappings:
+2018-2-5_15:30:6 <--> DL-Firehose 2: amss.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 6: apps.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 8: dsp
+2018-2-5_15:30:6 <--> DL-Firehose 1.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 10: dbl.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 11: osbl.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 12: dsp2.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 16: efs1.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 17: efs2.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 20: efs3.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 21: sbl1.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 22: sbl2.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 23: rpm.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 25: tz.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 28: dsp3.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 29: acdb.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 30: wdt.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 31: mba.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-5_15:30:6 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-5_15:30:6 <--> DL-Firehose 15:30:06: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-5_15:30:6 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-5_15:30:6 <--> DL-Firehose 15:30:06: 127032 bytes transferred in 0.140000 seconds (0.8653MBps)
+2018-2-5_15:30:6 <--> DL-Firehose 15:30:06: File transferred successfully
+2018-2-5_15:30:6 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-5_15:30:6 <--> DL-Firehose well ** SUCCESS!!
+2018-2-5_15:30:6 <--> DL-Firehose 15:30:06: Sahara protocol completed
+2018-2-5_15:30:6 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-5_15:30:8 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-5_15:30:9 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-5_15:30:10 <--> Download rawprogram file ......
+2018-2-5_15:30:10 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-5_15:30:16 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-5_15:30:17 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-5_15:30:17 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-5_15:30:17 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-5_15:30:17 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 16.23% ),  percent files transferred  16.23% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 21.80% ),  percent files transferred  21.80% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 27.63% ),  percent files transferred  27.63% 
+2018-2-5_15:30:26 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-5_15:30:36 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-5_15:30:36 <--> DL-Rawprogram( 39.26% ),  percent files transferred  39.26% 
+2018-2-5_15:30:36 <--> DL-Rawprogram( 50.58% ),  percent files transferred  50.58% 
+2018-2-5_15:30:36 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-5_15:30:36 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 59.55% ),  percent files transferred  59.55% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 71.21% ),  percent files transferred  71.21% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 82.94% ),  percent files transferred  82.94% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 88.22% ),  percent files transferred  88.22% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 93.75% ),  percent files transferred  93.75% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 99.62% ),  percent files transferred  99.62% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-5_15:30:52 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-5_15:30:52 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-5_15:30:53 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-5_15:30:54 <--> PASS, FW download success.
+2018-2-5_16:40:30 <--> Download firehose file ......
+2018-2-5_16:40:30 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-5_16:42:1 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-5_16:42:1 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-5_16:42:1 <--> DL-Firehose Sahara mappings:
+2018-2-5_16:42:1 <--> DL-Firehose 2: amss.mbn
+2018-2-5_16:42:1 <--> DL-Firehose 6: apps.mbn
+2018-2-5_16:42:1 <--> DL-Firehose 8: dsp
+2018-2-5_16:42:1 <--> FAIL, DL_Firehose, Time out!
+2018-2-5_16:43:4 <--> Download firehose file ......
+2018-2-5_16:43:4 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-5_16:44:55 <--> Download firehose file ......
+2018-2-5_16:44:55 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-5_16:44:56 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-5_16:44:56 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-5_16:44:56 <--> DL-Firehose Sahara mappings:
+2018-2-5_16:44:56 <--> DL-Firehose 2: amss.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 6: apps.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 8: dsp
+2018-2-5_16:44:57 <--> DL-Firehose 1.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 10: dbl.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 11: osbl.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 12: dsp2.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 16: efs1.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 17: efs2.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 20: efs3.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 21: sbl1.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 22: sbl2.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 23: rpm.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 25: tz.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 28: dsp3.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 29: acdb.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 30: wdt.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 31: mba.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-5_16:44:57 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-5_16:44:57 <--> DL-Firehose 16:44:56: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-5_16:44:57 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-5_16:44:57 <--> DL-Firehose 16:44:56: 127032 bytes transferred in 0.905000 seconds (0.1339MBps)
+2018-2-5_16:44:57 <--> DL-Firehose 16:44:56: File transferred successfully
+2018-2-5_16:44:57 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-5_16:44:57 <--> DL-Firehose well ** SUCCESS!!
+2018-2-5_16:44:57 <--> DL-Firehose 16:44:56: Sahara protocol completed
+2018-2-5_16:44:57 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-5_16:44:58 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-5_16:45:0 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-5_16:45:1 <--> Download rawprogram file ......
+2018-2-5_16:45:1 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-5_16:45:7 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-5_16:45:8 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-5_16:45:8 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-5_16:45:8 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-5_16:45:9 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-5_16:45:18 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-5_16:45:18 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-5_16:45:18 <--> DL-Rawprogram( 21.94% ),  percent files transferred  21.94% 
+2018-2-5_16:45:18 <--> DL-Rawprogram( 27.51% ),  percent files transferred  27.51% 
+2018-2-5_16:45:18 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-5_16:45:26 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-5_16:45:26 <--> DL-Rawprogram( 39.58% ),  percent files transferred  39.58% 
+2018-2-5_16:45:26 <--> DL-Rawprogram( 45.49% ),  percent files transferred  45.49% 
+2018-2-5_16:45:26 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-5_16:45:26 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 59.87% ),  percent files transferred  59.87% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 65.77% ),  percent files transferred  65.77% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 88.79% ),  percent files transferred  88.79% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 94.80% ),  percent files transferred  94.80% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-5_16:45:42 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-5_16:45:42 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-5_16:45:43 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-5_16:45:44 <--> PASS, FW download success.
+2018-2-8_11:19:54 <--> Download firehose file ......
+2018-2-8_11:19:54 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-8_11:19:55 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-8_11:19:55 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-8_11:19:55 <--> DL-Firehose Sahara mappings:
+2018-2-8_11:19:55 <--> DL-Firehose 2: amss.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 6: apps.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 8: dsp
+2018-2-8_11:19:55 <--> DL-Firehose 1.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 10: dbl.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 11: osbl.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 12: dsp2.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 16: efs1.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 17: efs2.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 20: efs3.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 21: sbl1.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 22: sbl2.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 23: rpm.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 25: tz.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 28: dsp3.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 29: acdb.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 30: wdt.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 31: mba.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-8_11:19:55 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-8_11:19:55 <--> DL-Firehose 11:19:54: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-8_11:19:55 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-8_11:19:55 <--> DL-Firehose 11:19:55: 127032 bytes transferred in 0.109000 seconds (1.1114MBps)
+2018-2-8_11:19:55 <--> DL-Firehose 11:19:55: File transferred successfully
+2018-2-8_11:19:55 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-8_11:19:55 <--> DL-Firehose well ** SUCCESS!!
+2018-2-8_11:19:55 <--> DL-Firehose 11:19:55: Sahara protocol completed
+2018-2-8_11:19:55 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-8_11:19:57 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-8_11:19:58 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-8_11:19:59 <--> Download rawprogram file ......
+2018-2-8_11:19:59 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-8_11:20:5 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-8_11:20:6 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-8_11:20:6 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-8_11:20:6 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-8_11:20:6 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 16.26% ),  percent files transferred  16.26% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 22.18% ),  percent files transferred  22.18% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 28.10% ),  percent files transferred  28.10% 
+2018-2-8_11:20:15 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-8_11:20:24 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-8_11:20:24 <--> DL-Rawprogram( 39.76% ),  percent files transferred  39.76% 
+2018-2-8_11:20:24 <--> DL-Rawprogram( 51.82% ),  percent files transferred  51.82% 
+2018-2-8_11:20:24 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-8_11:20:24 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 59.83% ),  percent files transferred  59.83% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 71.89% ),  percent files transferred  71.89% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 83.01% ),  percent files transferred  83.01% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 89.10% ),  percent files transferred  89.10% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 95.13% ),  percent files transferred  95.13% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-8_11:20:39 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-8_11:20:39 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-8_11:20:40 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-8_11:20:41 <--> PASS, FW download success.
+2018-2-9_10:58:38 <--> Download firehose file ......
+2018-2-9_10:58:38 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_10:58:38 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_10:58:38 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_10:58:38 <--> DL-Firehose Sahara mappings:
+2018-2-9_10:58:38 <--> DL-Firehose 2: amss.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 6: apps.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 8: dsp
+2018-2-9_10:58:38 <--> DL-Firehose 1.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_10:58:38 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 25: tz.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 31: mba.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_10:58:39 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_10:58:39 <--> DL-Firehose 10:58:38: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_10:58:39 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_10:58:39 <--> DL-Firehose 10:58:38: 127032 bytes transferred in 0.156000 seconds (0.7766MBps)
+2018-2-9_10:58:39 <--> DL-Firehose 10:58:38: File transferred successfully
+2018-2-9_10:58:39 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_10:58:39 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_10:58:39 <--> DL-Firehose 10:58:38: Sahara protocol completed
+2018-2-9_10:58:39 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_10:58:40 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_10:58:41 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_10:58:42 <--> Download rawprogram file ......
+2018-2-9_10:58:42 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_10:58:48 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_10:58:49 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_10:58:49 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_10:58:49 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_10:58:49 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_10:58:58 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_10:58:58 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_10:58:59 <--> DL-Rawprogram( 15.99% ),  percent files transferred  15.99% 
+2018-2-9_10:58:59 <--> DL-Rawprogram( 21.87% ),  percent files transferred  21.87% 
+2018-2-9_10:58:59 <--> DL-Rawprogram( 27.77% ),  percent files transferred  27.77% 
+2018-2-9_10:58:59 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_10:59:7 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_10:59:7 <--> DL-Rawprogram( 39.73% ),  percent files transferred  39.73% 
+2018-2-9_10:59:7 <--> DL-Rawprogram( 51.71% ),  percent files transferred  51.71% 
+2018-2-9_10:59:7 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_10:59:7 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 59.90% ),  percent files transferred  59.90% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 71.77% ),  percent files transferred  71.77% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 82.43% ),  percent files transferred  82.43% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 88.47% ),  percent files transferred  88.47% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 94.56% ),  percent files transferred  94.56% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_10:59:23 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_10:59:23 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_10:59:24 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_10:59:25 <--> PASS, FW download success.
+2018-2-9_13:59:4 <--> Download firehose file ......
+2018-2-9_13:59:4 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_13:59:5 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_13:59:5 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_13:59:5 <--> DL-Firehose Sahara mappings:
+2018-2-9_13:59:5 <--> DL-Firehose 2: amss.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 6: apps.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 8: dsp
+2018-2-9_13:59:5 <--> DL-Firehose 1.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 25: tz.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 31: mba.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_13:59:5 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_13:59:5 <--> DL-Firehose 13:59:05: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_13:59:5 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_13:59:5 <--> DL-Firehose 13:59:05: 127032 bytes transferred in 0.093000 seconds (1.3027MBps)
+2018-2-9_13:59:5 <--> DL-Firehose 13:59:05: File transferred successfully
+2018-2-9_13:59:5 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_13:59:5 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_13:59:5 <--> DL-Firehose 13:59:05: Sahara protocol completed
+2018-2-9_13:59:5 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_13:59:7 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_13:59:8 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_13:59:9 <--> Download rawprogram file ......
+2018-2-9_13:59:9 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_13:59:15 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_13:59:16 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_13:59:16 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_13:59:16 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_13:59:16 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 16.26% ),  percent files transferred  16.26% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 22.17% ),  percent files transferred  22.17% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 28.05% ),  percent files transferred  28.05% 
+2018-2-9_13:59:25 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_13:59:33 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_13:59:33 <--> DL-Rawprogram( 39.75% ),  percent files transferred  39.75% 
+2018-2-9_13:59:33 <--> DL-Rawprogram( 51.79% ),  percent files transferred  51.79% 
+2018-2-9_13:59:33 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_13:59:33 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 59.88% ),  percent files transferred  59.88% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 64.42% ),  percent files transferred  64.42% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 68.97% ),  percent files transferred  68.97% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 74.62% ),  percent files transferred  74.62% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 82.58% ),  percent files transferred  82.58% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 94.02% ),  percent files transferred  94.02% 
+2018-2-9_13:59:52 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_13:59:53 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_13:59:53 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_13:59:53 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_13:59:54 <--> PASS, FW download success.
+2018-2-9_14:7:57 <--> Download firehose file ......
+2018-2-9_14:7:57 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_14:7:58 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_14:7:58 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_14:7:58 <--> DL-Firehose Sahara mappings:
+2018-2-9_14:7:58 <--> DL-Firehose 2: amss.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 6: apps.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 8: dsp
+2018-2-9_14:7:58 <--> DL-Firehose 1.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 25: tz.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 31: mba.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_14:7:58 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_14:7:58 <--> DL-Firehose 14:07:58: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_14:7:58 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_14:7:58 <--> DL-Firehose 14:07:58: 127032 bytes transferred in 0.125000 seconds (0.9692MBps)
+2018-2-9_14:7:58 <--> DL-Firehose 14:07:58: File transferred successfully
+2018-2-9_14:7:58 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_14:7:58 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_14:7:58 <--> DL-Firehose 14:07:58: Sahara protocol completed
+2018-2-9_14:7:58 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_14:8:0 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_14:8:1 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_14:8:2 <--> Download rawprogram file ......
+2018-2-9_14:8:2 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_14:8:8 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_14:8:9 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_14:8:9 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_14:8:9 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_14:8:9 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 16.31% ),  percent files transferred  16.31% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 22.19% ),  percent files transferred  22.19% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 28.08% ),  percent files transferred  28.08% 
+2018-2-9_14:8:18 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_14:8:26 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_14:8:26 <--> DL-Rawprogram( 39.72% ),  percent files transferred  39.72% 
+2018-2-9_14:8:26 <--> DL-Rawprogram( 51.73% ),  percent files transferred  51.73% 
+2018-2-9_14:8:26 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_14:8:26 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 59.90% ),  percent files transferred  59.90% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 71.93% ),  percent files transferred  71.93% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 82.66% ),  percent files transferred  82.66% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 88.35% ),  percent files transferred  88.35% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 94.43% ),  percent files transferred  94.43% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_14:8:42 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_14:8:42 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_14:8:43 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_14:8:44 <--> PASS, FW download success.
+2018-2-9_14:14:52 <--> Download firehose file ......
+2018-2-9_14:14:52 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_14:14:52 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_14:14:52 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_14:14:52 <--> DL-Firehose Sahara mappings:
+2018-2-9_14:14:52 <--> DL-Firehose 2: amss.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 6: apps.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 8: dsp
+2018-2-9_14:14:52 <--> DL-Firehose 1.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_14:14:52 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 25: tz.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 31: mba.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_14:14:53 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_14:14:53 <--> DL-Firehose 14:14:52: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_14:14:53 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_14:14:53 <--> DL-Firehose 14:14:52: 127032 bytes transferred in 0.094000 seconds (1.2888MBps)
+2018-2-9_14:14:53 <--> DL-Firehose 14:14:52: File transferred successfully
+2018-2-9_14:14:53 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_14:14:53 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_14:14:53 <--> DL-Firehose 14:14:52: Sahara protocol completed
+2018-2-9_14:14:53 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_14:14:54 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_14:14:55 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_14:14:56 <--> Download rawprogram file ......
+2018-2-9_14:14:56 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_14:15:2 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_14:15:3 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_14:15:3 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_14:15:3 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_14:15:4 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 16.03% ),  percent files transferred  16.03% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 21.10% ),  percent files transferred  21.10% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 26.93% ),  percent files transferred  26.93% 
+2018-2-9_14:15:13 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_14:15:21 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_14:15:21 <--> DL-Rawprogram( 39.72% ),  percent files transferred  39.72% 
+2018-2-9_14:15:21 <--> DL-Rawprogram( 51.55% ),  percent files transferred  51.55% 
+2018-2-9_14:15:21 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_14:15:21 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 59.90% ),  percent files transferred  59.90% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 65.88% ),  percent files transferred  65.88% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 71.91% ),  percent files transferred  71.91% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 82.96% ),  percent files transferred  82.96% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 89.04% ),  percent files transferred  89.04% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 95.13% ),  percent files transferred  95.13% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_14:15:37 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_14:15:37 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_14:15:38 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_14:15:39 <--> PASS, FW download success.
+2018-2-9_16:44:39 <--> Download firehose file ......
+2018-2-9_16:44:39 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:46:9 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_16:46:9 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_16:46:9 <--> DL-Firehose Sahara mappings:
+2018-2-9_16:46:9 <--> DL-Firehose 2: amss.mbn
+2018-2-9_16:46:9 <--> DL-Firehose 6: apps.mbn
+2018-2-9_16:46:9 <--> DL-Firehose 8: dsp
+2018-2-9_16:46:9 <--> FAIL, DL_Firehose, Time out!
+2018-2-9_16:47:17 <--> Download firehose file ......
+2018-2-9_16:47:17 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:48:36 <--> Download firehose file ......
+2018-2-9_16:48:36 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:48:36 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_16:48:36 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_16:48:36 <--> DL-Firehose Sahara mappings:
+2018-2-9_16:48:36 <--> DL-Firehose 2: amss.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 6: apps.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 8: dsp
+2018-2-9_16:48:36 <--> DL-Firehose 1.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 25: tz.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 31: mba.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_16:48:36 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_16:48:36 <--> DL-Firehose 16:48:36: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_16:48:36 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:48:36 <--> DL-Firehose 16:48:36: 127032 bytes transferred in 0.109000 seconds (1.1114MBps)
+2018-2-9_16:48:36 <--> DL-Firehose 16:48:36: File transferred successfully
+2018-2-9_16:48:37 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_16:48:37 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_16:48:37 <--> DL-Firehose 16:48:36: Sahara protocol completed
+2018-2-9_16:48:37 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_16:48:38 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_16:48:39 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_16:48:40 <--> Download rawprogram file ......
+2018-2-9_16:48:40 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM82 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_16:48:46 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_16:48:47 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_16:48:47 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_16:48:47 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_16:48:47 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 16.26% ),  percent files transferred  16.26% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 22.14% ),  percent files transferred  22.14% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 28.05% ),  percent files transferred  28.05% 
+2018-2-9_16:48:56 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_16:49:5 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_16:49:5 <--> DL-Rawprogram( 39.52% ),  percent files transferred  39.52% 
+2018-2-9_16:49:5 <--> DL-Rawprogram( 50.88% ),  percent files transferred  50.88% 
+2018-2-9_16:49:5 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_16:49:5 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 58.05% ),  percent files transferred  58.05% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 62.49% ),  percent files transferred  62.49% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 68.37% ),  percent files transferred  68.37% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 74.27% ),  percent files transferred  74.27% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 83.01% ),  percent files transferred  83.01% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 88.93% ),  percent files transferred  88.93% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_16:49:22 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_16:49:22 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_16:49:23 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_16:49:24 <--> PASS, FW download success.
+2018-2-9_16:56:8 <--> Download firehose file ......
+2018-2-9_16:56:8 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:57:35 <--> Download firehose file ......
+2018-2-9_16:57:35 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_16:58:1 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_16:58:1 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_16:58:1 <--> DL-Firehose Sahara mappings:
+2018-2-9_16:58:1 <--> DL-Firehose 2: amss.mbn
+2018-2-9_16:58:1 <--> DL-Firehose 6: apps.mbn
+2018-2-9_16:58:1 <--> DL-Firehose 8: dsp
+2018-2-9_16:58:1 <--> FAIL, DL_Firehose, Time out!
+2018-2-9_16:58:53 <--> Download firehose file ......
+2018-2-9_16:58:53 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_17:0:10 <--> Download firehose file ......
+2018-2-9_17:0:10 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM82 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_17:1:40 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_17:1:40 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_17:1:40 <--> DL-Firehose Sahara mappings:
+2018-2-9_17:1:40 <--> DL-Firehose 2: amss.mbn
+2018-2-9_17:1:40 <--> DL-Firehose 6: apps.mbn
+2018-2-9_17:1:40 <--> DL-Firehose 8: dsp
+2018-2-9_17:1:40 <--> FAIL, DL_Firehose, Time out!
+2018-2-9_17:2:30 <--> Download firehose file ......
+2018-2-9_17:2:30 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-9_17:2:31 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-9_17:2:31 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-9_17:2:31 <--> DL-Firehose Sahara mappings:
+2018-2-9_17:2:31 <--> DL-Firehose 2: amss.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 6: apps.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 8: dsp
+2018-2-9_17:2:31 <--> DL-Firehose 1.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 10: dbl.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 11: osbl.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 12: dsp2.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 16: efs1.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 17: efs2.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 20: efs3.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 21: sbl1.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 22: sbl2.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 23: rpm.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 25: tz.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 28: dsp3.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 29: acdb.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 30: wdt.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 31: mba.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-9_17:2:31 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-9_17:2:31 <--> DL-Firehose 17:02:31: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-9_17:2:31 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-9_17:2:31 <--> DL-Firehose 17:02:31: 127032 bytes transferred in 0.094000 seconds (1.2888MBps)
+2018-2-9_17:2:31 <--> DL-Firehose 17:02:31: File transferred successfully
+2018-2-9_17:2:32 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-9_17:2:32 <--> DL-Firehose well ** SUCCESS!!
+2018-2-9_17:2:32 <--> DL-Firehose 17:02:31: Sahara protocol completed
+2018-2-9_17:2:32 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-9_17:2:33 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-9_17:2:34 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-9_17:2:35 <--> Download rawprogram file ......
+2018-2-9_17:2:35 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-9_17:2:41 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-9_17:2:42 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-9_17:2:42 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-9_17:2:42 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-9_17:2:42 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-9_17:2:51 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-9_17:2:51 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-9_17:2:51 <--> DL-Rawprogram( 22.18% ),  percent files transferred  22.18% 
+2018-2-9_17:2:51 <--> DL-Rawprogram( 27.86% ),  percent files transferred  27.86% 
+2018-2-9_17:2:51 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-9_17:3:0 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-9_17:3:0 <--> DL-Rawprogram( 39.76% ),  percent files transferred  39.76% 
+2018-2-9_17:3:0 <--> DL-Rawprogram( 45.79% ),  percent files transferred  45.79% 
+2018-2-9_17:3:0 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-9_17:3:0 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 59.91% ),  percent files transferred  59.91% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 65.90% ),  percent files transferred  65.90% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 89.11% ),  percent files transferred  89.11% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 95.19% ),  percent files transferred  95.19% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-9_17:3:15 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-9_17:3:15 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-9_17:3:16 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-9_17:3:17 <--> PASS, FW download success.
+2018-2-10_16:43:4 <--> Download firehose file ......
+2018-2-10_16:43:4 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-10_16:43:6 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-10_16:43:6 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-10_16:43:6 <--> DL-Firehose Sahara mappings:
+2018-2-10_16:43:6 <--> DL-Firehose 2: amss.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 6: apps.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 8: dsp
+2018-2-10_16:43:6 <--> DL-Firehose 1.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 10: dbl.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 11: osbl.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 12: dsp2.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 16: efs1.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 17: efs2.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 20: efs3.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 21: sbl1.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 22: sbl2.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 23: rpm.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 25: tz.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 28: dsp3.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 29: acdb.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 30: wdt.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 31: mba.mbn
+2018-2-10_16:43:6 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-10_16:43:6 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-10_16:43:7 <--> DL-Firehose 16:43:06: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-10_16:43:7 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-10_16:43:7 <--> DL-Firehose 16:43:06: 127032 bytes transferred in 0.156000 seconds (0.7766MBps)
+2018-2-10_16:43:7 <--> DL-Firehose 16:43:06: File transferred successfully
+2018-2-10_16:43:7 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-10_16:43:7 <--> DL-Firehose well ** SUCCESS!!
+2018-2-10_16:43:7 <--> DL-Firehose 16:43:06: Sahara protocol completed
+2018-2-10_16:43:7 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-10_16:43:8 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-10_16:43:9 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-10_16:43:10 <--> Download rawprogram file ......
+2018-2-10_16:43:10 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-10_16:43:16 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-10_16:43:17 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-10_16:43:17 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-10_16:43:17 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-10_16:43:17 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-10_16:43:28 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-10_16:43:28 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-10_16:43:28 <--> DL-Rawprogram( 15.61% ),  percent files transferred  15.61% 
+2018-2-10_16:43:28 <--> DL-Rawprogram( 20.46% ),  percent files transferred  20.46% 
+2018-2-10_16:43:28 <--> DL-Rawprogram( 25.17% ),  percent files transferred  25.17% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 39.03% ),  percent files transferred  39.03% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 44.21% ),  percent files transferred  44.21% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 49.69% ),  percent files transferred  49.69% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-10_16:43:38 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 58.55% ),  percent files transferred  58.55% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 63.74% ),  percent files transferred  63.74% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 68.20% ),  percent files transferred  68.20% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 70.98% ),  percent files transferred  70.98% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 75.94% ),  percent files transferred  75.94% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 82.51% ),  percent files transferred  82.51% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 88.42% ),  percent files transferred  88.42% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 94.26% ),  percent files transferred  94.26% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-10_16:43:56 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-10_16:43:56 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-10_16:43:57 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-10_16:43:58 <--> PASS, FW download success.
+2018-2-10_17:0:45 <--> Download firehose file ......
+2018-2-10_17:0:45 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:0:47 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-10_17:0:47 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-10_17:0:47 <--> DL-Firehose Sahara mappings:
+2018-2-10_17:0:47 <--> DL-Firehose 2: amss.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 6: apps.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 8: dsp
+2018-2-10_17:0:47 <--> DL-Firehose 1.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 10: dbl.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 11: osbl.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 12: dsp2.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 16: efs1.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 17: efs2.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 20: efs3.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 21: sbl1.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 22: sbl2.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 23: rpm.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 25: tz.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 28: dsp3.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 29: acdb.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 30: wdt.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 31: mba.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-10_17:0:47 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-10_17:0:47 <--> DL-Firehose 17:00:46: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-10_17:0:47 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:0:47 <--> DL-Firehose 17:00:47: 127032 bytes transferred in 0.608000 seconds (0.1993MBps)
+2018-2-10_17:0:47 <--> DL-Firehose 17:00:47: File transferred successfully
+2018-2-10_17:0:47 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-10_17:0:47 <--> DL-Firehose well ** SUCCESS!!
+2018-2-10_17:0:47 <--> DL-Firehose 17:00:47: Sahara protocol completed
+2018-2-10_17:0:47 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-10_17:0:49 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-10_17:0:50 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-10_17:0:51 <--> Download rawprogram file ......
+2018-2-10_17:0:51 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-10_17:0:57 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-10_17:0:58 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-10_17:0:58 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-10_17:0:58 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-10_17:0:58 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-10_17:1:7 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-10_17:1:7 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-10_17:1:7 <--> DL-Rawprogram( 22.10% ),  percent files transferred  22.10% 
+2018-2-10_17:1:7 <--> DL-Rawprogram( 27.94% ),  percent files transferred  27.94% 
+2018-2-10_17:1:7 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-10_17:1:16 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-10_17:1:16 <--> DL-Rawprogram( 39.68% ),  percent files transferred  39.68% 
+2018-2-10_17:1:16 <--> DL-Rawprogram( 45.62% ),  percent files transferred  45.62% 
+2018-2-10_17:1:16 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-10_17:1:16 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 59.89% ),  percent files transferred  59.89% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 65.86% ),  percent files transferred  65.86% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 88.92% ),  percent files transferred  88.92% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 94.96% ),  percent files transferred  94.96% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-10_17:1:32 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-10_17:1:32 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-10_17:1:32 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-10_17:1:33 <--> PASS, FW download success.
+2018-2-10_17:28:36 <--> Download firehose file ......
+2018-2-10_17:28:36 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:30:7 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-10_17:30:7 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-10_17:30:7 <--> DL-Firehose Sahara mappings:
+2018-2-10_17:30:7 <--> DL-Firehose 2: amss.mbn
+2018-2-10_17:30:7 <--> DL-Firehose 6: apps.mbn
+2018-2-10_17:30:7 <--> DL-Firehose 8: dsp
+2018-2-10_17:30:7 <--> FAIL, DL_Firehose, Time out!
+2018-2-10_17:31:24 <--> Download firehose file ......
+2018-2-10_17:31:24 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:31:25 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-10_17:31:25 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-10_17:31:25 <--> DL-Firehose Sahara mappings:
+2018-2-10_17:31:25 <--> DL-Firehose 2: amss.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 6: apps.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 8: dsp
+2018-2-10_17:31:25 <--> DL-Firehose 1.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 10: dbl.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 11: osbl.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 12: dsp2.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 16: efs1.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 17: efs2.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 20: efs3.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 21: sbl1.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 22: sbl2.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 23: rpm.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 25: tz.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 28: dsp3.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 29: acdb.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 30: wdt.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 31: mba.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-10_17:31:25 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-10_17:31:25 <--> DL-Firehose 17:31:25: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-10_17:31:25 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:31:25 <--> DL-Firehose 17:31:25: 127032 bytes transferred in 0.141000 seconds (0.8592MBps)
+2018-2-10_17:31:25 <--> DL-Firehose 17:31:25: File transferred successfully
+2018-2-10_17:31:25 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-10_17:31:25 <--> DL-Firehose well ** SUCCESS!!
+2018-2-10_17:31:25 <--> DL-Firehose 17:31:25: Sahara protocol completed
+2018-2-10_17:31:25 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-10_17:31:27 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-10_17:31:28 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-10_17:31:29 <--> Download rawprogram file ......
+2018-2-10_17:31:29 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-10_17:31:35 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-10_17:31:36 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-10_17:31:36 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-10_17:31:36 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-10_17:31:36 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-10_17:31:45 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-10_17:31:45 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-10_17:31:45 <--> DL-Rawprogram( 21.86% ),  percent files transferred  21.86% 
+2018-2-10_17:31:45 <--> DL-Rawprogram( 27.76% ),  percent files transferred  27.76% 
+2018-2-10_17:31:45 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-10_17:31:54 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-10_17:31:54 <--> DL-Rawprogram( 39.73% ),  percent files transferred  39.73% 
+2018-2-10_17:31:54 <--> DL-Rawprogram( 45.71% ),  percent files transferred  45.71% 
+2018-2-10_17:31:54 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-10_17:31:54 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-10_17:32:9 <--> DL-Rawprogram( 59.89% ),  percent files transferred  59.89% 
+2018-2-10_17:32:9 <--> DL-Rawprogram( 65.91% ),  percent files transferred  65.91% 
+2018-2-10_17:32:9 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-10_17:32:9 <--> DL-Rawprogram( 88.41% ),  percent files transferred  88.41% 
+2018-2-10_17:32:9 <--> DL-Rawprogram( 94.46% ),  percent files transferred  94.46% 
+2018-2-10_17:32:10 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-10_17:32:10 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-10_17:32:10 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-10_17:32:10 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-10_17:32:11 <--> PASS, FW download success.
+2018-2-10_17:53:6 <--> Download firehose file ......
+2018-2-10_17:53:6 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM73 -s 13:"\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:53:7 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-10_17:53:7 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\unistrong\Desktop\Release_Multi
+2018-2-10_17:53:7 <--> DL-Firehose Sahara mappings:
+2018-2-10_17:53:7 <--> DL-Firehose 2: amss.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 6: apps.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 8: dsp
+2018-2-10_17:53:7 <--> DL-Firehose 1.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 10: dbl.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 11: osbl.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 12: dsp2.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 16: efs1.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 17: efs2.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 20: efs3.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 21: sbl1.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 22: sbl2.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 23: rpm.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 25: tz.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 28: dsp3.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 29: acdb.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 30: wdt.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 31: mba.mbn
+2018-2-10_17:53:7 <--> DL-Firehose 13: \\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX
+2018-2-10_17:53:7 <--> DL-Firehose \EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-10_17:53:8 <--> DL-Firehose 17:53:07: Requested ID 13, file: "\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehos
+2018-2-10_17:53:8 <--> DL-Firehose e\prog_nand_firehose_9x07.mbn"
+2018-2-10_17:53:8 <--> DL-Firehose 17:53:07: 127032 bytes transferred in 0.156000 seconds (0.7766MBps)
+2018-2-10_17:53:8 <--> DL-Firehose 17:53:07: File transferred successfully
+2018-2-10_17:53:8 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is 
+2018-2-10_17:53:8 <--> DL-Firehose well ** SUCCESS!!
+2018-2-10_17:53:8 <--> DL-Firehose 17:53:07: Sahara protocol completed
+2018-2-10_17:53:8 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-10_17:53:9 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-10_17:53:10 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-10_17:53:11 <--> Download rawprogram file ......
+2018-2-10_17:53:11 <--> cmd.exe /c C:\Users\unistrong\Desktop\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM73 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="\\192.168.67.7\Unistrong\weizhexuan\work\EC20_OPENLINUX\EC20_R2.0_QuecOpen\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-10_17:53:17 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-10_17:53:18 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-10_17:53:18 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-10_17:53:18 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-10_17:53:18 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-10_17:53:27 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-10_17:53:27 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-10_17:53:27 <--> DL-Rawprogram( 22.11% ),  percent files transferred  22.11% 
+2018-2-10_17:53:27 <--> DL-Rawprogram( 27.77% ),  percent files transferred  27.77% 
+2018-2-10_17:53:27 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-10_17:53:36 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-10_17:53:36 <--> DL-Rawprogram( 39.70% ),  percent files transferred  39.70% 
+2018-2-10_17:53:36 <--> DL-Rawprogram( 45.64% ),  percent files transferred  45.64% 
+2018-2-10_17:53:36 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-10_17:53:36 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 59.89% ),  percent files transferred  59.89% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 65.85% ),  percent files transferred  65.85% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 88.96% ),  percent files transferred  88.96% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 94.96% ),  percent files transferred  94.96% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-10_17:53:52 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-10_17:53:52 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-10_17:53:53 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-10_17:53:53 <--> PASS, FW download success.
+2018-2-24_11:20:49 <--> Download firehose file ......
+2018-2-24_11:20:49 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-24_11:20:50 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-24_11:20:50 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi
+2018-2-24_11:20:50 <--> DL-Firehose Sahara mappings:
+2018-2-24_11:20:50 <--> DL-Firehose 2: a
+2018-2-24_11:20:50 <--> DL-Firehose mss.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 6: apps.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 8: dsp1.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 10: dbl.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 11: osbl.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 12: dsp2.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 16: efs1.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 17: efs2.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 20: efs3.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 21: sbl1.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 22: sbl2.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 23: rpm.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 25: tz.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 28: dsp3.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 29: acdb.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 30: wdt.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 31: mba.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 13: C:\Users\Administrator\Desk
+2018-2-24_11:20:50 <--> DL-Firehose top\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-24_11:20:50 <--> DL-Firehose 11:20:50: Requested ID 13, file: "C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-24_11:20:50 <--> DL-Firehose 11:20:
+2018-2-24_11:20:50 <--> DL-Firehose 50: 127032 bytes transferred in 0.047000 seconds (2.5776MBps)
+2018-2-24_11:20:50 <--> DL-Firehose 11:20:50: File transferred successfully
+2018-2-24_11:20:50 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is well ** SUCCESS!!
+2018-2-24_11:20:50 <--> DL-Firehose 11:20:50: Sahara 
+2018-2-24_11:20:51 <--> DL-Firehose protocol completed
+2018-2-24_11:20:51 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-24_11:20:52 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-24_11:20:53 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-24_11:20:54 <--> Download rawprogram file ......
+2018-2-24_11:20:54 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM6 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-24_11:21:1 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-24_11:21:2 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-24_11:21:2 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-24_11:21:2 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-24_11:21:2 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 16.14% ),  percent files transferred  16.14% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 21.60% ),  percent files transferred  21.60% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 27.08% ),  percent files transferred  27.08% 
+2018-2-24_11:21:12 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 39.41% ),  percent files transferred  39.41% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 44.85% ),  percent files transferred  44.85% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 50.34% ),  percent files transferred  50.34% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-24_11:21:25 <--> DL-Rawprogram( 59.54% ),  percent files transferred  59.54% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 65.04% ),  percent files transferred  65.04% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 70.57% ),  percent files transferred  70.57% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 76.07% ),  percent files transferred  76.07% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 82.49% ),  percent files transferred  82.49% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 88.01% ),  percent files transferred  88.01% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 99.08% ),  percent files transferred  99.08% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-24_11:21:38 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-24_11:21:38 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-24_11:21:39 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-24_11:21:40 <--> PASS, FW download success.
+2018-2-25_16:55:54 <--> Download firehose file ......
+2018-2-25_16:55:54 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_16:57:25 <--> Download firehose file ......
+2018-2-25_16:57:25 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:1:2 <--> Download firehose file ......
+2018-2-25_17:1:2 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:5:3 <--> Download firehose file ......
+2018-2-25_17:5:3 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:5:3 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-25_17:5:3 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi
+2018-2-25_17:5:3 <--> DL-Firehose Sahara mappings:
+2018-2-25_17:5:4 <--> DL-Firehose 2: a
+2018-2-25_17:5:4 <--> DL-Firehose mss.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 6: apps.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 8: dsp1.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 10: dbl.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 11: osbl.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 12: dsp2.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 16: efs1.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 17: efs2.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 20: efs3.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 21: sbl1.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 22: sbl2.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 23: rpm.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 25: tz.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 28: dsp3.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 29: acdb.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 30: wdt.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 31: mba.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 13: C:\Users\Administrator\Desk
+2018-2-25_17:5:4 <--> DL-Firehose top\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-25_17:5:4 <--> DL-Firehose 17:05:03: Requested ID 13, file: "C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:5:4 <--> DL-Firehose 17:05:
+2018-2-25_17:5:4 <--> DL-Firehose 03: 127032 bytes transferred in 0.109000 seconds (1.1114MBps)
+2018-2-25_17:5:4 <--> DL-Firehose 17:05:03: File transferred successfully
+2018-2-25_17:5:4 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is well ** SUCCESS!!
+2018-2-25_17:5:4 <--> DL-Firehose 17:05:03: Sahara 
+2018-2-25_17:5:4 <--> DL-Firehose protocol completed
+2018-2-25_17:5:4 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-25_17:5:5 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-25_17:5:6 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-25_17:5:8 <--> Download rawprogram file ......
+2018-2-25_17:5:8 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM6 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-25_17:5:13 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-25_17:5:15 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-25_17:5:15 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-25_17:5:15 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-2-25_17:5:15 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 16.12% ),  percent files transferred  16.12% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 21.57% ),  percent files transferred  21.57% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 26.92% ),  percent files transferred  26.92% 
+2018-2-25_17:5:25 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 39.37% ),  percent files transferred  39.37% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 50.27% ),  percent files transferred  50.27% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-2-25_17:5:40 <--> DL-Rawprogram( 59.50% ),  percent files transferred  59.50% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 70.27% ),  percent files transferred  70.27% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 75.67% ),  percent files transferred  75.67% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 82.46% ),  percent files transferred  82.46% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 87.90% ),  percent files transferred  87.90% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 93.32% ),  percent files transferred  93.32% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 98.76% ),  percent files transferred  98.76% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-25_17:5:51 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-25_17:5:52 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-25_17:5:52 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-25_17:5:53 <--> PASS, FW download success.
+2018-2-25_17:31:48 <--> Download firehose file ......
+2018-2-25_17:31:48 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:31:49 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-2-25_17:31:49 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi
+2018-2-25_17:31:49 <--> DL-Firehose Sahara mappings:
+2018-2-25_17:31:49 <--> DL-Firehose 2: a
+2018-2-25_17:31:49 <--> DL-Firehose mss.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 6: apps.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 8: dsp1.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 10: dbl.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 11: osbl.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 12: dsp2.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 16: efs1.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 17: efs2.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 20: efs3.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 21: sbl1.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 22: sbl2.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 23: rpm.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 25: tz.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 28: dsp3.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 29: acdb.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 30: wdt.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 31: mba.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 13: C:\Users\Administrator\Desk
+2018-2-25_17:31:49 <--> DL-Firehose top\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-2-25_17:31:49 <--> DL-Firehose 17:31:49: Requested ID 13, file: "C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-2-25_17:31:49 <--> DL-Firehose 17:31:
+2018-2-25_17:31:49 <--> DL-Firehose 49: 127032 bytes transferred in 0.062000 seconds (1.9540MBps)
+2018-2-25_17:31:49 <--> DL-Firehose 17:31:49: File transferred successfully
+2018-2-25_17:31:49 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is well ** SUCCESS!!
+2018-2-25_17:31:49 <--> DL-Firehose 17:31:49: Sahara 
+2018-2-25_17:31:49 <--> DL-Firehose protocol completed
+2018-2-25_17:31:49 <--> DL-Firehose, wait for 3 seconds ......
+2018-2-25_17:31:51 <--> DL-Firehose, wait for 2 seconds ......
+2018-2-25_17:31:52 <--> DL-Firehose, wait for 1 seconds ......
+2018-2-25_17:31:53 <--> Download rawprogram file ......
+2018-2-25_17:31:53 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM6 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="C:\Users\Administrator\Desktop\wzx\E9633\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-2-25_17:31:59 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-2-25_17:32:0 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-2-25_17:32:0 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-2-25_17:32:0 <--> DL-Rawprogram( 0.54% ),  percent files transferred   0.54% 
+2018-2-25_17:32:0 <--> DL-Rawprogram( 3.00% ),  percent files transferred   3.00% 
+2018-2-25_17:32:10 <--> DL-Rawprogram( 5.46% ),  percent files transferred   5.46% 
+2018-2-25_17:32:10 <--> DL-Rawprogram( 10.37% ),  percent files transferred  10.37% 
+2018-2-25_17:32:10 <--> DL-Rawprogram( 15.83% ),  percent files transferred  15.83% 
+2018-2-25_17:32:10 <--> DL-Rawprogram( 21.25% ),  percent files transferred  21.25% 
+2018-2-25_17:32:10 <--> DL-Rawprogram( 28.81% ),  percent files transferred  28.81% 
+2018-2-25_17:32:23 <--> DL-Rawprogram( 33.72% ),  percent files transferred  33.72% 
+2018-2-25_17:32:23 <--> DL-Rawprogram( 44.50% ),  percent files transferred  44.50% 
+2018-2-25_17:32:23 <--> DL-Rawprogram( 49.88% ),  percent files transferred  49.88% 
+2018-2-25_17:32:23 <--> DL-Rawprogram( 52.16% ),  percent files transferred  52.16% 
+2018-2-25_17:32:23 <--> DL-Rawprogram( 53.91% ),  percent files transferred  53.91% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 64.67% ),  percent files transferred  64.67% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 70.06% ),  percent files transferred  70.06% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 76.91% ),  percent files transferred  76.91% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 82.31% ),  percent files transferred  82.31% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 87.71% ),  percent files transferred  87.71% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 93.10% ),  percent files transferred  93.10% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 98.49% ),  percent files transferred  98.49% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-2-25_17:32:37 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-2-25_17:32:37 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-2-25_17:32:38 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-2-25_17:32:38 <--> PASS, FW download success.
+2018-3-5_14:34:58 <--> Download firehose file ......
+2018-3-5_14:34:58 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\EC20\Release_Multi\QCMM\CH1\QSaharaServer.exe -p \\.\COM6 -s 13:"C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn"
+2018-3-5_14:34:59 <--> DL-Firehose Binary build date: Oct 31 2016 @ 22:51:05
+2018-3-5_14:34:59 <--> DL-Firehose QSAHARASERVER CALLED LIKE THIS: 'C:\Users\Administrator\Desktop\wzx\E9633\EC20\Release_Multi\QCMM\CH1\QSaharaServer.ex'Current working dir: C:\Users\Administrator\Desktop\wzx\E9633\EC20\Release_Multi
+2018-3-5_14:34:59 <--> DL-Firehose Sahara mappi
+2018-3-5_14:34:59 <--> DL-Firehose ngs:
+2018-3-5_14:34:59 <--> DL-Firehose 2: amss.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 6: apps.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 8: dsp1.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 10: dbl.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 11: osbl.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 12: dsp2.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 16: efs1.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 17: efs2.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 20: efs3.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 21: sbl1.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 22: sbl2.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 23: rpm.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 25: tz.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 28: dsp3.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 29: acdb.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 30: wdt.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 31: mba.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 13: C:\Users\Administ
+2018-3-5_14:34:59 <--> DL-Firehose rator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose_9x07.mbn
+2018-3-5_14:34:59 <--> DL-Firehose 14:34:59: Requested ID 13, file: "C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose\prog_nand_firehose
+2018-3-5_14:35:0 <--> DL-Firehose _9x07.mbn"
+2018-3-5_14:35:0 <--> DL-Firehose 14:34:59: 127032 bytes transferred in 0.047000 seconds (2.5776MBps)
+2018-3-5_14:35:0 <--> DL-Firehose 14:34:59: File transferred successfully
+2018-3-5_14:35:0 <--> DL-Firehose NOTE: Target requested image 13 which is DeviceProgrammer. Forcing QUIT. This is by design, ** All is well ** SUCCESS!!
+2018-3-5_14:35:0 <--> DL-Firehose 14:34:59: Sahara protocol completed
+2018-3-5_14:35:0 <--> DL-Firehose, wait for 3 seconds ......
+2018-3-5_14:35:1 <--> DL-Firehose, wait for 2 seconds ......
+2018-3-5_14:35:2 <--> DL-Firehose, wait for 1 seconds ......
+2018-3-5_14:35:3 <--> Download rawprogram file ......
+2018-3-5_14:35:3 <--> cmd.exe /c C:\Users\Administrator\Desktop\wzx\E9633\EC20\Release_Multi\QCMM\CH1\fh_loader.exe --port=\\.\COM6 --sendxml=rawprogram_nand_p4K_b256K.xml --search_path="C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\firehose" --noprompt --showpercentagecomplete --zlpawarehost=1 --memoryname=eMMC
+2018-3-5_14:35:9 <--> DL-Rawprogram( 0.01% ),  percent files transferred   0.01% 
+2018-3-5_14:35:10 <--> DL-Rawprogram( 0.25% ),  percent files transferred   0.25% 
+2018-3-5_14:35:10 <--> DL-Rawprogram( 0.32% ),  percent files transferred   0.32% 
+2018-3-5_14:35:10 <--> DL-Rawprogram( 0.53% ),  percent files transferred   0.53% 
+2018-3-5_14:35:10 <--> DL-Rawprogram( 3.17% ),  percent files transferred   3.17% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 5.80% ),  percent files transferred   5.80% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 10.68% ),  percent files transferred  10.68% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 16.17% ),  percent files transferred  16.17% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 21.59% ),  percent files transferred  21.59% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 27.03% ),  percent files transferred  27.03% 
+2018-3-5_14:35:20 <--> DL-Rawprogram( 29.06% ),  percent files transferred  29.06% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 33.95% ),  percent files transferred  33.95% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 39.40% ),  percent files transferred  39.40% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 44.87% ),  percent files transferred  44.87% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 50.29% ),  percent files transferred  50.29% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 52.33% ),  percent files transferred  52.33% 
+2018-3-5_14:35:32 <--> DL-Rawprogram( 54.07% ),  percent files transferred  54.07% 
+2018-3-5_14:35:46 <--> DL-Rawprogram( 64.99% ),  percent files transferred  64.99% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 70.43% ),  percent files transferred  70.43% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 75.91% ),  percent files transferred  75.91% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 76.99% ),  percent files transferred  76.99% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 82.48% ),  percent files transferred  82.48% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 87.97% ),  percent files transferred  87.97% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 93.47% ),  percent files transferred  93.47% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 99.00% ),  percent files transferred  99.00% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 99.90% ),  percent files transferred  99.90% 
+2018-3-5_14:35:47 <--> DL-Rawprogram( 100.00% ),  percent files transferred 100.00% 
+2018-3-5_14:35:47 <--> DL-Rawprogram, wait for 1 seconds ......
+2018-3-5_14:35:48 <--> DL-Rawprogram, wait for 0 seconds ......
+2018-3-5_14:35:48 <--> PASS, FW download success.
+2018-3-5_14:41:10 <--> Open com port 40......
+2018-3-5_14:41:10 <--> Detect and DL SA ......
+2018-3-5_14:41:24 <--> SA download start auto
+2018-3-5_14:41:24 <--> DL SA NORM
+2018-3-5_14:41:24 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-5_14:41:28 <--> SA download re-start
+2018-3-5_14:41:28 <--> DL Norm Switching ......
+2018-3-5_14:41:36 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-5_14:41:36 <--> Download partition table file finished
+2018-3-5_14:56:50 <--> PASS, FW upgrade success.
+2018-3-5_14:59:38 <--> Open com port 40......
+2018-3-5_14:59:38 <--> Detect and DL SA ......
+2018-3-5_14:59:52 <--> SA download start auto
+2018-3-5_14:59:52 <--> DL SA NORM
+2018-3-5_14:59:52 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-5_14:59:56 <--> SA download re-start
+2018-3-5_14:59:56 <--> DL Norm Switching ......
+2018-3-5_15:0:4 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-5_15:0:4 <--> Download partition table file finished
+2018-3-5_15:14:51 <--> PASS, FW upgrade success.
+2018-3-5_16:58:36 <--> Open com port 40......
+2018-3-5_16:58:40 <--> Detect and DL SA ......
+2018-3-5_16:58:58 <--> SA download start auto
+2018-3-5_16:58:58 <--> DL SA NORM
+2018-3-5_16:58:58 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-5_16:59:2 <--> SA download re-start
+2018-3-5_16:59:2 <--> DL Norm Switching ......
+2018-3-5_16:59:10 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-5_16:59:10 <--> Download partition table file finished
+2018-3-5_17:15:56 <--> PASS, FW upgrade success.
+2018-3-7_10:33:11 <--> Open com port 40......
+2018-3-7_10:33:11 <--> Detect and DL SA ......
+2018-3-7_10:33:25 <--> SA download start auto
+2018-3-7_10:33:25 <--> DL SA NORM
+2018-3-7_10:33:25 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-7_10:33:29 <--> SA download re-start
+2018-3-7_10:33:29 <--> DL Norm Switching ......
+2018-3-7_10:33:37 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-7_10:33:37 <--> Download partition table file finished
+2018-3-7_10:51:8 <--> PASS, FW upgrade success.
+2018-3-7_11:56:6 <--> Open com port 40......
+2018-3-7_11:56:6 <--> Detect and DL SA ......
+2018-3-7_11:56:20 <--> SA download start auto
+2018-3-7_11:56:20 <--> DL SA NORM
+2018-3-7_11:56:20 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-7_11:56:24 <--> SA download re-start
+2018-3-7_11:56:24 <--> DL Norm Switching ......
+2018-3-7_11:56:32 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-7_11:56:32 <--> Download partition table file finished
+2018-3-7_12:12:41 <--> PASS, FW upgrade success.
+2018-3-7_12:20:30 <--> Open com port 40......
+2018-3-7_12:20:30 <--> Detect and DL SA ......
+2018-3-7_12:20:44 <--> SA download start auto
+2018-3-7_12:20:44 <--> DL SA NORM
+2018-3-7_12:20:44 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-7_12:20:48 <--> SA download re-start
+2018-3-7_12:20:48 <--> DL Norm Switching ......
+2018-3-7_12:20:56 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-7_12:20:56 <--> Download partition table file finished
+2018-3-7_12:36:38 <--> PASS, FW upgrade success.
+2018-3-7_18:15:40 <--> Open com port 40......
+2018-3-7_20:46:54 <--> Open com port 40......
+2018-3-7_20:47:49 <--> Open com port 40......
+2018-3-7_20:48:1 <--> Open com port 40......
+2018-3-7_20:48:37 <--> Open com port 40......
+2018-3-7_20:52:58 <--> Open com port 40......
+2018-3-7_20:54:36 <--> Detect and DL SA ......
+2018-3-7_20:55:0 <--> FAIL, Ping_DLoad_Port_MDM9x07 timeout
+2018-3-7_20:56:5 <--> Open com port 40......
+2018-3-7_20:57:46 <--> Detect and DL SA ......
+2018-3-7_20:58:10 <--> FAIL, Ping_DLoad_Port_MDM9x07 timeout
+2018-3-7_21:4:23 <--> Open com port 40......
+2018-3-7_21:5:0 <--> Detect and DL SA ......
+2018-3-8_10:43:7 <--> Open com port 40......
+2018-3-8_10:43:7 <--> Detect and DL SA ......
+2018-3-8_10:43:21 <--> SA download start auto
+2018-3-8_10:43:21 <--> DL SA NORM
+2018-3-8_10:43:21 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-8_10:43:25 <--> SA download re-start
+2018-3-8_10:43:25 <--> DL Norm Switching ......
+2018-3-8_10:43:33 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-8_10:43:33 <--> Download partition table file finished
+2018-3-8_11:0:55 <--> PASS, FW upgrade success.
+2018-3-8_11:21:7 <--> Open com port 40......
+2018-3-8_11:22:35 <--> Open com port 40......
+2018-3-8_11:45:27 <--> Open com port 40......
+2018-3-8_11:45:27 <--> Detect and DL SA ......
+2018-3-8_11:45:31 <--> ERROR, Status(0) no defined!
+2018-3-8_17:58:58 <--> Open com port 40......
+2018-3-8_17:58:58 <--> Detect and DL SA ......
+2018-3-8_17:59:12 <--> SA download start auto
+2018-3-8_17:59:12 <--> DL SA NORM
+2018-3-8_17:59:12 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-8_17:59:16 <--> SA download re-start
+2018-3-8_17:59:16 <--> DL Norm Switching ......
+2018-3-8_17:59:24 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-8_17:59:29 <--> Download partition table file finished
+2018-3-8_18:15:37 <--> PASS, FW upgrade success.
+2018-3-8_19:1:11 <--> Open com port 40......
+2018-3-8_19:1:11 <--> Detect and DL SA ......
+2018-3-8_19:1:25 <--> SA download start auto
+2018-3-8_19:1:25 <--> DL SA NORM
+2018-3-8_19:1:25 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-8_19:1:29 <--> SA download re-start
+2018-3-8_19:1:29 <--> DL Norm Switching ......
+2018-3-8_19:1:37 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-8_19:1:42 <--> Download partition table file finished
+2018-3-8_19:18:8 <--> PASS, FW upgrade success.
+2018-3-8_19:34:0 <--> Open com port 40......
+2018-3-8_19:34:0 <--> Detect and DL SA ......
+2018-3-8_19:34:4 <--> ERROR, Status(0) no defined!
+2018-3-8_19:34:6 <--> Open com port 40......
+2018-3-8_19:34:6 <--> Detect and DL SA ......
+2018-3-8_19:34:20 <--> SA download start auto
+2018-3-8_19:34:20 <--> DL SA NORM
+2018-3-8_19:34:20 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-8_19:34:24 <--> SA download re-start
+2018-3-8_19:34:24 <--> DL Norm Switching ......
+2018-3-8_19:34:32 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-8_19:34:37 <--> Download partition table file finished
+2018-3-8_19:51:14 <--> PASS, FW upgrade success.
+2018-3-8_20:31:43 <--> Open com port 40......
+2018-3-8_20:31:43 <--> Detect and DL SA ......
+2018-3-8_20:31:43 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-8_20:31:47 <--> SA download re-start
+2018-3-8_20:31:47 <--> DL Emerg Switching ......
+2018-3-8_20:31:56 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-8_20:32:0 <--> Download partition table file finished
+2018-3-8_20:48:15 <--> PASS, FW upgrade success.
+2018-3-14_14:30:34 <--> Open com port 40......
+2018-3-14_14:30:34 <--> Detect and DL SA ......
+2018-3-14_14:30:48 <--> SA download start auto
+2018-3-14_14:30:48 <--> DL SA NORM
+2018-3-14_14:30:48 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-14_14:30:52 <--> SA download re-start
+2018-3-14_14:30:52 <--> DL Norm Switching ......
+2018-3-14_14:31:0 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-14_14:31:0 <--> Download partition table file finished
+2018-3-14_14:36:43 <--> FAIL, Send_Mbn_Pkt_Data_V3 timeout [Send_Mbn_Pkt_Data_V3]
+2018-3-14_14:40:24 <--> Open com port 40......
+2018-3-14_14:40:24 <--> Detect and DL SA ......
+2018-3-14_14:40:24 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-14_14:40:28 <--> SA download re-start
+2018-3-14_14:40:28 <--> DL Emerg Switching ......
+2018-3-14_14:40:36 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-14_14:40:36 <--> Download partition table file finished
+2018-3-14_14:56:13 <--> PASS, FW upgrade success.
+2018-3-14_15:14:3 <--> Open com port 40......
+2018-3-14_15:14:3 <--> Detect and DL SA ......
+2018-3-14_15:14:17 <--> SA download start auto
+2018-3-14_15:14:17 <--> DL SA NORM
+2018-3-14_15:14:17 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-14_15:14:21 <--> SA download re-start
+2018-3-14_15:14:21 <--> DL Norm Switching ......
+2018-3-14_15:14:29 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-14_15:14:29 <--> Download partition table file finished
+2018-3-14_15:22:39 <--> FAIL, Send_Mbn_Pkt_Data_V3 timeout [Send_Mbn_Pkt_Data_V3]
+2018-3-14_15:27:55 <--> Open com port 40......
+2018-3-14_15:27:55 <--> Detect and DL SA ......
+2018-3-14_15:27:55 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-14_15:28:0 <--> SA download re-start
+2018-3-14_15:28:0 <--> DL Emerg Switching ......
+2018-3-14_15:28:8 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-14_15:28:8 <--> Download partition table file finished
+2018-3-14_15:45:31 <--> PASS, FW upgrade success.
+2018-3-14_17:22:45 <--> Open com port 40......
+2018-3-14_17:22:45 <--> Detect and DL SA ......
+2018-3-14_17:22:59 <--> SA download start auto
+2018-3-14_17:22:59 <--> DL SA NORM
+2018-3-14_17:22:59 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\NPRG9x07.mbn
+2018-3-14_17:23:3 <--> SA download re-start
+2018-3-14_17:23:3 <--> DL Norm Switching ......
+2018-3-14_17:23:11 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A01M4G_OCPU_BETA0103\update\partition.mbn
+2018-3-14_17:23:16 <--> Download partition table file finished
+2018-3-14_17:39:34 <--> PASS, FW upgrade success.
+2018-3-14_19:17:4 <--> Open com port 40......
+2018-3-14_19:17:4 <--> Detect and DL SA ......
+2018-3-14_19:17:18 <--> SA download start auto
+2018-3-14_19:17:18 <--> DL SA NORM
+2018-3-14_19:17:18 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\NPRG9x07.mbn
+2018-3-14_19:17:23 <--> SA download re-start
+2018-3-14_19:17:23 <--> DL Norm Switching ......
+2018-3-14_19:17:31 <--> C:\Users\Administrator\Desktop\wzx\E9633\EC20\EC20CEFAGR06A05M4G\update\partition.mbn
+2018-3-14_19:17:35 <--> Download partition table file finished
+2018-3-14_19:33:3 <--> PASS, FW upgrade success.

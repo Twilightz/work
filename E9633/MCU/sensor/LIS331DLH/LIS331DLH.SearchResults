@@ -1,0 +1,4 @@
+---- lis331dlh_block_data_update_set Matches (3 in 3 files) ----
+Lis331dlh_reg.c (d:\lis331dlh_stdc\lis331dlh_stdc\driver):int32_t lis331dlh_block_data_update_set(lis331dlh_ctx_t *ctx, uint8_t val)
+Lis331dlh_reg.h (d:\lis331dlh_stdc\lis331dlh_stdc\driver):int32_t lis331dlh_block_data_update_set(lis331dlh_ctx_t *ctx, uint8_t val);
+Read_data_simple.c (d:\lis331dlh_stdc\lis331dlh_stdc\example):  lis331dlh_block_data_update_set(&dev_ctx, PROPERTY_ENABLE);

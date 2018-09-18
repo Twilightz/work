@@ -1,0 +1,148 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2013, 合众思壮西安研发中心
+*
+*  项目名称：xxxx
+*  
+*  文件名称: xxxx.c
+*
+*  文件描述：xxxx
+*             
+*             
+*  创 建 者: 皇海明
+*
+*  创建日期：2013-03-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+#include "shell.h"
+#include "GPIO.h"
+
+/*
+********************************************************************************
+*  函数名称: GPIO_Configuration
+*
+*  功能描述: gpio 初始化
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void GPIO_Configuration(void) 
+{   
+    GPIO_InitTypeDef GPIO_InitStructure;
+   
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;   
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+		
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;   
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOA, GPIO_Pin_11);		
+	
+	  #if 0
+	  //EC20 睡眠唤醒   
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOB, GPIO_Pin_1);
+	  #endif
+	 	//4G ENABLE
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOA, GPIO_Pin_12);	
+
+   	//MPU_PWRKEY
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOB, GPIO_Pin_0);	
+		
+		//MPU_RESET
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_5);
+		
+	
+   	//使能G-SENSOR
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+		GPIO_SetBits(GPIOA, GPIO_Pin_6);
+	 
+
+	  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+		GPIO_ResetBits(GPIOC, GPIO_Pin_7);
+		
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;   
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+		
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;   
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+		
+		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;  
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+		GPIO_SetBits(GPIOD, GPIO_Pin_2);
+	
+}
+
+
+void radar_in_test(void)
+{
+	   u8 status;
+		 RTU_DEBUG("RADAR_IN test!\r\n");
+		 status = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_12);
+		 RTU_DEBUG("status=%d!\r\n",status);
+		 if(status == Bit_SET)
+		 {								
+					RTU_DEBUG("RADAR_IN test  OK!\r\n");
+		 }		
+}
+
+void mileage_test(void)
+{
+	   u8 status;
+		 RTU_DEBUG("mileage_test!\r\n");
+		 status = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_15);
+		 RTU_DEBUG("status=%d!\r\n",status);
+		 if(status == Bit_SET)
+		 {								
+					RTU_DEBUG("mileage_test  OK!\r\n");
+		 }		
+}

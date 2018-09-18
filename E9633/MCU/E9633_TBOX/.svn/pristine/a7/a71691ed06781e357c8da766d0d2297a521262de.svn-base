@@ -1,0 +1,347 @@
+/*
+********************************************************************************
+*  Copyright (C), 2009-2012, 合众思壮深圳研发中心
+*
+*  项目名称：E9624
+*  
+*  文件名称: Main.c
+*
+*  文件描述：E9624主函数main
+*             
+*             
+*  创 建 者: zengxf
+*
+*  创建日期：2015-09-18 
+*
+*  版 本 号：V1.0
+*
+*  修改记录： 
+*             
+*      1. 日    期： 
+*         修 改 人： 
+*         所作修改： 
+*      2. ...
+********************************************************************************
+*/
+
+#include "Can.h"
+#include "bsp.h"
+#include "Adc.h"
+#include "Exti.h"
+#include "main.h"
+#include "Flash.h"
+#include "Timer.h"
+#include "Shell.h"
+#include "Delay.h"
+#include "bsp_iwdg.h"
+#include "GPIODrv.h"
+#include "SysTick.h"
+#include "CipherFunc.h"
+#include "UartProcess.h"
+#include "I2C.h"
+#include "MPU_power.h"
+#include "lis331dlh_driver.h"
+
+
+
+/*
+********************************************************************************                                                                  
+*  内部函数声明                                                                                                        
+********************************************************************************
+*/
+extern uint8_t EC20Status;
+extern WORK_MODE_T work_mode;
+extern CHANNEL_TYPE_T channel;
+void bandrateinit(void);
+void  AppInit(void);
+/*
+********************************************************************************                                                                  
+*  外部函数声明                                                                                                        
+********************************************************************************
+*/
+ 
+/*
+********************************************************************************                                                                 
+*  内部变量定义                                                                                                         
+********************************************************************************
+*/
+
+/*
+********************************************************************************
+*  函数名称: main
+*
+*  功能描述: 主函数，应用程序入口
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+int main(void)
+{
+    u8 tmp;
+	  AxesRaw_t data;
+    AppInit();
+    while(1)
+    {
+			  #if 0
+			  DelayMS(1000);
+			  LIS331DLH_GetAccAxesRaw(&data);
+				RTU_DEBUG("TIM4_IRQHandler: data.AXIS_X=%d,data.AXIS_Y=%d,data.AXIS_Z=%d!\r\n",data.AXIS_X,data.AXIS_Y,data.AXIS_Z);
+        lis331dlh_Get_Angle(data.AXIS_X,data.AXIS_Y,data.AXIS_Z,1);
+			  
+        DelayMS(1000);
+			  ADC_SAMPLING(ADC_Channel_1);
+			  #endif
+        while(ComxGetChar(&COM2, &tmp))
+			  {	
+			  	  UART2_Data_Pro(tmp);
+			  }
+				switch(work_mode)
+			  {
+						case CAN_MODE:
+						    if(channel == CAN_CHANNEL_1)
+                {	
+									  RTU_DEBUG("CAN_MODE:CAN_CHANNEL_1 receive\r\n");
+										CanToUtcp(1, &Can1, &COM2);
+								}
+								else if(channel == CAN_CHANNEL_2)
+								{
+									  RTU_DEBUG("CAN_MODE:CAN_CHANNEL_2 receive\r\n");
+										CanToUtcp(2, &Can2, &COM2);
+								}
+								break;
+	
+					 case OBD_MODE:
+								if(channel == CAN_CHANNEL_1)
+                {
+									  RTU_DEBUG("OBD_MODE:CAN_CHANNEL_1 receive\r\n");
+									  OBD_ReceiveMessages(1, &Can1, &COM2);
+								}
+								else if(channel == CAN_CHANNEL_2)
+								{
+									  RTU_DEBUG("OBD_MODE:CAN_CHANNEL_2 receive\r\n");
+									  OBD_ReceiveMessages(2, &Can2, &COM2);
+								}
+								break;
+					case J1939_MODE:
+							  if(channel == CAN_CHANNEL_1)
+                {
+									  RTU_DEBUG("J1939_MODE:CAN_CHANNEL_1 receive\r\n");
+										J1939_ReceiveMessages(1, &Can1, &COM2);
+								}
+								else if(channel == CAN_CHANNEL_2)
+								{
+									  RTU_DEBUG("J1939_MODE:CAN_CHANNEL_2 receive\r\n");
+									  J1939_ReceiveMessages(2, &Can2, &COM2);
+								}
+								break;
+				 case COMMAND_MODE:
+								break;
+							
+					}
+				IWDG_Feed();
+    }
+}
+/*
+********************************************************************************
+*  函数名称: bandrateinit
+*
+*  功能描述: 初始化UART、CAN速率
+*            
+*
+*  输入参数: 无
+*
+*  输出参数: 无
+*
+*  返 回 值: 无
+*
+********************************************************************************
+*/
+void bandrateinit(void)
+{
+	  u16 bandrate;
+	  
+	  MemReadData(PAGE_ADDR,&bandrate,1);
+		if(bandrate == 0x9600)
+		{
+			 RTU_DEBUG("Init UartBandrate 9600\r\n");
+			 Com2Init(&COM2, 9600, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x1920)
+		{
+			 RTU_DEBUG("Init UartBandrate 19200\r\n");
+			 Com2Init(&COM2, 19200, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x5760)
+		{
+			 RTU_DEBUG("Init UartBandrate 57600\r\n");
+			 Com2Init(&COM2, 57600, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x1152)
+		{
+			 RTU_DEBUG("Init UartBandrate 115200\r\n");
+			 Com2Init(&COM2, 115200, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x2304)
+		{
+			 RTU_DEBUG("Init UartBandrate 230400\r\n");
+			 Com2Init(&COM2, 230400, COM_PARA_8N1);
+		}
+		else if(bandrate == 0x4608)
+		{
+			 RTU_DEBUG("Init UartBandrate 460800\r\n");
+			 Com2Init(&COM2, 460800, COM_PARA_8N1);
+		}
+		else
+		{
+			 RTU_DEBUG("Init UartBandrate 115200\r\n");
+			 Com2Init(&COM2, 115200, COM_PARA_8N1);
+		}
+
+		MemReadData(PAGE_ADDR+8,&bandrate,1);
+		RTU_DEBUG("bandrate=%x\r\n",bandrate);
+		switch(bandrate)
+		{
+				case 0x1503:   //channel 1->can mode :500k
+					  RTU_DEBUG("channel 1->can mode :500k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = CAN_MODE;
+					  CAN1Init(&Can1, CANX_BAUD_500K,1);
+				    CAN2Init(&Can2, CANX_BAUD_500K,1);
+					  break;
+				case 0x2503:   //channel 2->can mode :500k
+					  RTU_DEBUG("channel 2->can mode :500k\r\n");
+				    channel = CAN_CHANNEL_2;
+				    work_mode = CAN_MODE;
+				    CAN1Init(&Can1, CANX_BAUD_500K,1);
+					  CAN2Init(&Can2, CANX_BAUD_500K,1);
+					  break;
+				case 0x1253:   //channel 1->can mode :250k
+					  RTU_DEBUG("channel 1->can mode :250k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = CAN_MODE;
+					  CAN1Init(&Can1, CANX_BAUD_250K,1);
+				    CAN2Init(&Can2, CANX_BAUD_250K,1);
+					  break;
+				case 0x2253:   //channel 2->:can mode :250k
+					  RTU_DEBUG("channel 2->can mode :250k\r\n");
+				    channel = CAN_CHANNEL_2;
+				    work_mode = CAN_MODE;
+				    CAN1Init(&Can1, CANX_BAUD_250K,1);
+					  CAN2Init(&Can2, CANX_BAUD_250K,1);
+					  break;
+			  case 0x1502:   //channel 1->obd mode :500k
+					  RTU_DEBUG("channel 1->obd mode :500k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = OBD_MODE;
+					  CAN1Init(&Can1, CANX_BAUD_500K,0);
+				    CAN2Init(&Can2, CANX_BAUD_500K,0);
+					  break;
+				case 0x2502:   //channel 2->obd mode :500k
+					  RTU_DEBUG("channel 2->obd mode :500k\r\n");
+				    channel = CAN_CHANNEL_2;
+				    work_mode = OBD_MODE;
+				    CAN1Init(&Can1, CANX_BAUD_500K,0);
+					  CAN2Init(&Can2, CANX_BAUD_500K,0);
+					  break;
+			  case 0x1252:   //channel 1->obd mode :250k
+					  RTU_DEBUG("channel 1->obd mode :250k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = OBD_MODE;
+					  CAN1Init(&Can1, CANX_BAUD_250K,0);
+				    CAN2Init(&Can2, CANX_BAUD_250K,0);
+					  break;
+			  case 0x2252:   //channel 2->obd mode :250k
+					  RTU_DEBUG("channel 2->obd mode :250k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = OBD_MODE;
+				    CAN1Init(&Can1, CANX_BAUD_250K,0);  //需要初始化，且屏蔽掉打印信息
+					  CAN2Init(&Can2, CANX_BAUD_250K,0);
+					  break;
+			  //case 0x1501:   //channel 1->J1939 mode :500k
+				//	  RTU_DEBUG("channel 1->J1939 mode :500k\r\n");
+				//    channel = CAN_CHANNEL_1;
+				//    work_mode = J1939_MODE;
+				//	  CAN1Init(&Can1, CANX_BAUD_500K,0);
+				//	  break;
+				//case 0x2501:   //channel 2->J1939 mode :500k
+				//	  RTU_DEBUG("channel 2->J1939 mode :500k\r\n");
+				//    channel = CAN_CHANNEL_2;
+				//    work_mode = J1939_MODE;
+				//	  CAN2Init(&Can2, CANX_BAUD_500K,0);
+				//	  break;
+				case 0x1251:   //channel 1->J1939 mode :250k
+					  RTU_DEBUG("channel 1->J1939 mode :250k\r\n");
+				    channel = CAN_CHANNEL_1;
+				    work_mode = J1939_MODE;
+					  CAN1Init(&Can1, CANX_BAUD_250K,0);
+				    CAN2Init(&Can2, CANX_BAUD_250K,0);
+					  break;
+				case 0x2251:   //channel 2->J1939 mode :250k
+					  RTU_DEBUG("channel 2->J1939 mode :250k\r\n");
+				    channel = CAN_CHANNEL_2;
+				    work_mode = J1939_MODE;
+				    CAN1Init(&Can1, CANX_BAUD_250K,0);
+				    CAN2Init(&Can2, CANX_BAUD_250K,0);
+					  break;
+				default:
+					  CAN1Init(&Can1, CANX_BAUD_250K,0);
+						CAN2Init(&Can2, CANX_BAUD_250K,0);   //必须要初始化！
+					  break;
+		}
+
+}
+
+void  AppInit(void)
+{
+	  BSP_Init();
+    
+    //GPIO初始化
+    GpioInit(); 
+
+    //shell初始化
+    ShellInit();
+    
+		//硬件GPIO初始化
+    GPIO_Configuration();
+	
+	  ADC_Configuration();
+	  //中断初始化
+    //EXTI0_Configuration();
+	
+	  //定时器初始化                                                                                                                                          
+		TIMER3_Configuration();
+		TIMER4_Configuration();
+		TIMER5_Configuration();
+	  TIMER6_Configuration();
+    //系统定时器初始化
+    systick_init();
+     
+    // 加密校验函数，JTAG调试时要将此函数屏蔽
+#if VECTTAB_FLASH_OFFSET == 0x4000
+    CmpCipher();
+#endif
+
+    //DelayMS(10);
+    //I2C_Configuration();
+		
+    StructInit();
+    bandrateinit();
+
+    while(EC20Status == 0)
+		{
+			 DelayMS(50);
+			 Mpu_Power_Manage();
+		}
+		//IWDG 30s 超时溢出
+	  IWDG_Config(IWDG_Prescaler_64 ,3125);//625
+		//DelayMS(50);
+		//LIS331DLH_Init();
+		TIM_Cmd(TIM4, ENABLE);
+		RTU_DEBUG("application start!\r\n");	
+}
+

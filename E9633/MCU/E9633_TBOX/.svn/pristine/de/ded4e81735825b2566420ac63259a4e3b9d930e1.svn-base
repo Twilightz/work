@@ -1,0 +1,110 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\wzx\E9633_TBOX\Project\E9633_TBOX_STM32Prj.uvproj
+Project File Date:  06/05/2018
+
+<h2>Output:</h2>
+compiling UartProcess.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+..\App\inc\Adc.h(61): warning:  #1295-D: Deprecated declaration ADC_Configuration - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+..\App\inc\Sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\src\UartProcess.c(151): warning:  #177-D: variable "index" was declared but never referenced
+..\App\src\UartProcess.c(326): warning:  #550-D: variable "Uart1RxLength" was set but never used
+..\App\src\UartProcess.c(359): warning:  #550-D: variable "Uart1RxLength1" was set but never used
+..\App\src\UartProcess.c(573): warning:  #177-D: variable "flashsec" was declared but never referenced
+..\App\src\UartProcess.c(684): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(732): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(734): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(809): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(834): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(859): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(861): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(862): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(903): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(914): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(981): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(976): warning:  #550-D: variable "status" was set but never used
+..\App\src\UartProcess.c(1041): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(1066): warning:  #186-D: pointless comparison of unsigned integer with zero
+"..\App\src\UartProcess.c" - 0 Errors, 25 Warning(s).
+Build target 'E9633_TBOX'
+compiling main.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+..\App\inc\Adc.h(61): warning:  #1295-D: Deprecated declaration ADC_Configuration - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+..\App\inc\ymodem.h(109): warning:  #1295-D: Deprecated declaration Ymodem_Receive - give arg types
+..\App\inc\sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\inc\Watchdog.h(63): warning:  #1295-D: Deprecated declaration Feeddog - give arg types
+..\App\src\main.c(194): warning:  #177-D: variable "flashsec" was declared but never referenced
+compiling Adc.c...
+..\App\inc\sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+compiling Exti.c...
+..\App\inc\sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+compiling Flash.c...
+compiling Timer.c...
+..\App\inc\Adc.h(61): warning:  #1295-D: Deprecated declaration ADC_Configuration - give arg types
+..\App\inc\sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+..\App\inc\ymodem.h(109): warning:  #1295-D: Deprecated declaration Ymodem_Receive - give arg types
+..\App\inc\Watchdog.h(63): warning:  #1295-D: Deprecated declaration Feeddog - give arg types
+..\App\src\Timer.c(357): warning:  #177-D: variable "is_collision" was declared but never referenced
+..\App\src\Timer.c(358): warning:  #177-D: variable "angle" was declared but never referenced
+..\App\src\Timer.c(359): warning:  #177-D: variable "x_temp" was declared but never referenced
+..\App\src\Timer.c(359): warning:  #177-D: variable "y_temp" was declared but never referenced
+compiling sleep.c...
+..\App\inc\sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+compiling bsp.c...
+linking...
+Program Size: Code=41336 RO-data=1336 RW-data=384 ZI-data=24664  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin -o ..\bin\E9633_TBOX.bin ..\bin\E9633_TBOX.axf
+".\obj\..\..\bin\E9633_TBOX.axf" - 0 Errors, 29 Warning(s).
+Build target 'E9633_TBOX'
+compiling UartProcess.c...
+..\App\inc\J1939.h(175): warning:  #1295-D: Deprecated declaration J1939_SendPGN - give arg types
+..\App\inc\Can.h(68): warning:  #1295-D: Deprecated declaration CAN_SetFilterStd - give arg types
+..\App\inc\Can.h(70): warning:  #1295-D: Deprecated declaration CAN_SetFilterExt - give arg types
+..\App\inc\Adc.h(61): warning:  #1295-D: Deprecated declaration ADC_Configuration - give arg types
+..\App\inc\UartProcess.h(217): warning:  #1295-D: Deprecated declaration UART3_Data_Pro - give arg types
+..\App\inc\UartProcess.h(218): warning:  #1295-D: Deprecated declaration UART1_Data_Pro - give arg types
+..\App\inc\Sleep.h(74): warning:  #1295-D: Deprecated declaration quit_light_sleep - give arg types
+..\App\src\UartProcess.c(151): warning:  #177-D: variable "index" was declared but never referenced
+..\App\src\UartProcess.c(326): warning:  #550-D: variable "Uart1RxLength" was set but never used
+..\App\src\UartProcess.c(359): warning:  #550-D: variable "Uart1RxLength1" was set but never used
+..\App\src\UartProcess.c(573): warning:  #177-D: variable "flashsec" was declared but never referenced
+..\App\src\UartProcess.c(684): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(732): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(734): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(809): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(834): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(859): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(861): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(862): warning:  #188-D: enumerated type mixed with another type
+..\App\src\UartProcess.c(903): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(914): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(981): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(976): warning:  #550-D: variable "status" was set but never used
+..\App\src\UartProcess.c(1041): warning:  #186-D: pointless comparison of unsigned integer with zero
+..\App\src\UartProcess.c(1066): warning:  #186-D: pointless comparison of unsigned integer with zero
+linking...
+Program Size: Code=41336 RO-data=1336 RW-data=384 ZI-data=24664  
+FromELF: creating hex file...
+After Build - User command #1: C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin -o ..\bin\E9633_TBOX.bin ..\bin\E9633_TBOX.axf
+".\obj\..\..\bin\E9633_TBOX.axf" - 0 Errors, 25 Warning(s).
